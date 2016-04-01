@@ -1,0 +1,74 @@
+body {
+  min-width: 800px;
+  /*min-height: 600px;*/
+  padding: 20px;
+  overflow-y: scroll;
+  font-family: 'Open Sans';
+  color: #2a2a2a;
+}
+svg {
+	padding: 40px;
+}
+.tick text {
+	font-size: 10px;
+}
+.axis path { 
+	fill: none; 
+	stroke: black; 
+}
+.axis line { 
+	stroke: black; 
+}
+.axisLabel {
+	font-size: 15px;
+}
+.title {
+	font-size: 15px;
+}
+.graphText {
+	/*font-size: 12px;*/
+}
+.graphText:hover { 
+	fill: #7e7e7e;
+	border: 1px solid black;
+	opacity: 1.0; 
+	font-weight: bold; 
+	font-size: x-large; 
+	z-index: 10000;
+}
+#title a {
+	font-size: 25px;
+	padding: 20px 0px;
+}
+a:hover {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	color: #003A6F;
+}
+.line {
+	width: 750px;
+	height: 0px;
+	border: 1px;
+	border-color: #2a2a2a; 
+}
+td {
+	padding: 10px 30px;
+	padding-left: 2px;
+
+}
+th {
+	border: 2px;
+}
+th {
+	font-size: 15px;
+	font-weight: bold;
+	color: #002242;
+}
+tr:hover {
+	background-color: #f6f6f6;
+	opacity: .9;
+}

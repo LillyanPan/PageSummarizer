@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "Trial Reader",
+  "description": "A chrome extension which can show RSS feeds",
+  "version": "1.0",
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'",
+
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://phloxblog.in/",
+    "cookies", 
+    "tabs", 
+    "http://*/*", 
+    "https://*/*",
+    "http://gateway-a.watsonplatform.net/*",
+    "http://d3js.org/d3.v3.min.js",
+    "storage"
+  ],
+  "background" : {
+    "scripts" : ["js/background.js"],
+    "persistent" : false
+  }
+  // "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}
+// {
+//   "name": "Firebase Sample Extension",
+//   "version": "0.0.1",
+//   "manifest_version": 2,
+//   "description": "Firebase Sample extension.",
+//   "homepage_url": "https://github.com/firebase/firebase-chrome-extension",
+//   /* This sample uses firebaseio-demo.com but for production apps using a firebaseio.com Firebase, you won't need that. */
+//   "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'",
+//   "background": {
+//     "page": "src/bg/background.html",
+//     "persistent": true
+//   },
+//   "browser_action": {
+//     "default_icon": "img/icon.png",
+//     "default_title": "browser action",
+//     "default_popup": "popup.html"
+//   }
+// }
