@@ -245,7 +245,7 @@ $(document).ready(function() {
                 .attr("x", 0)
                 .attr("y", 20)
                 .text("Analysis of Key Words")
-                .attr("transform", "translate(-30,0)");
+                .attr("transform", "translate(-35,0)");
         });
 
         /***************** 
@@ -319,7 +319,8 @@ var root = new Firebase('https://capital-one-news.firebaseio.com/');
 root.on("value", function(items) {
 for (var item in items.val()) {
     item = items.val()[item];
-    $("#saved").append("<div class='article'><div class='articleTitle'><a href='" + item.url + "'>" + item.title + "</a></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><hr>");
+    $("#saved").append("<div id='savedArticles'></div>");
+    $("#savedArticles").append("<div class='col-md-12'><div class='articleTitle'><a href='" + item.url + "'>" + item.title + "</a></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><div class='col-md-12'><hr></div>");
 }
 }, function(errorObject) {
 console.log("The read failed: " + errorObject.code);

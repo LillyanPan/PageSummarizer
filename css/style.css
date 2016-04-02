@@ -1,6 +1,5 @@
 body {
   min-width: 800px;
-  /*min-height: 600px;*/
   padding: 20px;
   overflow-y: scroll;
   font-family: "Avenir";
@@ -16,24 +15,24 @@ body {
 }
 #title a {
 	font-size: 25px;
-	padding: 20px 0px;
 	color: black;
 	font-weight: bold;
 }
+#title a:hover {
+	text-decoration: none;
+}
 #title p {
 	padding-top: 10px;
-}
-#keywords, #keylinks, #sentiment {
-	padding: 15px 0px;
 }
 #keyTitle {
 	font-weight: bold;
 	font-size: 16px;
 }
 #summaryNews {
-	padding: 5px 0px;
 	line-height: 150%;
-	/*font-family: "Times New Roman";*/
+}
+.space {
+	padding: 20px 0px;
 }
 
 /***************** 
@@ -80,8 +79,8 @@ svg {
  KEY CONCEPT TABLE
 ******************/ 
 
-table a:hover, #title a:hover {
-	font-weight: bold;
+table a:hover{
+	font-weight: 500;
 	text-decoration: none;
 }
 
@@ -90,7 +89,6 @@ table a {
 	color: #428bca;
 }
 td {
-	padding: 10px 30px;
 	padding-left: 2px;
 
 }
@@ -126,8 +124,8 @@ th {
   SAVED ARTICLES
 ******************/ 
 
-.article {
-	padding: 15px 0px;
+#savedArticles {
+	padding-top: 25px;
 }
 .articleTitle a {
 	font-size: 16px;
@@ -143,9 +141,15 @@ th {
 	padding: 5px 0px;
 }
 .articleSummary {
-	font-size: 16px;
+	font-size: 12px;
 	line-height: 150%;
-	font-family: "Times New Roman";
+	/*font-family: "Times New Roman";*/
+	font-family: "Avenir";
 }
 
-
+/***************** 
+  	   MISC
+******************/ 
+.nav a:active, .nav a:focus {
+	outline: none;
+}
