@@ -72,7 +72,7 @@ svg {
 	font-weight: 400;
 }
 .graphTitle {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -94,16 +94,14 @@ td {
 	padding-left: 2px;
 
 }
-tr:hover {
-	background-color: #f6f6f6;
-	opacity: .9;
-}
 th {
 	font-size: 16px;
 	font-weight: bold;
-	/*color: #002242;*/
-	border: 2px;
 	background-color: none;
+}
+.table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: none;
 }
 
 /***************** 
@@ -150,14 +148,4 @@ th {
 	font-family: "Times New Roman";
 }
 
-/***************** 
-  	   MISC
-******************/ 
-
-.line {
-	width: 750px;
-	height: 0px;
-	border: 1px;
-	border-color: #2a2a2a; 
-}
 

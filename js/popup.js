@@ -146,7 +146,7 @@ $(document).ready(function() {
             var min = Math.max(sentRange[0] - .01, 0);
             var max = Math.min(sentRange[1] + .01, 1);
             var xScale = d3.scale.linear()
-                .domain([-1, 1]).range([padding, width - padding - 25])
+                .domain([-1, 1]).range([padding, width - padding/2])
             var fontScale = d3.scale.linear()
                 .domain([.1, 1]).range([12, 22])
             var yScale = d3.scale.linear()
@@ -155,7 +155,7 @@ $(document).ready(function() {
             var colorScale = d3.scale.linear().domain([-1, 0, 1]).range(["#ff1919", "#d3d3d3", "#198c19"]);
             var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
             var graph = svg.append("g");
-            graph.attr("transform", "translate(-10, -30) scale(0.9)");
+            graph.attr("transform", "translate(-10, -30) scale(0.8)");
             graph.append("g")
                 .attr("class", "axis")
                 .attr("transform", "translate(0, " + yScale(min) + ")")
@@ -168,7 +168,7 @@ $(document).ready(function() {
                 .call(yAxis);
             graph.append("text")
                 .attr("class", "axisLabel")
-                .attr("x", width / 2 - 45)
+                .attr("x", width / 2 - 25)
                 .attr("y", height + padding / 4)
                 .text("Sentiment");
 
@@ -197,7 +197,7 @@ $(document).ready(function() {
                     })
             });
             var legend = graph.append("g")
-                .attr("transform", "translate(60,0)");
+                .attr("transform", "translate(100,0)");
 
             legend.append('rect')
                 .attr("class", "keyBox")
@@ -274,7 +274,7 @@ $(document).ready(function() {
                         links2 += "<a href='" + data + "'>" + key + "</a><br>";
                     }
                 });
-                $("#links").append("<tr id=" + String(i) + "><td>" + text + "</td>" + "<td>" + links1 + "</td><td>" + links2 + "</td></tr>");
+                $("tbody").append("<tr id=" + String(i) + "><td>" + text + "</td>" + "<td>" + links1 + "</td><td>" + links2 + "</td></tr>");
                 block = 0;
             });
 	        var index = 0;
