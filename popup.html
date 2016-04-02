@@ -7,47 +7,50 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
+        <li role="presentation"><a href="#saved" data-toggle="tab">Saved Articles</a></li>
+      </ul>
+    </div>
+    <div id="tabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="summary">
+        <p>
+          <div id="title"></div>
+          <hr>
+          <div id="author"></div>
+          <div id="summaryNews"></div>
+          <div id="keywords">
+            <p id="keyTitle">Keywords</p>
+          </div>
+          <div id="keylinks">
+            <table id="links">
+              <tr class="head">
+                <th>Key Concepts</th>
+                <th>Links</th>
+              </tr>
+            </table>
+          </div>
+          <div id="sentiment">
+          </div>
+          <button id="save" type="button"  class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="saved"></div>
+    </div>
+    <footer>
+      <div id='copyright-date'>
+          Copyright &copy; 2016 Lillyan Pan. All rights reserved. Text Analysis by <a href="www.alchemyapi.com">AlchemyAPI</a> and  <a href="http://aylien.com/">AYLIEN</a>.
+      </div>
+    </footer>
     <script src="js/jquery-2.2.2.min.js"></script>
     <script src="d3/d3.min.js"></script>
     <!-- d3-legend Created by Susie Lu -->
     <script src="d3/d3-legend.js"></script>
-    <!-- DUPLICATE -->
     <script src="js/firebase.js"></script>
-    <!-- <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script> -->
     <script src="js/popup.js"></script>
-
-  </head>
-  <body>
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><a href="#">Saved</a></li>
-</ul>
-
-
-    <div id="title"></div>
-    <div class='line'></div>
-    <div id="author"></div>
-    <div id="summary"></div>
-    <div id="keywords">
-      <p>Keywords</p>
-    </div>
-    <div id="keylinks">
-      <table id="links">
-        <tr class="head">
-          <th>Concepts</th>
-          <th>Links</th>
-        </tr>
-      </table>
-    </div>
-    <div id="sentiment">
-      <p class = "graphTitle">Relavence vs. Sentiement of Key Words/Phrases</p>
-    </div>
-    <button id="save" type="button" value="save">Save</button>
-  <footer>
-        <div id='copyright-date'>
-            Copyright &copy; 2016 Lillyan Pan. All rights reserved. Text Analysis by <a href="www.alchemyapi.com">AlchemyAPI</a> and  <a href="http://aylien.com/">AYLIEN</a>
-        </div>
-  </footer>
-  <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

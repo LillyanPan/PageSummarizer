@@ -3,9 +3,43 @@ body {
   /*min-height: 600px;*/
   padding: 20px;
   overflow-y: scroll;
-  font-family: 'Open Sans';
+  font-family: "Avenir";
   color: #2a2a2a;
 }
+
+/***************** 
+   	MAIN TAB
+******************/ 
+
+#author {
+	font-style: italic;
+}
+#title a {
+	font-size: 25px;
+	padding: 20px 0px;
+	color: black;
+	font-weight: bold;
+}
+#title p {
+	padding-top: 10px;
+}
+#keywords, #keylinks, #sentiment {
+	padding: 15px 0px;
+}
+#keyTitle {
+	font-weight: bold;
+	font-size: 16px;
+}
+#summaryNews {
+	padding: 5px 0px;
+	line-height: 150%;
+	/*font-family: "Times New Roman";*/
+}
+
+/***************** 
+   	D3 ANALYSIS
+******************/ 
+
 svg {
 	padding: 40px;
 }
@@ -23,10 +57,8 @@ svg {
 	font-size: 15px;
 }
 .title {
-	font-size: 15px;
-}
-.graphText {
-	/*font-size: 12px;*/
+	font-size: 16px;
+	padding-top: 5px;
 }
 .graphText:hover { 
 	fill: #7e7e7e;
@@ -36,39 +68,96 @@ svg {
 	font-size: x-large; 
 	z-index: 10000;
 }
-#title a {
-	font-size: 25px;
-	padding: 20px 0px;
+.label {
+	font-weight: 400;
 }
-a:hover {
+.graphTitle {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/***************** 
+ KEY CONCEPT TABLE
+******************/ 
+
+table a:hover, #title a:hover {
 	font-weight: bold;
 	text-decoration: none;
 }
 
-a {
+table a {
 	text-decoration: none;
-	color: #003A6F;
-}
-.line {
-	width: 750px;
-	height: 0px;
-	border: 1px;
-	border-color: #2a2a2a; 
+	color: #428bca;
 }
 td {
 	padding: 10px 30px;
 	padding-left: 2px;
 
 }
-th {
-	border: 2px;
-}
-th {
-	font-size: 15px;
-	font-weight: bold;
-	color: #002242;
-}
 tr:hover {
 	background-color: #f6f6f6;
 	opacity: .9;
 }
+th {
+	font-size: 16px;
+	font-weight: bold;
+	/*color: #002242;*/
+	border: 2px;
+	background-color: none;
+}
+
+/***************** 
+ 	SAVE BUTTON
+******************/ 
+
+#save {
+    position: fixed;
+    bottom: 0px;
+    right: 0px; 
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+/***************** 
+  SAVED ARTICLES
+******************/ 
+
+.article {
+	padding: 15px 0px;
+}
+.articleTitle a {
+	font-size: 16px;
+	color: black;
+	font-weight: bold;
+}
+.articleTitle a:hover {
+	text-decoration: none;
+}
+.articleAuthor {
+	font-style: italic;
+	font-size: 12px;
+	padding: 5px 0px;
+}
+.articleSummary {
+	font-size: 16px;
+	line-height: 150%;
+	font-family: "Times New Roman";
+}
+
+/***************** 
+  	   MISC
+******************/ 
+
+.line {
+	width: 750px;
+	height: 0px;
+	border: 1px;
+	border-color: #2a2a2a; 
+}
+
