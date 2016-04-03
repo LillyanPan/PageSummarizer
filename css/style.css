@@ -153,3 +153,10 @@ th {
 .nav a:active, .nav a:focus {
 	outline: none;
 }
+#save:active {
+	outline: none;
+	border: none;
+}
+#save:focus {
+	outline:0;
+}
