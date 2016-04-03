@@ -317,6 +317,7 @@ save.addEventListener('click', function() {
 })
 var root = new Firebase('https://capital-one-news.firebaseio.com/');
 root.on("value", function(items) {
+$("#saved").html("");
 for (var item in items.val()) {
     item = items.val()[item];
     $("#saved").append("<div id='savedArticles'></div>");
