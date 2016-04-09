@@ -1,2 +1,0 @@
-INDEX VERSION 1.127+/Users/Lillyan/Desktop/4820/.metadata/.plugins/org.eclipse.jdt.core
-1702665400.index

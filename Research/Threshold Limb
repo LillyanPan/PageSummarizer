@@ -1,5 +1,0 @@
-// Threshold all images properly
-for (i = 1; i <= nSlices; i++){
-run("8-bit");
-setAutoThreshold("Otsu dark");
-}

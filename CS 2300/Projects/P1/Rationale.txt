@@ -1,5 +1,0 @@
-I made a personal site. I went for a more neutral color scheme (blue and white) and incorporated some of my interests (painting) into the styling. Overall, I tried to have a more clean, minimal looking website to appeal to a wider audience. The site is intended for anyone who would like to learn more about me. Navigation is clear at the top of the page so that users can easily go through page to page. Included favicon.
-
-PHP elements included a trivia page on the “art” tab. This included an array of artist names and fun facts. Users could select to view a particular artist’s fact or view all facts using a submit form and a drop-down menu. This was made possible by a self-defined PHP function printName. The “contact” page also used PHP to echo a user submitted message as well as validate the contact form submission.
-
-Wow elements included regular expression to validate contact information, emphasis on design, used JavaScript on the “fun” tab to create small animation, and a “sticky” navigation bar using jQuery.
