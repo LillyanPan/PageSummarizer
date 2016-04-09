@@ -1,0 +1,124 @@
+@import 'master.css';
+
+/******* solution for 1 ***************/
+#p1 {
+	color: #7FFFD4;
+}
+
+/******* solution for 2 ***************/
+#p2 {
+	border-bottom: dashed #FF8C00 2px;
+}
+
+/******* solution for 3 ***************/
+#p3 {
+	height: 100px;
+	width: 100px;
+	background-color: #ff0000;
+}
+
+/******* solution for 4 ***************/
+#p4 {
+	height: 400px;
+	width: 600px;
+	background: url('../img/doge.jpg') center center;
+	background-size: cover;
+}
+
+/******* solution for 5 ***************/
+#p5 {
+	height: 400px;
+	width: 400px;
+	background-color: #7fff00;
+
+	/* enter solution here */
+	margin: auto;
+	border: dotted #2F4F4F 5px;
+	border-radius: 200px;
+}
+
+
+/******* solution for 6 ***************/
+#p6 {
+	height: 300px;
+	width: 300px;
+	border-radius: 150px;
+	background: url('../img/doge-1.jpg');
+	background-size: 200% auto;
+	background-position: 45% 40%;
+	border: solid #FAEBD7 4px;
+}
+
+/******* solution for 7 ***************/
+#p7 {
+	background-color: #000;
+	list-style: none;
+}
+
+#p7 li {
+	display: inline-block;
+	padding: 20px 30px;
+}
+
+#p7 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/******* solution for 8 ***************/
+#p8:hover {
+	cursor: pointer;
+}
+
+#p8:hover p:last-child {
+	color: #0000ff;
+}
+
+/******* solution for 9 ***************/
+#p9 {
+	text-align: center;
+	width: 100%;
+}
+
+#one, #two, #three {
+	background-color: #ADFF2F;
+	height: 200px;
+	width: 200px;
+}
+
+#one {
+	float: left;
+}
+
+#two {
+	display: inline-block;
+}
+
+#three {
+	float: right;
+}
+
+/******* solution for 10 ***************/
+#p10 {
+   position: relative;
+   width: 100%;
+   padding-bottom: 300px;
+}
+
+#outer {
+   position: absolute;
+   background-color: #000;
+   border-radius: 150px;
+   width: 300px;
+   height: 300px;
+}
+
+#inner {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 50px;
+}

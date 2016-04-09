@@ -1,0 +1,338 @@
+ /********* Main Stylesheet *********/
+
+html, body {
+  height: 100%;
+  /*padding: 10px;*/
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background: #FFFFFF;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 12pt;
+	font-weight: 300;
+	color: #000000;
+}
+
+h1, h2 {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+  margin-top: 0
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.container {
+	overflow: hidden;
+	margin: 0em auto;
+	width: 1000px;
+}
+
+.content {
+	padding: 20px;
+}
+
+cite {
+ 	font-size: 10px;
+ }
+
+ /********* Nav Bar *********/
+
+.main-nav {
+	position: fixed;
+	top: 4em;
+	left: 0;
+	right: 0;
+	z-index: 150;
+}
+
+.nav-scrolled {
+	position: fixed;
+	/*position: absolute;*/
+	top: 0;
+	width: 70%;
+}
+
+nav ul {
+	display: inline-block;
+}
+
+nav li {
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+/*check*/
+nav li a, nav li span {
+	padding: 1em 1.5em;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 0.90em;
+	font-weight: 600;
+	color: #000;
+}
+
+nav li:hover a {
+	background: #FFF;
+	border-radius: 5px;
+}
+
+header nav ul {
+  float: right;
+  padding-right: 6em;
+}
+
+ /********* Banner *********/
+
+#banner {
+	padding: 5em 0;
+}
+
+#banner span {
+	display: block;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 300;
+	font-size: 2.5em;
+	color: #000;
+	border-style: solid;
+	padding: 30px 0px;
+}
+
+ /********* Header Wrapper *********/
+
+ #header-wrapper {
+ 	/*Photo taken from: https://en-blog.files.wordpress.com/2015/04/blue-brushstrokes-sm.jpg*/
+ 	background: url('../assets/banner.jpg') no-repeat center;
+ 	background-size: cover;
+ }
+
+ #header {
+	position: relative;
+	padding: 5em 0em;
+}
+
+#logo a {
+	position: absolute;
+	/*position: absolute;*/
+	top: 2em;
+}
+
+ /********* Logo *********/
+
+#logo {
+	padding: 1em 1em;
+}
+
+ /********* Images *********/
+
+.imageCon1, .imageCon2, .imageCon3 {
+  display: inline-block;
+  padding: 10px;
+  margin: 0 auto;
+  
+}
+
+.aimageCon1, .aimageCon2, .aimageCon3 {
+  display: inline-block;
+  padding: 2px;
+  margin: 0 auto;
+  
+}
+.images {
+	margin-left: 10px;
+    margin-top: 20px;
+}
+
+/********* Title *********/
+
+.title {
+	margin-bottom: 3em;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.title h2 {
+	font-size: 3em;
+	font-weight: 800;
+	padding-top: 80px;
+	padding-bottom: 20px;
+}
+
+.title p {
+	font-weight: 100;
+	letter-spacing: .05em;
+}
+
+
+/********* About *********/ 
+
+.aboutTitle {
+	font-weight: 100;
+	padding: 20px;
+}
+
+.listContent {
+	list-style: none;
+}
+
+.listContent li {
+	padding: 5px;
+}
+
+.image {
+	margin: 15px 50px;
+    padding-bottom: 50px;
+    height: 350px;
+    width: 300px;
+}
+
+ /********* Copyright *********/
+
+ #copyright-date {
+ 	overflow: hidden;
+ 	padding: 5em 0em;
+ 	letter-spacing: .2em;
+ 	text-transform: uppercase;
+ 	text-align: center;
+ 	color: #000;
+ }
+
+  /********* Contact *********/
+  
+  .contentSubmit {
+  	text-align: center;
+  	position: relative;
+  	font-size: 14pt;
+
+  }
+
+  .contentSubmit a:hover {
+  	color: #cadfd5;
+  }
+
+  .contentSubmit a {
+  	font-weight: bold;
+  }
+
+   /********* Forms *********/
+form {
+	padding: 2em;
+}
+
+form input {
+    height: 20px; 
+    width: 500px; 
+    padding: 5px 8px;
+    margin: 10px 0px;
+}
+
+form textarea {
+	height: 170px; 
+	width: 500px; 
+	padding: 5px 8px;
+    margin: 10px 0px;
+}
+
+/*Repeaded code but needed to shift left*/
+
+.form-button {
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #99ebff;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+form input, form textarea {
+	border: 1px solid #aaa;
+	border-radius: 3px;
+}
+
+.art-container {
+	overflow: hidden;
+margin: 0em auto;
+width: 1000px;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-rule-color: #000; /* Chrome, Safari, Opera */
+-moz-column-rule-color: #000; /* Firefox */
+column-rule-color: #000;
+-webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+-moz-column-rule-style: solid; /* Firefox */
+column-rule-style: solid;
+-webkit-column-gap: 150px; /* Chrome, Safari, Opera */
+-moz-column-gap: 150px; /* Firefox */
+column-gap: 150px;
+}
+
+/********* Fun Page *********/
+
+.animation {
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    background-color: #99ebff;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 50px;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+.button:hover {
+	background-color: #57BAF6;
+    color: white;
+	border-radius: 4px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    left:50%;
+}
+
+.button-container {
+	overflow: hidden;
+	margin: 0em auto;
+	width: 1000px;
+}
+
+#page-content {
+  
+}
+
+header nav ul li {
+  
+}

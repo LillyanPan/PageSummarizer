@@ -1,0 +1,27 @@
+Quiz 3/1
+
+1. Answer: D 
+	All ISAs have access gto memeory; nothing distrinct about not distinct advantage
+
+2. Answer: E 
+	B-D are done by caller/callee not by the BL instruction. Nothing gets pushed into stack by default
+
+3. Answer: D 
+	Activation record look like. Callee needs to save all registers is uses and save LR if subroutine called
+	R4-R11, LR are callee saved registers; boundary b/w branch and link is at <paramters beyond R0-R3> and <R4-R11 and LR>
+	ARM is a callee saved record
+
+4. Answer: A
+	Polling and interrupts can support multiple devices
+
+5. Answer: D
+	Menu: can change to different content in service routine
+
+6. Answer: E
+	User trap to OS - not external to system call
+	Many registers are calee-saved (not C)
+	D not true: higher priority interrupt can interrupt lower interrupts
+
+7. Answer: E
+	Interrupt can happen at any time
+	Can have answers beyong A,B,C

@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Lillyan Pan (ldp54)</title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<!-- Problem 1 -->
+		<p>
+			<svg height="200" width="300"></svg>
+			<script>
+				var svg = d3.select("svg");
+				var height = svg.attr("height");
+				var width = svg.attr("width");
+
+				var padding = 30;
+				var xScale = d3.scale.linear().domain([1,9]).range([padding, width]);
+				var yScale = d3.scale.linear().domain([1,80]).range([height - padding, 0]);
+
+				var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+					.ticks(8);
+				var yAxis = d3.svg.axis().scale(yScale).orient("left")
+					.ticks(8);
+					
+			</script>
+		</p>
+	</body>
+</html>

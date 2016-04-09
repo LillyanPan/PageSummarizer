@@ -1,0 +1,43 @@
+\documentclass[11pt,letter]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{listings}
+
+
+\begin{document}
+
+\title{Vital Signs Monitor Main Code Documentation}
+
+\author{Masaki Yamaguchi}
+
+\date{\today}
+
+\maketitle 
+\lstset{language=C}  
+
+\section{Imported Packages}
+The following are the packages used in the mainUI code. 
+\begin{lstlisting}
+#include <UTouch.h>
+#include <UTouchCD.h>
+#include <HW_ARM_defines.h>
+#include <HW_ATmega328P.h>
+#include <HW_ATmega32U4.h>
+#include <HW_AVR.h>
+#include <HW_AVR_defines.h>
+#include <memorysaver.h>
+#include <avr/pgmspace.h>
+#include <UTFT.h>
+#include <math.h>
+#include "temperatureTable.h"
+\end{lstlisting}
+
+\section{Functions}
+
+
+\end{document}

@@ -1,0 +1,24 @@
+2/2
+
+4HW; 2 take home exams
+
+UNIX Help
+
+man: help
+be careful about relative vs absolute pathnames
+
+Absolute Pathnames
+	sequence of directory names b/w root and specific file
+Relative
+	directory names below the directory where you are now to the directory of interest
+
+Note:
+ cd ../<dir name> - goes back up to parent
+ cat : print file on screen; will concatinate files
+ rmdir: can only remove empty directory
+ chmod: changemode
+ 	ex. chmod 600 <filename> //write and execute
+
+Pipes ('|')
+	output of one program on left is piped into the program on the right
+	ex. > head -100 <filename> | tail | grep foobar // 100 first lines of file will pump into tail and then will search for foobar

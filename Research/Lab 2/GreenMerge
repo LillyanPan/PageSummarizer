@@ -1,0 +1,7 @@
+//color change
+newImage("Green", "8-bit Black", 512, 512, nSlices); selectWindow("BallMotion.Avi");
+run("Copy");
+selectWindow("Green");
+run("Paste");
+scale=i/nSlices;
+run("Multiply...", "value="+scale+" slice");

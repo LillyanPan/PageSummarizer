@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TotoesGotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gtx-VX-QUy">
+                                <rect key="frame" x="399" y="444" width="90" height="90"/>
+                                <color key="backgroundColor" red="1" green="0.64729539522512414" blue="0.21814907492139313" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="6wZ-KM-pX3"/>
+                                    <constraint firstAttribute="height" constant="40" id="T0z-29-PEt"/>
+                                </constraints>
+                                <state key="normal" title="Front">
+                                    <color key="titleColor" white="1" alpha="0.64000000000000001" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6wZ-KM-pX3"/>
+                                        <exclude reference="T0z-29-PEt"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="255" y="524" width="40" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="6wZ-KM-pX3"/>
+                                        <include reference="T0z-29-PEt"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="frontButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KcV-Mz-CcW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKP-rt-jpv">
+                                <rect key="frame" x="111" y="444" width="90" height="90"/>
+                                <color key="backgroundColor" red="0.64748593195001358" green="0.75996291035353536" blue="0.59397104807395551" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="4Vk-2Q-Nnm"/>
+                                    <constraint firstAttribute="height" constant="40" id="li7-O8-VGW"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="0.97613348289230828" green="0.98668932331210946" blue="1" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Vk-2Q-Nnm"/>
+                                        <exclude reference="li7-O8-VGW"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="106" y="524" width="40" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="4Vk-2Q-Nnm"/>
+                                        <include reference="li7-O8-VGW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="backButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="798-ox-m3h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAW-dL-3eo">
+                                <rect key="frame" x="253" y="444" width="90" height="90"/>
+                                <color key="backgroundColor" red="0.46955591333918256" green="0.67395663019294827" blue="1" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hio-hM-Wei"/>
+                                    <constraint firstAttribute="width" constant="40" id="jan-3o-r3l"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Process">
+                                    <color key="titleColor" red="1" green="0.97999733559558566" blue="0.98994283840431196" alpha="0.64000000000000001" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hio-hM-Wei"/>
+                                        <exclude reference="jan-3o-r3l"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="180" y="524" width="40" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="hio-hM-Wei"/>
+                                        <include reference="jan-3o-r3l"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5wc-QI-Isw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TAW-dL-3eo" firstAttribute="leading" secondItem="KKP-rt-jpv" secondAttribute="trailing" constant="36" id="NzV-n3-Tpu"/>
+                            <constraint firstItem="TAW-dL-3eo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="504" id="Pjf-iJ-pz5"/>
+                            <constraint firstItem="KKP-rt-jpv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="504" id="WqQ-3H-p6A"/>
+                            <constraint firstItem="Gtx-VX-QUy" firstAttribute="leading" secondItem="TAW-dL-3eo" secondAttribute="trailing" constant="33" id="b6K-Wv-rnU"/>
+                            <constraint firstItem="Gtx-VX-QUy" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="504" id="z5a-8N-W7a"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WqQ-3H-p6A"/>
+                                <exclude reference="NzV-n3-Tpu"/>
+                                <exclude reference="Pjf-iJ-pz5"/>
+                                <exclude reference="b6K-Wv-rnU"/>
+                                <exclude reference="z5a-8N-W7a"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="WqQ-3H-p6A"/>
+                                <include reference="NzV-n3-Tpu"/>
+                                <include reference="Pjf-iJ-pz5"/>
+                                <include reference="b6K-Wv-rnU"/>
+                                <include reference="z5a-8N-W7a"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="KKP-rt-jpv" id="Xia-aH-GyS"/>
+                        <outlet property="button" destination="TAW-dL-3eo" id="3Ac-cP-JDG"/>
+                        <outlet property="frontButton" destination="Gtx-VX-QUy" id="VUw-zs-XQr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280.5" y="161"/>
+        </scene>
+    </scenes>
+</document>

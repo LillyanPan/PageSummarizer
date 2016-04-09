@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Lillyan's Page</title>
+  <meta name="description" content="Test Page">
+  <meta name="author" content="Lillyan">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> <!--taken from http://curran.github.io/screencasts/introToD3/examples/viewer/#/99-->
+  <style>
+      path {
+        fill: none;
+        stroke: black;
+        stroke-width: 2px;
+      }
+  </style>
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="twelve columns" style="margin-top: 0%">
+        <h3>Water Quality</h3>
+        <div class ="row">
+          <div id="nav" class="twelve columns">
+            <nav> <!--navigatoin link-->
+              <ul> <!--defines list need <li>-->
+                <li><a href="#">Home</a></li> <!--<a> = hyperlink-->
+                <li><a href="#">About</a></li>
+                <li><a href="http://ewh.engineering.cornell.edu">EWH</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Image-->
+    <div id="headerImage" class="twelve columns">
+      <img src="http://blakemaybank.com/wp-content/uploads/2012/10/Landscape-Panorama-P1010819-20-HDR-22-October-2012-Long-Lake-Provincial-Park-HRM-Nova-Scotia.jpg">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script>
+
+      var outerWidth = 500;
+      var outerHeight = 250;
+      var margin = { left: 30, top: 30, right: 30, bottom: 30 };
+      var xColumn = "timestamp";
+      var yColumn = "temperature";
+
+      var svg = d3.select("body").append("svg")
+        .attr("width",  outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var path = g.append("path");
+
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      var xScale = d3.time.scale().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+
+      var line = d3.svg.line()
+        .x(function(d) { return xScale(d[xColumn]); })
+        .y(function(d) { return yScale(d[yColumn]); });
+
+      function render(data){
+        xScale.domain( d3.extent(data, function (d){ return d[xColumn]; }));
+        yScale.domain( d3.extent(data, function (d){ return d[yColumn]; }));
+        path.attr("d", line(data));
+      }
+
+      function type(d){
+        d.timestamp = new Date(d.timestamp);
+        d.temperature = +d.temperature;
+        return d;
+      }
+
+      d3.csv("week_temperature_sf.csv", type, render);
+
+    </script>
+
+    <div id="im" class="six columns">
+        <h2>Goal</h2>
+        <img src="http://lorempixum.com/400/100/nature/1">
+        <p>afdkla;mdkalnfklan fda</p>
+    </div>
+     
+    <div id="im" class="six columns">
+         
+        <h2>Results</h2>
+        <img src="http://lorempixum.com/400/100/nature/3">
+        <p>ajldkanfdlknlknklwnlkc s</p>
+    </div>
+
+    <!--Response sheet full page-->
+    <div class="row">
+      <div class="12 columns"></div>
+      <form>
+        <div class="row">
+          <div class="six columns">
+            <label for="userEmailInput">Your email</label>
+            <input class="u-full-width" type="email" placeholder="test@cornell.edu" id="userEmailInput">
+          </div>
+          <div class="six columns">
+            <label for="exampleRecipientInput">Reason for contacting</label>
+            <select class="u-full-width" id="exampleRecipientInput">
+              <option value="Option 1">Water Quality Concern</option>
+              <option value="Option 2">Questions</option>
+              <option value="Option 3">Advice</option>
+              <option value="Option 3">Chat</option>
+            </select>
+          </div>
+        </div>
+        <label for="userMessage">Message</label>
+          <textarea class="u-full-width" placeholder="Type your message" id="userMessage"></textarea>
+          <label class="example-send-yourself-copy">
+          <input type="checkbox">
+          <span class="label-body">Send a copy to yourself</span>
+        </label>
+        <input class="button-primary" type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

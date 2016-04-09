@@ -1,0 +1,33 @@
+Instructions:
+    Download starting code from the masterbranch of the repo NurseStatusUpdateBaseStation
+
+    Fill out the following methods:
+        Database.write(key, value)
+            a thread safe function (uses locks) that writes to the dict, 'self.database'. a write for a dict consists of 'dict[key] = value'
+        Database.read(key)
+            a thread safe function (uses locks) that reads from the dict, 'self.database', using a key 'key'
+        Database.inDatabase(key)
+            a thread safe function (uses locks) that checks if the key exists in the dict, self.database
+
+    Note: as database is now a thread safe structure you no longer need to worry about threads for the following
+
+        VitalDataHandler.formatText(patientId,location,status)
+            returns a string that will be sent as the final text to nurses (format is up to you, we'll choose the collective best)
+        VitalDataHandler.isNegStatusChange(patientId,location,status)
+            checks if the input 'status' is a neg status change in comparison to the existing status in the db
+            in patientDb: key -> patientId+','+location; value -> status
+        VitalDataHandler.sendText(msg)
+            checks for nurses in nurseDb and sends 'msg' to all nurses
+            Note: the code provide will print 'msg' onto the terminal
+        VitalDataHandler.saveInfo(patientId,location,status)
+            saves the new patient data to patientDb
+            in patientDb: key -> patientId+','+location; value -> status
+        VitalDataHandler.run()
+            the main method of the handler. It will use the input, 'self.dataInput' which is of the form: "patientId,location,status", and notify nurses if need be and update the database with the new info afterwards.
+            Note: don't forget about the case in which the key doesn't exist
+        NurseHandler.addPhoneNum(name,num)
+            add to the nurseDb using 'name' as the key and 'num' as the value
+        NurseHandler.run()
+            this method will wait for input from the commandline to receive name and num of nurses
+
+    Create test cases for each function using pythons 'unit test' framework

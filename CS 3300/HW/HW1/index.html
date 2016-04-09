@@ -1,0 +1,104 @@
+<html>
+	<p>Problem 0: We use the var statement to declare a variable and set it to a value.
+	<div id="p0output"></div>
+	<script>
+		var x = 100;
+		document.getElementById("p0output").innerText = x;
+	</script>
+	</p>
+
+	<p>Problem 1: Voter simulator
+	<div id="p1output"></div>
+	<script>
+		var uniformedVoter1 = function () {
+			var candidates = ["trump", "cruz", "rubio"];
+			var vote = parseInt(Math.random() * 3);
+			return candidates[vote];
+		};
+
+		function uniformedVoter() {
+			var candidates = ["trump", "cruz", "rubio"];
+			var vote = parseInt(Math.random() * 3);
+			return candidates[vote];
+		};
+
+		var x = uniformedVoter();
+
+		// document.getElementById("p1output").innerText = x;
+		document.getElementById("p1output").innerText = uniformedVoter1();
+	</script>
+	</p>
+
+	<p>Problem 2: More realistic voter simulator
+	<div id="p2output"></div>
+	<script>
+		var voterGenerator = function (probArray) {
+			return function() {
+				var candidates = ["trump", "cruz", "rubio"];
+				var prob1 = probArray[0];
+				var prob2 = probArray[1] + prob1;
+				var vote = Math.random();
+				if (vote <= prob1) {
+					return candidates[0]
+				}
+				else if (vote <= prob2) {
+					return candidates[1]
+				}
+				else return candidates[2]; 
+			};
+		};
+
+		var likelyVoter = voterGenerator([0.42, 0.38, 0.2]);
+
+		document.getElementById("p2output").innerText = likelyVoter();
+
+	</script>
+	</p>	
+
+	<p>Problem 3: Pole simulator
+	<div id="p3output"></div>
+	<script>
+		var pollN = function (n, voter) {
+			var votes = [];
+			for (i = 0; i < n; i++) {
+				var v = voter();
+				votes.push(v);
+			};
+			return votes;
+		};
+
+		document.getElementById("p3output").innerText = pollN(20, likelyVoter);
+
+	</script>
+	</p>
+
+	<p>Problem 4: Declaring victors
+	<div id="p4output"></div>
+	<script>
+		var winner = function (n, voter) {
+			var votes = pollN(n, voter);
+			var tCount = 0;
+			var cCount = 0;
+			var rCount = 0;
+			for (i = 0; i < votes.length; i++) {
+				if (votes[i] == "trump") {tCount++}
+				else if (votes[i] == "cruz") {cCount++}
+				else rCount++;
+			};
+			if (tCount > cCount && tCount > rCount) return "trump";
+			else if (cCount > tCount && cCount > rCount) return "cruz";
+			else return "rubio";
+		};
+		document.getElementById("p4output").innerText = winner(20, likelyVoter);
+	</script>
+	</p>
+
+	<p>Problem 5: We use the var statement to declare a variable and set it to a value.
+	<div id="p0output"></div>
+	<script>
+		var x = 100;
+		document.getElementById("p0output").innerText = x;
+	</script>
+	</p>
+
+</html>

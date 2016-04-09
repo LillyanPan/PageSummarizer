@@ -1,0 +1,26 @@
+	public static void main(String[] args) throws Exception {
+		FileReader fr = new FileReader("test2.txt");
+		BufferedReader input = new BufferedReader(fr);
+
+		try {
+			String line = input.readLine();
+			int lineNum = 0;
+			int row = 0;
+			while (line != null) {
+				if (lineNum == 0){
+					row = Integer.parseInt(line);
+				}
+				else {
+					String[] num = line.split(" ");		//get numbers
+					for(int i = 0; i < num.length; i++) {
+						matrix[row][i] = Integer.parseInt(num[i]);
+					}
+					row++;
+				}
+			}
+		}
+		catch (Exception ex) {
+			System.out.println("The code throws an exception");
+			System.out.println(ex.getMessage());
+		}
+		input.close();

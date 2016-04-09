@@ -1,0 +1,9 @@
+Midterm
+Problem 1
+	Valid interaction pairs: Pick a pair of sequencing genes that go fwd and bwd/ bwd, fwd each from a differnt gene
+	Use bwasw aligner to map read to gene
+	Same gene mapped to different genes need to be count for both constructs
+
+Problem 2 : homologs (easier?)
+	Two lists of genes of their e-values of the two different geneomes
+	See if e-value of gene from one group is highest in the other group

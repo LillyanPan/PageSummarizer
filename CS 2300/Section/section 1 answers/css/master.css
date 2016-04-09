@@ -1,0 +1,47 @@
+/****** DO NOT EDIT **********************/
+body {
+	font-family: "Helvetica Neue", arial;
+	font-size: 1.25rem;
+	font-weight: 200;
+	margin: 0;
+	padding: 0 4%;
+	line-height: normal;
+}
+
+em {
+	font-size: 1rem;
+}
+
+h1 {
+	color: #8B0000;
+}
+
+h3 {
+	margin-top: 60px;
+	color: #444;
+}
+
+a.regular, a:visited.regular, a:active.regular{
+	color: #4c9900;
+	font-style: bold;
+	text-decoration: none;
+	border-bottom: dotted #4c9900 1px;
+	transition: .4s;
+	-moz-transition: .4s;
+	-webkit-transition: .4s;
+}
+
+a:hover.regular {
+	color: #7fff00;
+}
+
+#p1 {
+	font-size: 2rem;
+}
+
+.rectangle {
+	width: 400px;
+	height: 100px;
+	border: solid 1px #555;
+}
+/*****************************************/

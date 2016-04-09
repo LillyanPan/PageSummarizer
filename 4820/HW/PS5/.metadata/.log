@@ -1,0 +1,536 @@
+!SESSION 2016-03-15 13:43:16.040 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.jface 2 0 2016-03-15 13:43:26.312
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-03-15 13:43:26.312
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@30358dc7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7fac18dc,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.core.net 1 0 2016-03-15 13:43:26.867
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-03-16 14:24:35.740
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintWriter;
+
+
+public class Framework {
+    int n;
+    int skillList[][];
+    int wrongM[];//the wrong matching
+    int s[];
+    boolean existsPerfectMatching=false; //means there exists a perfect matching or not.
+    int correctM[]; //correctM[i] means the job that p_i does
+    //reading the input
+    void input(String input_name){
+        File file = new File(input_name);
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(file));
+
+            String text = reader.readLine();
+            n=Integer.parseInt(text);
+            skillList =new int[n][];
+            s=new int[n];
+            String [] parts;
+            for (int i=0;i<n;i++){
+                text=reader.readLine();
+                parts=text.split(" ");
+                s[i]=Integer.parseInt(parts[0]);
+                skillList[i]=new int[s[i]];
+                for (int j=0;j<s[i];j++)
+                    skillList[i][j]=Integer.parseInt(parts[j+1]);
+            }
+            text=reader.readLine();
+            parts=text.split(" ");
+            wrongM=new int[n];
+            for (int i=0;i<n;i++)
+                wrongM[i]=Integer.parseInt(parts[i]);
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //writing the output
+    void output(String output_name)
+    {
+        try{
+            PrintWriter writer = new PrintWriter(output_name, "UTF-8");
+
+            if (existsPerfectMatching)
+            {
+                writer.println("Yes");
+                for (int i=0;i<n;i++)
+                    writer.print(correctM[i]+" ");
+                writer.println();
+            } else
+                writer.println("No");
+
+
+            writer.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Framework(String []Args){
+        input(Args[0]);
+
+
+        //You should change the variable existsPerfectMatching to either true (has a perfect matching) or false (no perfect matching)
+        //If there is one perfect matching, you should also change the array correctM, to denote the matching you found.
+        //If there is no perfect matching, you don't need to change other stuff. 
+
+        //YOUR CODE GOES HERE
+        //Find bad matching
+        
+        int current[];
+        int endPtr = wrongM.length - 1;
+        for (int wrongPerson = 0; wrongPerson < wrongM.length; wrongPerson++) {
+        	for (int wrongJob = 0; wrongJob < skillList[wrongPerson].length; wrongJob++) {
+        		
+        	}
+        }
+        
+        
+        
+        
+        //END OF YOUR CODE
+
+
+        output(Args[1]);
+    }
+
+//    public static void main(String [] Args) //Strings in Args are the name of the input file followed by the name of the output file
+//    {
+//        new Framework(Args);
+//    }
+    
+    public static void main(String [] Args) //Strings in Args are the name of the input file followed by the name of the output file
+    {
+        new Framework([]);
+    }
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:729)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:789)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-03-16 14:24:35.813
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:729)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:789)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-03-16 14:24:35.816
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:270)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:202)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:259)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:579)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1085)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:171)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:90)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:729)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:789)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1250)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:126)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:108)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:89)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:87)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:151)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:86)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:104)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:77)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:206)
+
+!ENTRY org.eclipse.jdt.core 4 4 2016-03-16 14:24:36.130
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintWriter;
+
+
+public class Framework {
+    int n;
+    int skillList[][];
+    int wrongM[];//the wrong matching
+    int s[];
+    boolean existsPerfectMatching=false; //means there exists a perfect matching or not.
+    int correctM[]; //correctM[i] means the job that p_i does
+    //reading the input
+    void input(String input_name){
+        File file = new File(input_name);
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new FileReader(file));
+
+            String text = reader.readLine();
+            n=Integer.parseInt(text);
+            skillList =new int[n][];
+            s=new int[n];
+            String [] parts;
+            for (int i=0;i<n;i++){
+                text=reader.readLine();
+                parts=text.split(" ");
+                s[i]=Integer.parseInt(parts[0]);
+                skillList[i]=new int[s[i]];
+                for (int j=0;j<s[i];j++)
+                    skillList[i][j]=Integer.parseInt(parts[j+1]);
+            }
+            text=reader.readLine();
+            parts=text.split(" ");
+            wrongM=new int[n];
+            for (int i=0;i<n;i++)
+                wrongM[i]=Integer.parseInt(parts[i]);
+            reader.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //writing the output
+    void output(String output_name)
+    {
+        try{
+            PrintWriter writer = new PrintWriter(output_name, "UTF-8");
+
+            if (existsPerfectMatching)
+            {
+                writer.println("Yes");
+                for (int i=0;i<n;i++)
+                    writer.print(correctM[i]+" ");
+                writer.println();
+            } else
+                writer.println("No");
+
+
+            writer.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Framework(String []Args){
+        input(Args[0]);
+
+
+        //You should change the variable existsPerfectMatching to either true (has a perfect matching) or false (no perfect matching)
+        //If there is one perfect matching, you should also change the array correctM, to denote the matching you found.
+        //If there is no perfect matching, you don't need to change other stuff. 
+
+        //YOUR CODE GOES HERE
+        //Find bad matching
+        
+        int current[];
+        int endPtr = wrongM.length - 1;
+        for (int wrongPerson = 0; wrongPerson < wrongM.length; wrongPerson++) {
+        	for (int wrongJob = 0; wrongJob < skillList[wrongPerson].length; wrongJob++) {
+        		
+        	}
+        }
+        
+        
+        
+        
+        //END OF YOUR CODE
+
+
+        output(Args[1]);
+    }
+
+//    public static void main(String [] Args) //Strings in Args are the name of the input file followed by the name of the output file
+//    {
+//        new Framework(Args);
+//    }
+    
+    public static void main(String [] Args) //Strings in Args are the name of the input file followed by the name of the output file
+    {
+        new Framework([]);
+    }
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:535)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:528)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2016-03-16 14:24:36.143
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:535)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:528)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2016-03-16 14:24:36.146
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:2845)
+	at org.eclipse.jdt.core.dom.ASTConverter.setTypeAnnotationsAndSourceRangeOnArray(ASTConverter.java:3420)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToArray(ASTConverter.java:3166)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertType(ASTConverter.java:3628)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1326)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1717)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:732)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1699)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2751)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:635)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:195)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2958)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1374)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:295)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1216)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:812)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider$1.run(ASTProvider.java:535)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.createAST(ASTProvider.java:528)
+	at org.eclipse.jdt.internal.ui.javaeditor.ASTProvider.getAST(ASTProvider.java:471)
+	at org.eclipse.jdt.ui.SharedASTProvider.getAST(SharedASTProvider.java:128)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:170)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$3.run(SelectionListenerWithASTManager.java:155)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2016-03-16 15:42:37.614 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.jface 2 0 2016-03-16 15:42:46.210
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-03-16 15:42:46.210
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6ec3d8e4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1aeff8ca,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.core.net 1 0 2016-03-16 15:42:47.038
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.core.resources 4 568 2016-03-19 12:18:12.725
+!MESSAGE Internal error in history store
+!STACK 1
+org.eclipse.core.runtime.CoreException: Could not write file: /Users/Lillyan/Desktop/4820/HW/PS5/.metadata/.plugins/org.eclipse.core.resources/.history/f3.
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:49)
+	at org.eclipse.core.internal.filesystem.Policy.error(Policy.java:44)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.checkTargetIsNotWritable(LocalFile.java:91)
+	at org.eclipse.core.internal.filesystem.local.LocalFile.mkdir(LocalFile.java:307)
+	at org.eclipse.core.internal.localstore.BlobStore.addBlob(BlobStore.java:51)
+	at org.eclipse.core.internal.localstore.HistoryStore2.addState(HistoryStore2.java:95)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.write(FileSystemResourceManager.java:1137)
+	at org.eclipse.core.internal.resources.File.internalSetContents(File.java:295)
+	at org.eclipse.core.internal.resources.File.setContents(File.java:331)
+	at org.eclipse.core.internal.resources.File.setContents(File.java:426)
+	at org.eclipse.core.internal.filebuffers.ResourceTextFileBuffer.commitFileBufferContent(ResourceTextFileBuffer.java:398)
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.commit(ResourceFileBuffer.java:327)
+	at org.eclipse.jdt.internal.ui.javaeditor.DocumentAdapter.save(DocumentAdapter.java:472)
+	at org.eclipse.jdt.internal.core.CommitWorkingCopyOperation.executeOperation(CommitWorkingCopyOperation.java:123)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:729)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:794)
+	at org.eclipse.jdt.internal.core.CompilationUnit.commitWorkingCopy(CompilationUnit.java:391)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.commitWorkingCopy(CompilationUnitDocumentProvider.java:1378)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider$4.execute(CompilationUnitDocumentProvider.java:1458)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider$DocumentProviderOperation.run(TextFileDocumentProvider.java:132)
+	at org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation.exec!SESSION 2016-03-29 16:36:27.589 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Lillyan/.eclipse_keyring -showlocation
+
+!ENTRY org.eclipse.jface 2 0 2016-03-29 16:36:38.769
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2016-03-29 16:36:38.769
+!MESSAGE A conflict occurred for ALT+COMMAND+R:
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.python.pydev.debug.setnext,Set Next Statement,
+		,
+		Category(org.python.pydev.ui.category.run,PyDev - Run,Python run category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2b5f8e61,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+COMMAND+R,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.rename.element,Rename - Refactoring ,
+		Rename the selected element,
+		Category(org.eclipse.jdt.ui.category.refactoring,Refactor - Java,Java Refactoring Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6ba0ee4a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY org.eclipse.core.net 1 0 2016-03-29 16:36:39.841
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

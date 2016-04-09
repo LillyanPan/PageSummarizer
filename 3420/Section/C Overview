@@ -1,0 +1,21 @@
+C Overview
+
+No bool type
+	Intead use 0 or 1
+const: constant
+volatile: var may change unpredicatbily
+max value of signed int x : 2^31 - 1
+
+To set variables use bitwise or |
+
+Macro definition
+	foo 4 - replace all instances of foo with 4
+Unions
+	holds objects of dif types
+	Access value:
+		obj - use '.'
+		pointer - use '->'
+
+Typedefs
+	type def int Length;
+	Length maxlen; //type is int

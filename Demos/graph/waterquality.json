@@ -1,0 +1,95 @@
+{
+    "quality": [
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        },
+        {
+            "location": 201952879,
+            "temperature": 201952879,
+            "ph": 4.25,
+            "date": "Fri, 10 Jul 2015 19:23:07 -0500",
+            "count": 1,
+            "heavy_metals": {
+                "mercury": 208,
+                "cadmium": 90,
+                "arsenic": 5.3,
+                "lead": 5.3,
+            }
+        }
+    ]
+}

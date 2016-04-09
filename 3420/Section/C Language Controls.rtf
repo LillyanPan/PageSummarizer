@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 \ul \ulc0 Assembly for switch\ulnone \
+\
+cs1: \
+	CMP R0 #1\
+	BNE cs2\
+	ADD R1, R1, #1\
+	B end\
+cs2:\
+	CMP R0 #2\
+	BNE default\
+	ADD R2 R2 #1\
+	B end\
+default:\
+	ADD R3 R3 #1\
+	end, WFI\
+\
+\
+\ul Control flow: for\ulnone \
+start:\
+	LD R0 #0\
+check:\
+	CMP R0 #NUM	 // always check in the beginning of loop\
+	BGE next		 // need BGE to account for NUM < 0\
+	end, WFI\
+next:\
+	ADD R1 R1 R0\
+	ADD R0 R0 #1	 // always have increment/decrement instruction at the end\
+	B check\
+\
+\ul Code Reuse\
+\ulnone Inline coding - just embed function inside the code instructions\
+	Very fast (rather then creating a subroutine)\
+Subroutines\
+Recall return address\
+	use address stored in R14 and load into PC\
+	Then will branch to cnt1\
+Subroutine within a subroutine\
+	will rewrite PC counter within sub sub routine\
+	will not find first address\
+\
+Instructions should always occupy and even number of bytes\
+Bit 0 is never used in PC - Can use for something else\
+PC will NEVER point to odd address, because instructions are in even addresses\
+PC 1 = Thumb mode\
+PC 2 = ARM mode\
+\
+Branch-and-link\
+Use R14 to store return address\
+puts the PC of the next instruction after BL sumi\
+R14 = LR (link register)\
+\
+\
+\
+\
+}

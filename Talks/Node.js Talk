@@ -1,0 +1,21 @@
+Node.js
+
+Usage
+	Web Dev - building servers
+	Platform Indp Scripting - access to file operations; bash script and batch file
+Why use?
+	accessibility of server dev by front-end
+	code reuse b/w client and server (same language in front and back end, same APIs)
+	Write very efficient js engines; have things run quickly
+You App
+	V8 - js engine in chrome (C++), Memory management; executing raw js code
+	libuv - event loop/IO for servers; read and write files (C)
+		event loop- scheduling js that needs to run and IO operations that also needs to run;
+					interleaving
+	Glue - APIs/Internals that bring together V8 and libuv
+		delegating out to js
+	Core Libraries - JS
+		JS Bindings
+		~OR~
+		Core Libraries (C++)
+			Advantage: speed of writing in native code

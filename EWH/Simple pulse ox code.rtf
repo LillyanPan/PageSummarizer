@@ -1,0 +1,178 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720
+
+\f0\fs26 \cf2 \expnd0\expndtw0\kerning0
+#define sensor 1\
+#define ir_pin 5\
+#define led_pin 6\
+#define pwm 230\
+#define swtch 12\
+int ir[100], led[100];\
+long int ir_max =0, ir_min = 0, led_min = 0, led_max=0;\
+float ratio1,ratio2;\
+\
+int ir_base=0, led_base=0;\
+//double ir[100], led[100];\
+\
+double ir_ratio=0, led_ratio=0;\
+double ratio[100], ratio_avg=0;\
+double ir_base_avg =0, led_base_avg = 0;\
+int count =0, ir_count = 0, led_count=0, ratio_count = 0;\
+int time =0;\
+\
+void setup()\
+\{\
+\'a0pinMode(ir_pin,OUTPUT);\
+\'a0pinMode(led_pin,OUTPUT);\
+\'a0pinMode(swtch,INPUT);\
+\'a0analogWrite(ir_pin,pwm);\
+\'a0analogWrite(led_pin,0);\
+\'a0time = millis();\
+\'a0while(millis()-time<300) \'a0\
+\'a0\{\
+\'a0ir_base_avg = ir_base_avg + analogRead(sensor);\
+\'a0count = count + 1;\
+\'a0\}\
+\'a0ir_base = int(ir_base_avg/count);\
+\'a0count = 0;\
+\'a0analogWrite(ir_pin,0);\
+\'a0analogWrite(led_pin,pwm);\
+\'a0time = millis(); \'a0\
+\'a0while(millis()-time<300)\
+\'a0\{\
+\'a0 \'a0led_base_avg = led_base_avg + analogRead(sensor);\
+\'a0 \'a0count = count + 1;\
+\'a0\}\
+\'a0led_base = int(led_base_avg/count);\
+\'a0count = 0;\
+\'a0analogWrite(led_pin,0);\
+\'a0Serial.begin(19200);\
+\'a0Serial.print((int)led_base);\
+\'a0Serial.println((int)ir_base); \'a0\
+\}\
+\
+void loop()\
+\{\
+if(digitalRead(swtch)==1)\
+\{\
+check_pulse();\
+display_pulse();\
+reset_variables();\
+\} \
+\}\
+\
+void reset_variables()\
+\{\
+\'a0for(count = 0; count<100; count++)\
+\'a0\{\
+\'a0 ir[count] = 0;\
+\'a0 led[count]=0;\
+\'a0 ratio[count]=0; \'a0 \'a0\
+\'a0\}\
+\'a0ratio_avg = 0;\
+\'a0count = 0;\
+\'a0ir_count = 0;\
+\'a0led_count = 0;\
+\'a0ratio_count = 0;\
+\'a0time = 0;\
+\}\
+\
+void check_pulse()\
+\{\
+\'a0ir_count = 0;\
+\'a0led_count = 0;\
+\'a0count = 0;\
+\'a0analogWrite(ir_pin,pwm);\
+\'a0analogWrite(led_pin,0);\
+\'a0time = millis();\
+\'a0while(millis()-time<300 && ir_count<100)\
+\'a0\{\
+\'a0 \'a0ir[ir_count] = analogRead(sensor);\
+\'a0 \'a0ir_count = ir_count + 1;\
+\'a0\}\
+\'a0analogWrite(ir_pin,0);\
+\'a0analogWrite(led_pin,pwm);\
+\'a0time = millis();\
+\'a0while(millis()-time<300 && led_count<100) \'a0\
+\'a0\{\
+\'a0 \'a0led[led_count] = analogRead(sensor);\
+\'a0 \'a0led_count = led_count + 1;\
+\'a0\}\
+\'a0analogWrite(led_pin,0);\
+\'a0ir_count = ir_count - 1;\
+\'a0led_count = led_count - 1;\
+\'a0\
+\'a0if(ir_count > led_count)\
+\'a0 \'a0ratio_count = led_count;\
+\'a0else\
+\'a0 \'a0ratio_count = ir_count;\
+\'a0ir_min = ir[0];\
+\'a0led_min = led[0];\
+\'a0\
+\'a0for(count=0; count <= ratio_count; count++)\
+\'a0\{ ir_ratio = (double)ir[count]/ir_base;\
+\'a0 \'a0led_ratio = (double)led[count]/led_base;\
+\'a0 \'a0ratio[count]= led_ratio/ir_ratio;\
+\'a0 \'a0if(ir[count] > ir_max)\
+\'a0 \'a0 \'a0ir_max = ir[count];\
+\'a0 \'a0if(led[count] > led_max)\
+\'a0 \'a0 \'a0led_max = led[count];\
+\'a0 \'a0if(ir[count] < ir_min)\
+\'a0 \'a0 \'a0ir_min = ir[count];\
+\'a0 \'a0if(led[count] < led_min)\
+\'a0 \'a0 \'a0led_min = led[count];\
+\'a0 \'a0ratio_avg = ratio_avg + ratio[count];\
+\'a0\}\
+\'a0ratio_avg = ratio_avg/count;\
+\}\
+\
+void display_pulse()\
+\{\
+\'a0Serial.print(ir_max);\
+\'a0Serial.print(" ");\
+\'a0Serial.print(ir_min);\
+\'a0Serial.print(" "); \'a0\
+\'a0Serial.print(led_max);\
+\'a0Serial.print(" "); \'a0\
+\'a0Serial.print(led_min);\
+\'a0\
+\'a0for(count=0; count <= ratio_count; count++)\
+\'a0\{\
+\'a0 \'a0Serial.print("IR Value: ");\
+\'a0 \'a0Serial.println((int)ir[count]);\
+\'a0 \'a0Serial.print("LED Value: ");\
+\'a0 \'a0Serial.println((int)led[count]);\
+\'a0 \'a0printdouble(ratio[count],100);\
+\'a0 \'a0Serial.println(" ");\
+\'a0\}\
+\'a0\
+\'a0ratio1=(float)ir_max/(float)led_min;\
+\'a0Serial.println((int)(ratio1*10));\
+\'a0ratio2=(float)ir_min/(float)led_max;\
+\'a0Serial.println((int)(ratio2*10));\
+\}\
+\
+void printdouble( double val, unsigned int precision)\{\
+// prints val with number of decimal places determine by precision\
+// NOTE: precision is 1 followed by the number of zeros for the desired number of decimial places\
+// example: printDouble( 3.1415, 100); // prints 3.14 (two decimal places)\
+\
+\'a0 \'a0Serial.print(int(val)); \'a0//prints the int part\
+\'a0 \'a0Serial.print("."); // print the decimal point\
+\'a0 \'a0unsigned int frac;\
+\'a0 \'a0if(val >= 0)\
+\'a0 \'a0 \'a0frac = (val - int(val)) * precision;\
+\'a0 \'a0else\
+\'a0 \'a0 \'a0 frac = (int(val)- val ) * precision;\
+\'a0 \'a0int frac1 = frac;\
+\'a0 \'a0while( frac1 /= 10 )\
+\'a0 \'a0 \'a0 \'a0precision /= 10;\
+\'a0 \'a0precision /= 10;\
+\'a0 \'a0while( \'a0precision /= 10)\
+\'a0 \'a0 \'a0 \'a0Serial.print("0");\
+\'a0 \'a0Serial.println(frac,DEC);\
+\}}

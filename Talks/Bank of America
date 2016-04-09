@@ -1,0 +1,23 @@
+Bank of America
+
+Spreadsheet programming- necessary in business/finace
+
+SQRS; reactor pattern- don;t need to worry about multi threading by handling small sections of jobs
+
+Buisness
+Use Quartz framework
+	*Python 2.6/2.7
+	Sandra in C++
+	KDB
+	Oracle, SQL, Sybase ASE, Perl
+	C++, Java, C#
+	Column db; time series db
+
+Typical Day
+	Short end trading tech - pricing, risk and PnL reporting, MIS
+	LMax - euro converter
+
+	Hadoop
+
+	Role out iteration in 2 weeks
+	FintechErica Lewis
