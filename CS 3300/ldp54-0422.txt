@@ -1,0 +1,15 @@
+Name: Lillyan Pan netid: ldp54 Group netids: cc2228, bs623
+* Describe what you have done over the past week 
+We have consistently met and discussed with you/other TAs about our visualization. We have been building according to the feedback from them and our own judgement.
+
+
+* Describe your plans for the next week
+We will be cleaning up our visualization and styling. We are also adding helpful functionality. I will be implementing the second half of the chord diagram based on TA feedback.
+
+
+* Have you and the other members of your group been abiding by the terms of the contract you signed? Yes
+
+* Estimate the relative contributions of the other members of your group (not including yourself). For example:
+ldp54 / 33% cc2228 / 33% bs623 / 33%
+
+

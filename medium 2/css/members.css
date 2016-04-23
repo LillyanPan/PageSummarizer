@@ -1,0 +1,123 @@
+.accordion {
+    width: 100%;
+    max-width: 1080px;
+    height: 350px;
+    overflow: hidden;
+    margin: 50px auto;
+  }
+
+  .accordion ul {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+  }
+
+  .accordion ul .move {
+    display: table-cell;
+    vertical-align: bottom;
+    position: relative;
+    width: 10%;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: all 500ms ease;
+  }
+
+  .accordion ul .filler {
+    display: table-cell;
+    vertical-align: bottom;
+    position: relative;
+    width: 10%;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .accordion ul .move div {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .accordion ul .move div a {
+    display: block;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    vertical-align: bottom;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    transition: all 200ms ease;
+  }
+
+  .accordion ul .move div a * {
+    opacity: 0;
+    margin: 0;
+    width: 100%;
+    text-overflow: ellipsis;
+    position: relative;
+    z-index: 5;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-transform: translateX(-20px);
+    transform: translateX(-20px);
+    -webkit-transition: all 400ms ease;
+    transition: all 400ms ease;
+  }
+
+  .accordion ul .move div a h2 {
+    text-overflow: clip;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    top: 160px;
+  }
+
+  .accordion ul .move div a p {
+    top: 160px;
+    font-size: 13.5px;
+  }
+
+  .accordion ul:hover .move { width: 7%; }
+
+  .accordion ul:hover .move:hover { width: 37%; }
+
+  .accordion .filler:hover .move {width:10%;}
+
+
+  .accordion ul:hover .move:hover a { 
+    background: rgba(0, 0, 0, 0.7); 
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7)); /* Standard syntax */
+  }
+
+  .accordion ul:hover .move:hover a * {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  @media screen and (max-width: 600px) {
+
+    body { margin: 0; }
+
+    .accordion { height: auto; }
+
+    .accordion ul .move,
+    .accordion ul .move:hover,
+    .accordion ul:hover .move,
+    .accordion ul:hover .move:hover {
+      position: relative;
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      -webkit-transition: none;
+      transition: none;
+    }
+  }

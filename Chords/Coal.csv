@@ -1,0 +1,1151 @@
+"International_data"
+"http://www.eia.gov/beta/international/data/browser/#?ord=CR&cy=2013&v=H&vo=0&so=0&io=0&start=1993&end=2013&vs=INTL.7-1-AFG-TST.A~INTL.7-1-ALB-TST.A~INTL.7-1-DZA-TST.A~INTL.7-1-ASM-TST.A~INTL.7-1-AGO-TST.A~INTL.7-1-ATA-TST.A~INTL.7-1-ATG-TST.A~INTL.7-1-ARG-TST.A~INTL.7-1-ARM-TST.A~INTL.7-1-ABW-TST.A~INTL.7-1-AUS-TST.A~INTL.7-1-AUT-TST.A~INTL.7-1-AZE-TST.A~INTL.7-1-BHS-TST.A~INTL.7-1-BHR-TST.A~INTL.7-1-BGD-TST.A~INTL.7-1-BRB-TST.A~INTL.7-1-BLR-TST.A~INTL.7-1-BEL-TST.A~INTL.7-1-BLZ-TST.A~INTL.7-1-BEN-TST.A~INTL.7-1-BMU-TST.A~INTL.7-1-BTN-TST.A~INTL.7-1-BOL-TST.A~INTL.7-1-BIH-TST.A~INTL.7-1-BWA-TST.A~INTL.7-1-BRA-TST.A~INTL.7-1-BRN-TST.A~INTL.7-1-BGR-TST.A~INTL.7-1-BFA-TST.A~INTL.7-1-MMR-TST.A~INTL.7-1-BDI-TST.A~INTL.7-1-KHM-TST.A~INTL.7-1-CMR-TST.A~INTL.7-1-CAN-TST.A~INTL.7-1-CPV-TST.A~INTL.7-1-CYM-TST.A~INTL.7-1-CAF-TST.A~INTL.7-1-TCD-TST.A~INTL.7-1-CHL-TST.A~INTL.7-1-CHN-TST.A~INTL.7-1-COL-TST.A~INTL.7-1-COM-TST.A~INTL.7-1-COG-TST.A~INTL.7-1-COD-TST.A~INTL.7-1-COK-TST.A~INTL.7-1-CRI-TST.A~INTL.7-1-CIV-TST.A~INTL.7-1-HRV-TST.A~INTL.7-1-CUB-TST.A~INTL.7-1-CYP-TST.A~INTL.7-1-CZE-TST.A~INTL.7-1-DNK-TST.A~INTL.7-1-DJI-TST.A~INTL.7-1-DMA-TST.A~INTL.7-1-DOM-TST.A~INTL.7-1-ECU-TST.A~INTL.7-1-EGY-TST.A~INTL.7-1-SLV-TST.A~INTL.7-1-GNQ-TST.A~INTL.7-1-ERI-TST.A~INTL.7-1-EST-TST.A~INTL.7-1-ETH-TST.A~INTL.7-1-FLK-TST.A~INTL.7-1-FRO-TST.A~INTL.7-1-FJI-TST.A~INTL.7-1-FIN-TST.A~INTL.7-1-CSK-TST.A~INTL.7-1-SCG-TST.A~INTL.7-1-SUN-TST.A~INTL.7-1-YUG-TST.A~INTL.7-1-FRA-TST.A~INTL.7-1-GUF-TST.A~INTL.7-1-PYF-TST.A~INTL.7-1-GAB-TST.A~INTL.7-1-GMB-TST.A~INTL.7-1-GEO-TST.A~INTL.7-1-DEU-TST.A~INTL.7-1-DDR-TST.A~INTL.7-1-DEUW-TST.A~INTL.7-1-GHA-TST.A~INTL.7-1-GIB-TST.A~INTL.7-1-GRC-TST.A~INTL.7-1-GRL-TST.A~INTL.7-1-GRD-TST.A~INTL.7-1-GLP-TST.A~INTL.7-1-GUM-TST.A~INTL.7-1-GTM-TST.A~INTL.7-1-GIN-TST.A~INTL.7-1-GNB-TST.A~INTL.7-1-GUY-TST.A~INTL.7-1-HTI-TST.A~INTL.7-1-HITZ-TST.A~INTL.7-1-HND-TST.A~INTL.7-1-HKG-TST.A~INTL.7-1-HUN-TST.A~INTL.7-1-ISL-TST.A~INTL.7-1-IND-TST.A~INTL.7-1-IDN-TST.A~INTL.7-1-IRN-TST.A~INTL.7-1-IRQ-TST.A~INTL.7-1-IRL-TST.A~INTL.7-1-ISR-TST.A~INTL.7-1-ITA-TST.A~INTL.7-1-JAM-TST.A~INTL.7-1-JPN-TST.A~INTL.7-1-JOR-TST.A~INTL.7-1-KAZ-TST.A~INTL.7-1-KEN-TST.A~INTL.7-1-KIR-TST.A~INTL.7-1-PRK-TST.A~INTL.7-1-KOR-TST.A~INTL.7-1-UNK-TST.A~INTL.7-1-KWT-TST.A~INTL.7-1-KGZ-TST.A~INTL.7-1-LAO-TST.A~INTL.7-1-LVA-TST.A~INTL.7-1-LBN-TST.A~INTL.7-1-LSO-TST.A~INTL.7-1-LBR-TST.A~INTL.7-1-LBY-TST.A~INTL.7-1-LTU-TST.A~INTL.7-1-LUX-TST.A~INTL.7-1-MAC-TST.A~INTL.7-1-MKD-TST.A~INTL.7-1-MDG-TST.A~INTL.7-1-MWI-TST.A~INTL.7-1-MYS-TST.A~INTL.7-1-MDV-TST.A~INTL.7-1-MLI-TST.A~INTL.7-1-MLT-TST.A~INTL.7-1-MTQ-TST.A~INTL.7-1-MRT-TST.A~INTL.7-1-MUS-TST.A~INTL.7-1-MEX-TST.A~INTL.7-1-FSM-TST.A~INTL.7-1-MDA-TST.A~INTL.7-1-MNG-TST.A~INTL.7-1-MNE-TST.A~INTL.7-1-MSR-TST.A~INTL.7-1-MAR-TST.A~INTL.7-1-MOZ-TST.A~INTL.7-1-NAM-TST.A~INTL.7-1-NRU-TST.A~INTL.7-1-NPL-TST.A~INTL.7-1-NLD-TST.A~INTL.7-1-NLDA-TST.A~INTL.7-1-NCL-TST.A~INTL.7-1-NZL-TST.A~INTL.7-1-NIC-TST.A~INTL.7-1-NER-TST.A~INTL.7-1-NGA-TST.A~INTL.7-1-NIU-TST.A~INTL.7-1-MNP-TST.A~INTL.7-1-NOR-TST.A~INTL.7-1-OMN-TST.A~INTL.7-1-PAK-TST.A~INTL.7-1-PSE-TST.A~INTL.7-1-PAN-TST.A~INTL.7-1-PNG-TST.A~INTL.7-1-PRY-TST.A~INTL.7-1-PER-TST.A~INTL.7-1-PHL-TST.A~INTL.7-1-POL-TST.A~INTL.7-1-PRT-TST.A~INTL.7-1-PRI-TST.A~INTL.7-1-QAT-TST.A~INTL.7-1-REU-TST.A~INTL.7-1-ROU-TST.A~INTL.7-1-RUS-TST.A~INTL.7-1-RWA-TST.A~INTL.7-1-SHN-TST.A~INTL.7-1-KNA-TST.A~INTL.7-1-LCA-TST.A~INTL.7-1-SPM-TST.A~INTL.7-1-VCT-TST.A~INTL.7-1-WSM-TST.A~INTL.7-1-STP-TST.A~INTL.7-1-SAU-TST.A~INTL.7-1-SEN-TST.A~INTL.7-1-SRB-TST.A~INTL.7-1-SYC-TST.A~INTL.7-1-SLE-TST.A~INTL.7-1-SGP-TST.A~INTL.7-1-SVK-TST.A~INTL.7-1-SVN-TST.A~INTL.7-1-SLB-TST.A~INTL.7-1-SOM-TST.A~INTL.7-1-ZAF-TST.A~INTL.7-1-ESP-TST.A~INTL.7-1-LKA-TST.A~INTL.7-1-SDN-TST.A~INTL.7-1-SUR-TST.A~INTL.7-1-SWZ-TST.A~INTL.7-1-SWE-TST.A~INTL.7-1-CHE-TST.A~INTL.7-1-SYR-TST.A~INTL.7-1-TWN-TST.A~INTL.7-1-TJK-TST.A~INTL.7-1-TZA-TST.A~INTL.7-1-THA-TST.A~INTL.7-1-TLS-TST.A~INTL.7-1-TGO-TST.A~INTL.7-1-TON-TST.A~INTL.7-1-TTO-TST.A~INTL.7-1-TUN-TST.A~INTL.7-1-TUR-TST.A~INTL.7-1-TKM-TST.A~INTL.7-1-TCA-TST.A~INTL.7-1-TUV-TST.A~INTL.7-1-USIQ-TST.A~INTL.7-1-USOH-TST.A~INTL.7-1-UGA-TST.A~INTL.7-1-UKR-TST.A~INTL.7-1-ARE-TST.A~INTL.7-1-GBR-TST.A~INTL.7-1-USA-TST.A~INTL.7-1-URY-TST.A~INTL.7-1-UZB-TST.A~INTL.7-1-VUT-TST.A~INTL.7-1-VEN-TST.A~INTL.7-1-VNM-TST.A~INTL.7-1-VIR-TST.A~INTL.7-1-VGB-TST.A~INTL.7-1-WAK-TST.A~INTL.7-1-ESH-TST.A~INTL.7-1-YEM-TST.A~INTL.7-1-ZMB-TST.A~INTL.7-1-ZWE-TST.A&c=ruvvvvvfvtvnvv1vrvvvvfvvvvvvfvvvou20evvvvvvvvvvvvuvo&pa=800000000000000000000000000000000000004&f=A&ug=g&ct=0&tl_type=p&tl_id=1-A&s="
+"Wed Apr 20 2016 17:05:56 GMT-0400 (EDT)"
+"Source: U.S. Energy Information Administration"
+,,,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013
+"","Coal","1000 ST"
+"","Afghanistan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",7.7,6.6,5.5,3.3,2.2,2.2,1.1,1.1,29,23,39,37,36,39,268,383,551,799,1631,1367,1499
+"","Consumption",""
+"","Total Primary Coal","1000 ST",7.7,6.6,5.5,3.3,2.2,2.2,1.1,1.1,29,23,39,37,36,39,268,383,551,799,799,827,1499
+"","Albania",""
+"","Production",""
+"","Total Primary Coal","1000 ST",236,186,88,125,43,54,54,33,23,17,64,64,50,50,50,94,15,15,5.5,5.5,2.2
+"","Consumption",""
+"","Total Primary Coal","1000 ST",227,186,88,125,43,54,130,80,98,68,71,71,60,60,60,77,177,195,239,279,116
+"","Algeria",""
+"","Production",""
+"","Total Primary Coal","1000 ST",22,22,24,13,12,8.8,5.5,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",909,923,553,364,597,884,804,759,819,1074,1074,678,859,955,944,944,320,,,,43
+"","American Samoa",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Angola",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Antarctica",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Antigua and Barbuda",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Argentina",""
+"","Production",""
+"","Total Primary Coal","1000 ST",184,384,336,343,276,319,370,286,206,106,98,56,28,155,121,102,90,72,99,105,81
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1195,2033,1581,1313,1285,1268,1293,1023,1287,931,1026,836,1470,1422,1559,1641,1345,1658,1961,1782,2074
+"","Armenia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",3.3,40,3.3,5.5,5.5,5.5,3.3,,,20,30,,,1.1,3.3,2.2,,1.1,,2.2,
+"","Aruba",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Australia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",249194,248463,266546,272435,291515,316750,320774,338103,362855,374673,376616,386144,408505,412984,431046,432383,449631,467823,420104,412409,451472
+"","Consumption",""
+"","Total Primary Coal","1000 ST",109760,110536,112977,121146,127234,138201,141012,141231,141285,143589,148964,150279,155462,156989,154793,154021,157755,152337,147661,145564,132565
+"","Austria",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1865,1510,1431,1221,1246,1257,1253,1377,1329,1556,1270,259,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",4836,4798,5660,5969,5938,5064,5583,5627,6129,5955,6575,6110,5870,5504,4813,4527,3605,4238,4333,3943,3948
+"","Azerbaijan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",7.7,8.8,6.6,6.6,6.6,1.1,,,,,,,,,,,,,,,5.5
+"","Bahamas, The",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bahrain",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bangladesh",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,25,71,196,334,428,746,913,777,735,920,931
+"","Consumption",""
+"","Total Primary Coal","1000 ST",69,65,708,388,712,205,101,728,772,806,771,772,802,1066,1207,1458,1802,1792,1692,1994,2247
+"","Barbados",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Belarus",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1773,1322,1240,1230,893,834,572,556,477,368,324,258,185,146,91,84,87,87,100,395,599
+"","Belgium",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1070,830,702,617,471,344,401,413,240,191,142,200,120,32,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",13849,13748,13194,13078,13137,13016,11484,12789,11424,10042,9851,9849,8428,7882,7132,6559,5340,6335,5588,5151,5439
+"","Belize",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Benin",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bermuda",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bhutan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",51,71,75,71,60,55,55,55,93,98,73,33,94,108,116,137,54,97,120,109,115
+"","Consumption",""
+"","Total Primary Coal","1000 ST",12,50,57,65,78,75,73,73,60,70,46,10,41,36,33,47,24,32,36,36,110
+"","Bolivia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bosnia and Herzegovina",""
+"","Production",""
+"","Total Primary Coal","1000 ST",14330,1543,1808,1863,6011,7755,7465,8200,8325,8726,9848,9793,10052,10985,10764,10600,7390,5945,7829,7684,6875
+"","Consumption",""
+"","Total Primary Coal","1000 ST",14330,1543,1808,1863,6011,7755,7465,8198,8072,8633,9275,9595,10427,11056,10049,12274,12681,13328,15310,13961,8871
+"","Botswana",""
+"","Production",""
+"","Total Primary Coal","1000 ST",981,992,990,841,856,1023,1042,1044,1025,1051,907,1006,1086,1060,913,1003,814,1089,869,1621,1653
+"","Consumption",""
+"","Total Primary Coal","1000 ST",992,1004,1005,858,879,1125,1167,1145,1108,1131,944,1064,1086,1210,1020,1136,807,1070,845,791,1185
+"","Brazil",""
+"","Production",""
+"","Total Primary Coal","1000 ST",5065,5659,5731,5297,6225,6080,6239,7502,6232,5670,5121,5959,6895,6484,6575,7288,6293,5969,6068,7293,7626
+"","Consumption",""
+"","Total Primary Coal","1000 ST",17758,18024,18888,19580,19953,19594,21462,22318,21906,19606,20108,21858,22143,22020,23076,23145,19211,23925,25204,26037,26919
+"","Brunei",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Bulgaria",""
+"","Production",""
+"","Total Primary Coal","1000 ST",32002,31699,33984,34505,32747,33192,27886,29136,29334,28680,30092,29195,27222,28305,31562,32022,30070,32438,40927,36847,31553
+"","Consumption",""
+"","Total Primary Coal","1000 ST",37680,35275,37731,37494,37096,36524,31819,32193,34549,31503,34873,33759,32122,33087,36959,36536,33296,35936,44275,38818,33596
+"","Burkina Faso",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Burma (Myanmar)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",64,58,64,58,54,57,207,639,708,537,944,515,633,808,854,737,683,756,764,1299,636
+"","Consumption",""
+"","Total Primary Coal","1000 ST",37,31,42,34,35,36,211,639,708,537,944,480,592,762,802,704,666,750,765,901,706
+"","Burundi",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Cambodia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,18,19,21,23,21
+"","Cameroon",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Canada",""
+"","Production",""
+"","Total Primary Coal","1000 ST",76063,80274,82652,83615,86723,82825,79894,76239,77553,73312,68513,72749,72582,73296,76461,75678,71251,74835,73980,73299,75958
+"","Consumption",""
+"","Total Primary Coal","1000 ST",54916,57428,58307,59497,63017,65625,65171,69728,66757,68846,68341,66610,60097,60230,57455,64322,53825,49808,45145,45625,37659
+"","Cape Verde",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Cayman Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Central African Republic",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Chad",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Chile",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1494,1303,1144,1107,1151,1037,535,403,635,477,635,257,600,743,268,735,701,682,721,785,3086
+"","Consumption",""
+"","Total Primary Coal","1000 ST",2940,3466,3738,5176,6744,6400,6547,5061,3972,4001,3826,5075,5039,6313,6277,9019,7700,9113,11042,11871,11168
+"","China",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1269179,1355314,1424396,1504610,1460849,1436118,1415748,1525368,1619909,1733013,2052308,2409346,2708127,2904599,3154456,3280883,3394691,3686899,4144364,4256243,4374940
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1175463,1264031,1373645,1415470,1336448,1334519,1391796,1509370,1575145,1702242,2019393,2356433,2765686,3027247,3295716,3368254,3546575,3688596,4060294,4245621,4361427
+"","Colombia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",23302,24911,28275,33068,35897,37157,36065,42155,48849,44198,55646,59728,65107,72307,77054,81022,80256,81957,94582,98132,94245
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6089,5989,6049,5351,4932,5850,3779,3674,4548,3725,4247,3614,4413,3965,3471,5022,5553,7087,7152,6315,7678
+"","Comoros",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Congo (Brazzaville)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Congo (Kinshasa)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",101,104,105,105,103,106,106,106,109,112,116,119,132,136,140,144,149,153,158,146,161
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,161
+"","Cook Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Costa Rica",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,1.1,55,1.1,40,2.2,2.2,2.2,28,1.1,4.4,1.1,9.9,3.3,3.3
+"","Cote dIvoire (IvoryCoast)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Croatia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",127,114,91,73,54,62,17,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1116,705,365,293,462,434,383,775,861,1064,1238,1311,1257,1181,1263,1303,935,1291,1319,1160,1228
+"","Cuba",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",77,96,85,1.1,18,21,25,24,14,29,28,25,24,,20,26,25,25,25,24,2.9
+"","Cyprus",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",34,30,22,20,21,29,33,54,58,58,58,64,58,61,55,45,24,30,14,1.1,1.1
+"","Czech Republic",""
+"","Production",""
+"","Total Primary Coal","1000 ST",93896,84816,81937,84021,81036,74438,65183,71829,72869,69838,70444,68123,68372,69339,69033,66359,62189,60857,63828,60597,53990
+"","Consumption",""
+"","Total Primary Coal","1000 ST",79417,72789,72299,72463,70304,64474,55500,66405,64057,61748,63289,62008,62158,64266,64668,60346,56138,55952,56735,53484,50140
+"","Denmark",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",12930,14121,12157,16541,12394,10428,8282,7355,7726,7589,10395,8012,6956,9938,8687,7366,7439,6929,6021,4502,5656
+"","Djibouti",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Dominica",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Dominican Republic",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",237,67,88,115,117,165,5.5,103,224,257,422,475,525,776,802,811,795,740,1069,961,924
+"","Ecuador",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,22
+"","Egypt",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,43,64,41,41,41,36,28,,,,,,,,36
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1634,2041,1698,2068,1792,1631,1554,2017,1800,1930,2001,2046,2001,1995,1813,1633,1451,1088,1088,998,180
+"","El Salvador",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Equatorial Guinea",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Eritrea",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,,,,,,,,,,,,,,,,,,,,
+"","Estonia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",147,105,94,127,108,83,87,95,119,67,49,64,62,77,143,142,96,66,77,71,67
+"","Ethiopia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,20,40,23,28,33
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,17,46,55,187,375,321
+"","Falkland Islands (Islas Malvinas)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Faroe Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Fiji",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",22,22,22,24,24,22,20,19,17,18,18,0.2,,,,,,,,,
+"","Finland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6497,8565,7184,8405,7710,5733,5530,5719,6888,7228,9703,8996,5205,8149,7994,5368,5712,7718,6159,5017,6455
+"","Former Czechoslovakia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Former Serbia and Montenegro",""
+"","Production",""
+"","Total Primary Coal","1000 ST",40632,37203,44748,44673,47375,48585,36487,44659,44891,47125,49481,49787,45201,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",40632,37203,44759,44276,47398,48698,36658,41143,40305,42551,44607,45635,40389,--,--,--,--,--,--,--,--
+"","Former U.S.S.R.",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Former Yugoslavia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","France",""
+"","Production",""
+"","Total Primary Coal","1000 ST",11753,10593,10908,9428,8064,6737,6272,4519,2944,2280,2472,961,680,498,465,305,162,288,164,320,345
+"","Consumption",""
+"","Total Primary Coal","1000 ST",25409,24544,26624,28267,23001,27956,24688,23894,19007,21151,23964,23767,22973,20122,22214,20957,18728,20112,16907,19654,21594
+"","French Guiana",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","French Polynesia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Gabon",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Gambia, The",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Georgia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",165,203,37,18,5.5,17,18,7.7,1.1,6.6,8.8,8.8,5.5,9.9,15,12,168,116,154,280,445
+"","Consumption",""
+"","Total Primary Coal","1000 ST",313,457,51,22,13,40,31,39,4,6.6,13,15,20,18,21,130,249,190,162,284,471
+"","Germany",""
+"","Production",""
+"","Total Primary Coal","1000 ST",315234,291781,277357,264991,251737,233000,226117,226047,227112,232573,229101,232672,226993,220553,225526,214351,203738,202286,208846,217144,210493
+"","Consumption",""
+"","Total Primary Coal","1000 ST",333973,316023,294363,287211,270474,259892,250138,263603,272037,269429,267116,273697,267138,273921,275968,263006,244457,256312,259831,270167,270404
+"","Germany, East",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Germany, West",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Ghana",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,33
+"","Gibraltar",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Greece",""
+"","Production",""
+"","Total Primary Coal","1000 ST",60425,62470,63561,65897,64864,67113,68399,70423,73132,77678,75287,77207,76498,71415,73092,72444,71532,62303,64668,69397,59052
+"","Consumption",""
+"","Total Primary Coal","1000 ST",62429,65488,64421,65704,66067,68235,68320,72405,75489,76811,78156,78961,77888,71717,73946,71854,72256,64285,66533,68631,60284
+"","Greenland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Grenada",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Guadeloupe",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Guam",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Guatemala",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,17,237,220,430,403,471,451,472,492,499,324,543,545,550,631
+"","Guinea",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Guinea-Bissau",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Guyana",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Haiti",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Hawaiian Trade Zone",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,--
+"","Honduras",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,62,149,136,155,186,195,266,65,71,117,114,118,179,180,33
+"","Hong Kong",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",12398,8066,9362,6038,5881,7695,7381,5773,8855,9610,11768,11785,11931,12570,13515,12506,13593,11380,13811,13615,14299
+"","Hungary",""
+"","Production",""
+"","Total Primary Coal","1000 ST",16349,15525,16283,16820,17377,16169,16035,15469,15338,14360,14662,12392,10549,10970,10822,10366,9905,10045,10533,10240,10522
+"","Consumption",""
+"","Total Primary Coal","1000 ST",19863,18500,18663,19223,19057,18303,18407,16725,16806,15492,16190,14850,12774,13263,13286,13048,11768,12113,12802,12573,12404
+"","Iceland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",58,78,72,73,64,77,66,111,108,108,94,115,129,119,133,120,108,117,116,116,132
+"","India",""
+"","Production",""
+"","Total Primary Coal","1000 ST",289126,299525,320139,339177,351866,348008,356737,370018,385394,401182,425969,452379,482004,509396,541303,578909,624032,628787,641855,665694,675467
+"","Consumption",""
+"","Total Primary Coal","1000 ST",290412,306330,325108,341652,354340,357876,379358,393630,406167,422683,435676,484180,511045,543706,592559,639538,716763,746261,782858,853860,886052
+"","Indonesia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",32401,35647,45449,55482,61710,64490,68463,73971,78344,116337,125141,141624,164977,178899,207965,197237,252216,358610,458302,514015,538607
+"","Consumption",""
+"","Total Primary Coal","1000 ST",14592,11225,12695,21304,11708,9388,11757,22778,28822,31995,21157,45416,47083,56081,51275,47796,68301,70823,50011,58631,61765
+"","Iran",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1068,1425,1254,1335,1334,1356,1146,1265,1228,1138,1260,1349,1715,1820,1835,1753,1270,1200,1283,1151,1296
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1813,1824,1704,1788,1830,2131,2013,2000,1771,1872,1951,1542,2372,2518,2176,2400,816,821,682,851,1019
+"","Iraq",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Ireland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1.1,1.1,1.1,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",3059,2946,2954,3279,3125,3276,2787,3320,3360,3009,3114,3198,3331,2933,2858,2543,2080,2269,2350,2709,2368
+"","Israel",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6227,6604,7228,8644,9524,10248,9938,12052,12589,14029,13953,14366,12736,14679,14587,14559,12548,13583,14193,15968,12922
+"","Italy",""
+"","Production",""
+"","Total Primary Coal","1000 ST",694,294,190,151,238,208,127,15,153,180,276,108,105,23,174,129,79,111,101,88,88
+"","Consumption",""
+"","Total Primary Coal","1000 ST",17261,18378,19447,18075,17666,19031,18850,19889,21442,22065,23319,26774,26729,27344,27692,27463,21990,23988,26946,27762,23232
+"","Jamaica",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",61,58,61,71,74,78,79,58,58,97,94,103,63,26,40,53,69,60,72,78,105
+"","Japan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",7943,7432,6963,6797,4376,4077,4066,3267,3536,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",131464,140740,146627,149815,153991,144956,156368,172860,177964,179711,186186,216259,193332,199409,210180,216800,181356,217011,198637,209554,222304
+"","Jordan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,353
+"","Kazakhstan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",123326,115329,93139,85956,80080,78071,65912,85367,87167,81567,93820,95912,96118,106555,107837,122436,111172,122278,128364,132858,132167
+"","Consumption",""
+"","Total Primary Coal","1000 ST",88771,86836,71457,63943,53573,53664,50248,45851,51899,51900,54570,68504,70291,75657,80190,79463,75284,81149,91272,88944,87485
+"","Kenya",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",144,134,172,159,162,131,128,118,118,176,165,193,160,214,196,195,170,295,422,378,374
+"","Kiribati",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Korea, North",""
+"","Production",""
+"","Total Primary Coal","1000 ST",29873,27999,26125,23149,22708,20503,23369,24802,25463,24141,24582,25133,26522,27205,26566,27624,28109,27558,28109,28440,29321
+"","Consumption",""
+"","Total Primary Coal","1000 ST",31974,29342,26830,22896,22472,20254,22977,24405,25403,23778,24127,23670,24577,27271,22731,25488,24334,22895,15929,15506,21666
+"","Korea, South",""
+"","Production",""
+"","Total Primary Coal","1000 ST",10409,8199,6305,5458,4976,4807,4626,9149,8415,3657,3635,3517,3122,3113,3181,3057,2777,2297,2297,2308,2001
+"","Consumption",""
+"","Total Primary Coal","1000 ST",47942,47963,49451,50253,57696,58141,63701,79095,85778,85287,83901,87823,90291,92280,100873,112910,117198,132964,146150,138424,142464
+"","Kosovo",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,8508,9470,9534,9141,9572,9060
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,--,--,8197,9359,9816,9491,8896,9072
+"","Kuwait",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,290
+"","Kyrgyzstan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1897,931,510,451,575,476,460,468,525,506,459,508,369,354,435,535,669,634,916,1283,1567
+"","Consumption",""
+"","Total Primary Coal","1000 ST",2445,2237,873,1281,1353,1344,1342,1247,893,1365,1606,1516,1441,1327,1564,2167,1908,1861,2016,2832,2562
+"","Laos",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1.1,1.1,26,56,105,271,454,454,416,551,495,660,686,714,1144,850,968,787,748,927,857
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1.1,1.1,26,56,105,175,239,262,192,298,306,434,438,468,504,516,551,591,607,629,380
+"","Latvia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",660,468,278,263,216,161,139,107,140,112,111,108,132,143,179,179,143,184,190,153,133
+"","Lebanon",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",122,123,198,220,220,220,220,220,220,220,220,220,220,220,220,220,220,248,276,276,220
+"","Lesotho",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Liberia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Libya",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Lithuania",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",649,531,410,373,289,245,196,144,129,233,299,291,316,440,418,357,267,331,367,345,394
+"","Luxembourg",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",305,346,239,267,214,168,169,190,211,126,95,139,134,162,133,127,115,112,98,90,83
+"","Macau",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",2.2,2.2,2.2,2.2,1.1,1.1,1,1.2,1.1,1.1,1.5,1.7,1.3,1.3,1.5,,,,,,
+"","Macedonia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",7625,7562,7991,7876,8205,9012,8130,8285,8935,8356,8137,7986,7585,7318,7175,8411,8186,7412,9049,8234,7314
+"","Consumption",""
+"","Total Primary Coal","1000 ST",7618,7975,8196,8082,8315,9371,8499,8661,9353,8092,8356,8340,8256,7599,7762,8588,8247,7678,8891,8428,7706
+"","Madagascar",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",15,13,11,11,13,13,8.8,11,11,11,11,11,19,17,11,15,16,17,17,17,531
+"","Malawi",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,70,87,53,66,73,55,50,61,66,58,60,60,60,60,60
+"","Consumption",""
+"","Total Primary Coal","1000 ST",17,19,19,19,19,14,61,69,52,75,71,67,65,65,67,57,53,60,60,60,60
+"","Malaysia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",133,148,123,241,240,347,273,423,602,389,193,429,869,993,1185,1382,2357,2642,3214,3252,3256
+"","Consumption",""
+"","Total Primary Coal","1000 ST",2331,2804,2722,4248,2653,2776,1412,3725,4927,8092,4377,6795,12049,12269,15861,16101,18600,25222,28662,27468,28160
+"","Maldives",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Mali",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Malta",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",331,225,57,,,,,,,,,,,,,,,,,,
+"","Martinique",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Mauritania",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6.6,6.6,4.4,3.3,2.2,1.1,,,,,,,,,,,,,,,
+"","Mauritius",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",68,69,69,44,51,78,150,279,330,345,348,319,401,535,632,719,657,736,707,744,783
+"","Mexico",""
+"","Production",""
+"","Total Primary Coal","1000 ST",7292,9808,10274,11359,11470,12381,11382,12505,12506,12108,10581,10893,11855,12662,13794,12599,11627,14146,17374,16707,16994
+"","Consumption",""
+"","Total Primary Coal","1000 ST",8633,10129,11293,12937,12717,13265,13436,13552,15455,16313,18321,15528,19355,19249,19279,15432,18042,19502,20658,18620,27419
+"","Micronesia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,NA
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,NA
+"","Moldova",""
+"","Production",""
+"","Total Primary Coal","1000 ST",197,122,35,40,53,8.8,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",2452,2387,1450,1239,665,601,176,132,103,69,99,205,203,209,143,218,197,205,218,211,286
+"","Mongolia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",6192,5686,5533,5633,5428,5574,5472,5715,5667,6111,5852,7559,8279,9145,10343,11260,15966,27804,35369,33058,33246
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6243,5696,5736,5665,5550,5496,5530,5745,5720,6100,5776,5825,6032,6526,6649,6519,7128,7682,7573,8209,8645
+"","Montenegro",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,1667,1326,1918,1055,2136,2175,1969,2152
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,1585,1283,1904,1033,2060,2126,1909,1843
+"","Montserrat",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Morocco",""
+"","Production",""
+"","Total Primary Coal","1000 ST",666,717,717,558,414,297,142,34,2.2,,,26,13,4.4,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1898,2072,2938,3452,3434,3792,3670,4429,5623,5763,5390,5132,5443,5430,5532,4919,4521,4664,4973,5051,4697
+"","Mozambique",""
+"","Production",""
+"","Total Primary Coal","1000 ST",44,44,42,22,20,20,19,18,31,49,41,19,3.3,45,26,42,29,39,680,4993,6702
+"","Consumption",""
+"","Total Primary Coal","1000 ST",66,66,62,,,,,,,,,,,,9.9,11,11,8,57,18,
+"","Namibia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",99,110,18,15,12,19,6.6,3.3,4.4,,8.8,1.1,22,71,85,117,54,39,14,11,33
+"","Nauru",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Nepal",""
+"","Production",""
+"","Total Primary Coal","1000 ST",2.2,6.6,6.6,8.8,18,12,20,19,11,13,12,9.9,13,22,15,17,17,18,19,18,18
+"","Consumption",""
+"","Total Primary Coal","1000 ST",62,123,136,111,115,115,442,474,542,251,319,283,459,301,362,342,355,557,661,789,819
+"","Netherlands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",14605,15945,15778,15608,15645,16034,13356,14094,15005,14845,15107,14988,14395,13981,14884,14010,13116,13121,12910,14143,14341
+"","Netherlands Antilles",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","New Caledonia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",187,182,182,185,125,132,122,280,285,304,345,310,287,312,269,294,279,331,331,331,628
+"","New Zealand",""
+"","Production",""
+"","Total Primary Coal","1000 ST",3678,3343,3943,3980,3931,3447,3864,3813,4311,4915,5709,5682,5806,6253,5329,5325,5031,5876,5451,5435,5099
+"","Consumption",""
+"","Total Primary Coal","1000 ST",3093,2820,2278,1511,2368,2368,2754,2332,3182,1898,3924,4610,4748,3898,3788,4238,3181,2945,3465,3139,3625
+"","Nicaragua",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,(s)
+"","Niger",""
+"","Production",""
+"","Total Primary Coal","1000 ST",190,190,191,191,192,192,193,174,180,202,208,261,201,194,189,202,248,272,271,259,263
+"","Consumption",""
+"","Total Primary Coal","1000 ST",190,190,191,191,192,192,193,174,180,202,208,256,207,187,201,198,209,262,262,262,263
+"","Nigeria",""
+"","Production",""
+"","Total Primary Coal","1000 ST",31,28,22,8.8,11,13,18,3.3,3.3,47,25,8.8,8.8,8.8,25,35,37,42,35,53,53
+"","Consumption",""
+"","Total Primary Coal","1000 ST",8.8,28,22,8.8,11,13,18,3.3,3.3,47,25,8.8,8.8,8.8,25,35,37,42,35,53,53
+"","Niue",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Northern Mariana Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Norway",""
+"","Production",""
+"","Total Primary Coal","1000 ST",295,332,322,254,425,362,445,697,1971,2350,3245,3201,1621,2640,4490,3781,2911,2133,1528,1355,2045
+"","Consumption",""
+"","Total Primary Coal","1000 ST",976,1042,1168,1003,1156,1108,1209,1112,1051,941,957,1084,960,724,923,1053,608,807,929,951,728
+"","Oman",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Pakistan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",3389,3543,3354,3820,3854,3815,3491,3411,3668,3651,3610,5056,5369,4016,4546,4122,3837,3804,3983,3504,3368
+"","Consumption",""
+"","Total Primary Coal","1000 ST",5101,4562,5204,4842,4540,4818,4545,4457,4861,5390,6683,8702,8503,8702,11145,9249,8973,8509,8455,7594,7929
+"","Palestinian Territories",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,,,,,,,,,,,,,,,,,
+"","Panama",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",58,60,56,119,63,65,66,66,69,50,,,,,,,,,261,356,377
+"","Papua New Guinea",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1.1,1.1,1.1,1.1,1.1,1.1,,,,,,,,,,,,,,,
+"","Paraguay",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Peru",""
+"","Production",""
+"","Total Primary Coal","1000 ST",92,69,57,23,24,23,24,18,21,24,17,18,47,113,118,147,160,101,109,164,208
+"","Consumption",""
+"","Total Primary Coal","1000 ST",491,397,433,397,392,493,478,755,661,1016,1011,1164,1177,929,1293,1179,1248,1268,736,1185,1538
+"","Philippines",""
+"","Production",""
+"","Total Primary Coal","1000 ST",1744,1597,1465,1221,1186,1275,1297,1491,1356,1835,2238,3005,3487,2853,4119,4384,5706,8088,8390,8987,7816
+"","Consumption",""
+"","Total Primary Coal","1000 ST",3138,3193,3435,4626,5720,6199,7072,9658,9021,8827,8987,10656,11063,11091,11260,13487,13297,14674,15690,17817,20652
+"","Poland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",218901,221237,221248,222352,221481,196813,188564,179473,180276,178481,180552,179046,175863,172034,160772,158747,149001,146870,153540,158835,157440
+"","Consumption",""
+"","Total Primary Coal","1000 ST",196006,185783,187815,192029,186513,173081,165957,155800,157418,156542,163663,161967,158059,164648,158275,159529,148703,158527,165758,155159,160817
+"","Portugal",""
+"","Production",""
+"","Total Primary Coal","1000 ST",217,162,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",5459,5760,6292,6031,6139,5621,6753,6790,5671,6248,5919,6186,6061,6038,5250,4598,5165,2997,4052,5381,4915
+"","Puerto Rico",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Qatar",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Reunion",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Romania",""
+"","Production",""
+"","Total Primary Coal","1000 ST",43818,44695,45328,46153,37266,28915,25223,32281,36695,33526,36446,35045,34288,38496,39441,39530,37436,34312,39145,37418,27254
+"","Consumption",""
+"","Total Primary Coal","1000 ST",47028,50584,50922,50283,42543,34602,30578,35536,37720,37829,40715,39746,39872,44272,43628,43503,38149,34622,41437,38761,28540
+"","Russia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",315631,280687,270868,264925,252838,241034,259241,264912,273415,261887,283271,285437,311823,313680,318591,336163,304228,354614,354572,391990,388013
+"","Consumption",""
+"","Total Primary Coal","1000 ST",306005,287625,262100,283248,255201,239639,249366,254057,238692,243280,247113,239243,236490,242178,233889,253015,186614,258131,261678,302956,229820
+"","Rwanda",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saint Helena",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saint Kitts and Nevis",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saint Lucia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saint Pierre and Miquelon",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saint Vincent/Grenadines",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Samoa",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Sao Tome and Principe",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Saudi Arabia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Senegal",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,140,168,184,237,237,280,316,443,385,397
+"","Serbia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,40543,40949,42669,42438,41861,45310,42146,44420
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,--,--,--,42195,41284,42705,43084,41534,46595,42743,44558
+"","Seychelles",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Sierra Leone",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Singapore",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1.1,1.1,,1.1,2.2,,,,,,,19,2.2,,,2.2,,,,,459
+"","Slovakia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",3910,4006,4144,4221,4316,4355,4131,4021,3774,3752,3414,3254,2768,2426,2327,2671,2836,2621,2619,2526,2596
+"","Consumption",""
+"","Total Primary Coal","1000 ST",15732,13551,13835,13447,12204,11379,10738,9776,10180,9669,9976,9634,9138,9167,8770,8846,8370,7952,7947,7565,7327
+"","Slovenia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",5645,5351,5384,5255,5641,5393,5029,4937,4556,5167,5324,5301,5003,4985,4999,4984,4882,4883,4962,4716,4274
+"","Consumption",""
+"","Total Primary Coal","1000 ST",6070,5763,5775,5469,5934,5712,5417,5429,5731,6170,5891,5924,5723,5766,5803,5729,5448,5417,5538,5456,4905
+"","Solomon Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Somalia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","South Africa",""
+"","Production",""
+"","Total Primary Coal","1000 ST",207470,215838,227308,227475,242589,245790,246382,247138,246432,242743,263178,268271,270053,269881,273005,278017,276171,283521,278616,285031,282502
+"","Consumption",""
+"","Total Primary Coal","1000 ST",153582,161375,165417,163841,167029,156658,177473,173057,175396,157074,179228,196955,191182,195163,201469,217246,203571,205433,195886,204664,190085
+"","Spain",""
+"","Production",""
+"","Total Primary Coal","1000 ST",34814,32665,31201,29751,29200,28812,26785,25872,24998,24288,22666,22583,21474,20334,18940,11229,10411,9292,7298,6818,4816
+"","Consumption",""
+"","Total Primary Coal","1000 ST",49047,47270,46718,39937,45377,44337,48059,49632,45884,50734,47170,50748,49031,43197,47360,29130,22571,15891,25773,32139,22164
+"","Sri Lanka",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",1.1,1.1,5.5,1.1,1.1,1.1,1.1,,,19,105,28,103,78,75,79,103,105,565,796,838
+"","Sudan and South Sudan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Suriname",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Swaziland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",55,201,189,143,376,376,487,384,496,562,453,489,497,489,509,496,441,386,331,276,386
+"","Consumption",""
+"","Total Primary Coal","1000 ST",55,201,189,143,234,234,243,222,226,203,181,175,117,170,177,182,142,139,139,139,162
+"","Sweden",""
+"","Production",""
+"","Total Primary Coal","1000 ST",4.4,0.5,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",3630,4199,3952,3898,3406,3095,2966,2955,3563,3084,2797,3577,3179,2983,3289,2492,2626,2854,3487,3232,3219
+"","Switzerland",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",250,259,279,206,154,126,129,197,217,190,204,200,239,243,294,261,244,251,235,207,234
+"","Syria",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,4.5
+"","Taiwan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",362,314,259,163,109,87,101,92,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",27161,28161,29314,33425,37884,42261,44345,52924,55229,60292,63215,64607,65425,68181,71413,68793,65748,70593,75190,73125,74740
+"","Tajikistan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",412,120,45,22,19,21,21,24,26,40,52,103,109,116,200,219,223,220,260,454,632
+"","Consumption",""
+"","Total Primary Coal","1000 ST",360,89,45,22,40,34,25,32,32,45,58,108,114,120,206,226,226,228,252,478,649
+"","Tanzania",""
+"","Production",""
+"","Total Primary Coal","1000 ST",49,51,49,63,31,50,83,87,86,87,61,72,34,20,30,17,28,52,50,106,77
+"","Consumption",""
+"","Total Primary Coal","1000 ST",49,39,54,85,39,50,83,87,86,87,61,72,34,20,30,17,,,3.3,87,94
+"","Thailand",""
+"","Production",""
+"","Total Primary Coal","1000 ST",17137,18844,20306,23678,25786,22226,20135,19520,21624,21607,20771,22112,23014,20945,20105,19822,19606,20221,23509,19918,19391
+"","Consumption",""
+"","Total Primary Coal","1000 ST",18452,20389,22929,27365,28451,24404,23747,23446,26875,27629,27336,30887,32550,33022,35227,37895,36726,39043,43789,41364,41484
+"","Timor-Leste (East Timor)",""
+"","Production",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",--,--,--,--,--,--,--,--,--,--,,,,,,,,,,,
+"","Togo",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Tonga",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Trinidad and Tobago",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,32
+"","Tunisia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",131,121,109,119,119,96,137,129,118,100,29,,,,,,,,,,
+"","Turkey",""
+"","Production",""
+"","Total Primary Coal","1000 ST",53528,59934,60708,62129,66060,74277,73897,69741,68450,59507,53531,51122,64309,70829,83074,87526,87633,80908,83903,78772,57839
+"","Consumption",""
+"","Total Primary Coal","1000 ST",60333,65444,67262,72628,79410,85620,83158,88110,79606,72615,70461,71042,84587,92135,108221,108708,108795,105390,111521,111101,92855
+"","Turkmenistan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",149,,,110,,,,,,,,,,,,,,,,,
+"","Turks and Caicos Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Tuvalu",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,NA
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,NA
+"","U.S. Pacific Islands",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","U.S. Territories",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",430,449,457,463,468,473,457,460,171,485,1521,1433,1466,1653,1653,1653,1653,1653,1653,1653,1381
+"","Uganda",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Ukraine",""
+"","Production",""
+"","Total Primary Coal","1000 ST",116544,95352,84104,62791,64568,65618,69248,68787,67995,67854,70804,65686,66537,67981,64954,71033,65735,63558,76791,74701,72497
+"","Consumption",""
+"","Total Primary Coal","1000 ST",125286,99093,99095,73664,71707,72816,72375,73502,71135,70568,78942,70114,70767,75310,70962,77560,67656,72857,80390,81115,78619
+"","United Arab Emirates",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,33,169,198,225,260,504,243,614,985,1281,2237,3031,2958
+"","United Kingdom",""
+"","Production",""
+"","Total Primary Coal","1000 ST",75176,54879,58463,55333,53457,45390,40870,34390,35197,33057,31172,27664,22595,20411,18747,19901,19703,20300,20533,18791,14154
+"","Consumption",""
+"","Total Primary Coal","1000 ST",95833,92735,82552,77455,70294,68995,60810,65858,69675,64427,69119,66893,68018,73950,69200,63996,53737,56703,56670,71044,66585
+"","United States",""
+"","Production",""
+"","Total Primary Coal","1000 ST",945424,1033504,1032974,1063856,1089932,1117535,1100431,1073612,1127689,1094283,1071753,1112099,1131498,1162750,1146635,1171809,1074923,1084368,1095628,1016458,984842
+"","Consumption",""
+"","Total Primary Coal","1000 ST",944081,951286,962104,1006321,1029544,1037103,1038647,1084095,1060146,1066355,1094861,1107255,1125978,1112292,1127998,1120548,997478,1048514,1002948,889185,924442
+"","Uruguay",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,2.2,2.2,2.2,3.3,4.4,2.2,3.3,0.3
+"","Uzbekistan",""
+"","Production",""
+"","Total Primary Coal","1000 ST",5133,5126,3366,3127,3249,3222,3274,2833,2988,3016,2109,3069,3391,3566,3794,3627,4028,4001,4237,4247,4508
+"","Consumption",""
+"","Total Primary Coal","1000 ST",5724,5774,3338,3745,3078,3219,3194,3905,4026,4020,3090,3633,3511,3762,3977,3878,4208,4093,4305,4348,4418
+"","Vanuatu",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Venezuela",""
+"","Production",""
+"","Total Primary Coal","1000 ST",5117,5737,5450,4880,6902,10000,9360,10575,10173,9883,9129,9050,9650,10556,8177,6601,4402,3661,2816,4185,2833
+"","Consumption",""
+"","Total Primary Coal","1000 ST",52,102,9.4,30,63,1780,67,243,90,34,79,,68,80,204,259,436,366,377,404,317
+"","Vietnam",""
+"","Production",""
+"","Total Primary Coal","1000 ST",6504,6283,9204,10828,12553,12866,10614,12797,14288,17527,18409,30147,37581,42745,46829,43847,48588,49422,51380,46719,43712
+"","Consumption",""
+"","Total Primary Coal","1000 ST",4080,4510,6522,7045,8944,9009,8321,8607,9890,10859,11464,14456,16327,17637,18929,23263,24688,28820,30674,32566,30811
+"","Virgin Islands,  U.S.",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Virgin Islands, British",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Wake Island",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Western Sahara",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Yemen",""
+"","Production",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,
+"","Consumption",""
+"","Total Primary Coal","1000 ST",,,,,,,,,,,,,,,,,,,,,127
+"","Zambia",""
+"","Production",""
+"","Total Primary Coal","1000 ST",367,180,167,186,198,214,208,214,224,235,246,131,165,71,15,4.4,62,,,56,99
+"","Consumption",""
+"","Total Primary Coal","1000 ST",390,191,163,207,239,227,138,144,148,152,160,120,153,63,15,,,1.1,1.1,99,99
+"","Zimbabwe",""
+"","Production",""
+"","Total Primary Coal","1000 ST",5894,5463,5173,4871,4424,4597,5099,4696,4569,4367,3913,3764,3991,3800,3661,2776,2942,3225,3526,3303,3838
+"","Consumption",""
+"","Total Primary Coal","1000 ST",5880,5215,4954,4705,4300,4407,5198,5001,4969,4582,3864,3520,4122,4113,3818,2960,3012,3286,3589,3758,3786 

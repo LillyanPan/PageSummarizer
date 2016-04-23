@@ -1,0 +1,22 @@
+*{ 
+	margin: 0;
+    padding: 0;
+}
+
+canvas#animateCanvas {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+canvas#indicatorCanvas {
+	position: relative;
+	top: -3px;
+	left: 0;
+	/*background: #FDA345;*/
+	margin-bottom: 5px;
+}
+
+img.logo {
+	display: none;
+}
