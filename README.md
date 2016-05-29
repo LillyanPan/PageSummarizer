@@ -1,4 +1,4 @@
-# CO-News-Reader
+# Page Summarizer
 **To install**
 
 * Open the tab extensions with URL chrome://extensions or Menu > Settings > Extensions.
