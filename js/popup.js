@@ -5,9 +5,61 @@ var req;
 var application_id = 'fb5a37c1';
 var application_key = '5f3a8a94152314bd2baa9c06905b7030';
 var id;
+var userID;
 
+/*
+TODO:
+Delete functionality
+Unique user identification
+Restructure firebase layout
+Encapsulate firebase add/delete into functions
+Comment code?
+*/ 
+
+// Create random token
+// Inspiration: http://stackoverflow.com/questions/23822170/getting-unique-clientid-from-chrome-extension
+function getRandomToken() {
+    var randSelection = new Uint8Array(32); // creates 32 length array of 8-bit unsigned ints; init to 0
+    crypto.getRandomValues(randSelection);
+    var hex = randSelection.join('');
+    return hex;
+}
+
+// Run only on first installation - gets unique user ID
+var first_run = false;
+if (!localStorage['ran_before']) {
+  first_run = true;
+  localStorage['ran_before'] = '1';
+}
+if (first_run) {
+    userID = getRandomToken();
+    chrome.storage.sync.set({ "userID": userID }, function() {
+        if (chrome.runtime.error) {
+            console.log("Runtime error");
+        }
+    });
+}
+
+
+// Run only on first installation/new version installed - gets unique user ID
+// LOOK AT - should be better solution
+// chrome.runtime.onInstalled.addListener(function (details) {
+//     userID = getRandomToken();
+//     console.log(userID);
+//     if (details.reason == "install") { // first instal;
+//         userID = getRandomToken();
+//         console.log(userID);
+//     }
+//     else if (details.reason == "update") { // update
+//         userID = getRandomToken();
+//         console.log(userID);
+//     }
+// })
+
+// Create new tab when article title clicked
+// No new window if toggling between saved and article summary popup
 window.addEventListener('click', function(e) {
-    if (e.target.href == "chrome-extension://"+ id + "/popup.html#saved" || e.target.href == "chrome-extension://"+ id + "/popup.html#summary") {
+    if (e.target.href == "chrome-extension://" + id + "/popup.html#saved" || e.target.href == "chrome-extension://" + id + "/popup.html#summary") {
         return true;
     } else if (e.target.href !== undefined) {
         chrome.tabs.create({
@@ -70,6 +122,7 @@ $(document).ready(function() {
             }
             $("#summaryNews").append("<p>" + summary + "</p>");
         });
+
         /***************** 
           ARTICLE TITLE
         ******************/
@@ -251,6 +304,7 @@ $(document).ready(function() {
         /***************** 
          KEY CONCEPTS/WIKI
         ******************/
+
         var loop = [0, 1, 2, 3, 4];
         var keyData = [];
         $.ajax({
@@ -259,7 +313,6 @@ $(document).ready(function() {
         }).done(function(json) {
             var text;
             var block = 0;
-            // for (var i = 0; i < 5; i++) {
             $.each(loop, function(i, val) {
                 var links1 = '';
                 var links2 = '';
@@ -289,8 +342,6 @@ $(document).ready(function() {
 	                    for (var link in wikiJson.query.pages) {
 	                        fullLink = wikiJson.query.pages[link].fullurl;
 	                    }
-	                    console.log("#" + String(k));
-	                    console.log(fullLink);
 	                    $("#" + String(k)).append("<td><a href='" + fullLink + "'>Wikipedia</a></td>");
 	                    index++;
                 	})
@@ -304,25 +355,41 @@ $(document).ready(function() {
 /***************** 
      FIREBASE
 ******************/
-
+// Saves article to Firebase on click
 save.addEventListener('click', function() {
-    var root = new Firebase('https://capital-one-news.firebaseio.com/');
-    var newEntryRef = root.push();
-    newEntryRef.set({
-        title: title,
-        author: author,
-        url: url,
-        summary: summary
+    chrome.storage.sync.get("userID", function(val) {
+        if (val.userID != undefined) { // userID defined
+            var root = new Firebase('https://capital-one-news.firebaseio.com/users/' + val.userID);
+            var newEntryRef = root.push();
+            newEntryRef.set({
+                title: title,
+                author: author,
+                url: url,
+                summary: summary
+            });
+        }
     });
 })
-var root = new Firebase('https://capital-one-news.firebaseio.com/');
-root.on("value", function(items) {
-$("#saved").html("");
-for (var item in items.val()) {
-    item = items.val()[item];
-    $("#saved").append("<div id='savedArticles'></div>");
-    $("#savedArticles").append("<div class='col-md-12'><div class='articleTitle'><a href='" + item.url + "'>" + item.title + "</a></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><div class='col-md-12'><hr></div>");
-}
-}, function(errorObject) {
-console.log("The read failed: " + errorObject.code);
+
+// Displays user's saved articles
+// Get userID from storage; userID only avaliable in callback
+chrome.storage.sync.get("userID", function(val) {
+    if (val.userID == undefined) {
+        $("#saved").html("");
+        $("#saved").append("<div id='savedArticles'></div>");
+        $("#savedArticles").append("<div class='col-md-12'><div class='articleTitle'>Not a valid user! Are you using icognito?</div><br>");
+    }
+    else {
+        var root = new Firebase('https://capital-one-news.firebaseio.com/users/' + val.userID);
+        root.on("value", function(items) {
+        $("#saved").html("");
+        for (var item in items.val()) {
+            item = items.val()[item];
+            $("#saved").append("<div id='savedArticles'></div>");
+            $("#savedArticles").append("<div class='col-md-12'><div class='articleTitle'><a href='" + item.url + "'>" + item.title + "</a></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><div class='col-md-12'><hr></div>");
+        }
+        }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+        });
+    }
 });

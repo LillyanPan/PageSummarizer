@@ -1,5 +1,4 @@
 chrome.browserAction.onClicked.addListener(function(tab) {
 	chrome.tabs.executeScript( {file: "d3/d3.min.js"});
-	// chrome.tabs.executeScript( {file: "js/firebase.js"});
 	chrome.tabs.executeScript( {file: "popup.js"});
 });
