@@ -103,13 +103,23 @@ th {
 }
 
 /***************** 
+ 	SAVE ALERT
+******************/ 
+
+#saved-article-alert {
+	position: fixed;
+    bottom: 0px;
+    right: 80px;
+}
+
+/***************** 
  	SAVE BUTTON
 ******************/ 
 
 #save {
     position: fixed;
-    bottom: 0px;
-    right: 0px; 
+    bottom: 10px;
+    right: 10px; 
 }
 .btn-circle.btn-lg {
   width: 50px;
@@ -117,6 +127,17 @@ th {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
+  border-radius: 25px;
+}
+
+
+/***************** 
+   DELETE BUTTON
+******************/ 
+
+.btn-circle.btn-xs {
+  width: 25px;
+  height: 25px;
   border-radius: 25px;
 }
 
@@ -134,6 +155,7 @@ th {
 }
 .articleTitle a:hover {
 	text-decoration: none;
+	text-decoration: underline;
 }
 .articleAuthor {
 	font-style: italic;
@@ -153,10 +175,10 @@ th {
 .nav a:active, .nav a:focus {
 	outline: none;
 }
-#save:active {
+#save:active, .delete:active {
 	outline: none;
 	border: none;
 }
-#save:focus {
+#save:focus, .delete:focus {
 	outline:0;
 }

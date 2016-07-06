@@ -8,6 +8,7 @@
     <link href="css/style.css" rel="stylesheet" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
+
   </head>
   <body>
     <div class="container">
@@ -18,7 +19,6 @@
     </div>
     <div id="tabContent" class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active" id="summary">
-        <p>
           <div id="title" class="col-md-12"></div>
           <div class="col-md-12"><hr></div>
           <div id="author" class="col-md-12"></div>
@@ -42,7 +42,8 @@
           </div>
           <div id="sentiment" class="col-md-12">
           </div>
-          <button id="save" type="button"  class="btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
+          <div class="alert alert-success col-sm-2" id="saved-article-alert">Article Saved!</div>
+          <button id="save" type="button"  class="col-sm-2 btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
       </div>
       <div role="tabpanel" class="tab-pane fade" id="saved"></div>
     </div>

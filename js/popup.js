@@ -70,6 +70,10 @@ window.addEventListener('click', function(e) {
 });
 
 $(document).ready(function() {
+
+    // Originally hide article saved alert
+    $("#saved-article-alert").hide();
+
 	id = chrome.runtime.id;
 
     var save = document.getElementById('save');
@@ -355,7 +359,8 @@ $(document).ready(function() {
 /***************** 
      FIREBASE
 ******************/
-// Saves article to Firebase on click
+
+// Saves article to Firebase on click with banner indication
 save.addEventListener('click', function() {
     chrome.storage.sync.get("userID", function(val) {
         if (val.userID != undefined) { // userID defined
@@ -369,7 +374,24 @@ save.addEventListener('click', function() {
             });
         }
     });
-})
+    $("#saved-article-alert").fadeIn(300);
+    $("#saved-article-alert").delay(300).fadeOut(300);
+});
+
+// Delete articles
+$(document).on("click", ".delete", function() {
+    var parentDiv = $(this).parents('div:first').parents('div:first');
+    var title = parentDiv.children(".articleTitle").text();
+    chrome.storage.sync.get("userID", function(val) {
+        if (val.userID != undefined) { // userID defined
+            var ref = new Firebase('https://capital-one-news.firebaseio.com/users/' + val.userID);
+            var selectedArticle = ref.orderByChild('title').equalTo(title).on("child_added", function(snapshot) {
+                var articleRef = new Firebase('https://capital-one-news.firebaseio.com/users/' + val.userID + "/" + snapshot.key());
+                articleRef.remove();
+            });
+        }
+    });
+});
 
 // Displays user's saved articles
 // Get userID from storage; userID only avaliable in callback
@@ -382,13 +404,14 @@ chrome.storage.sync.get("userID", function(val) {
     else {
         var root = new Firebase('https://capital-one-news.firebaseio.com/users/' + val.userID);
         root.on("value", function(items) {
-        $("#saved").html("");
-        for (var item in items.val()) {
-            item = items.val()[item];
-            $("#saved").append("<div id='savedArticles'></div>");
-            $("#savedArticles").append("<div class='col-md-12'><div class='articleTitle'><a href='" + item.url + "'>" + item.title + "</a></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><div class='col-md-12'><hr></div>");
+            $("#saved").html("");
+            for (var item in items.val()) {
+                item = items.val()[item];
+                $("#saved").append("<div id='savedArticles'></div>");
+                $("#savedArticles").append("<div class='col-md-12'><div class='row'><div class='articleTitle col-sm-11'><a href='" + item.url + "'>" + item.title + "</a></div><div class='col-sm-1'><button type='button' class='btn btn-danger btn-circle btn-xs delete'><i class='glyphicon glyphicon-remove'></i></button></div></div><div class='articleAuthor'>" + item.author + "</div><div class='articleSummary'>" + item.summary + "</div></div><div class='col-md-12'><hr></div>");
+            };
         }
-        }, function(errorObject) {
+        , function(errorObject) {
         console.log("The read failed: " + errorObject.code);
         });
     }

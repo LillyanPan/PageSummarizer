@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Quick Read",
-  "description": "A chrome extension that summerizes news articles",
-  "version": "0.0.0.2",
+  "description": "A chrome extension that summarizes news articles",
+  "version": "0.0.0.4",
   "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio.com/* https://*.firebaseio-demo.com; object-src 'self'",
 
   "browser_action": {
