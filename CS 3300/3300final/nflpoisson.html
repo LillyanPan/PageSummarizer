@@ -1,0 +1,193 @@
+<html>
+<head>
+<!-- Load the d3 library. -->
+<script src="d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/d3-queue.v2.min.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<style>
+body { font-family: "Open Sans"; }
+svg { margin: 20px; }
+.bar rect { fill: #ccc; }
+.axis path { fill: none; stroke: black;}
+.axis line { stroke: black; }
+.axis text { font-size: x-small; }
+</style>
+</head>
+<body>
+
+<div>
+	It seems like the Poisson distributon based on the entire league is a better fit as it more closely matches the bar graph data. Hence, because we assume the data in general is random, the entire league is a better fit. The Poisson based on an individual team does not fit the data as well, as there is more variance between the green line and the actual data. By only looking at one team we cannot account for as much randomness. The New England Patriots do not seem too abnormal from other data such as the Colts or Vikings.
+</div>
+
+<div id="plot"></div>
+
+<script>
+
+var height = 200;
+var width = 200;
+var padding = 30;
+
+var poissonProbabilities = function(rate, max) {
+	var poisson = new Array(max+1);
+	poisson[0] = Math.exp(-rate);
+	for (var i = 1; i <= max; i++) {
+		poisson[i] = poisson[i-1] * rate / i;
+	}
+	return poisson;
+}
+
+var yearFilenames = ["nflstats/nfl2000stats.csv", "nflstats/nfl2001stats.csv", "nflstats/nfl2002stats.csv", "nflstats/nfl2003stats.csv", "nflstats/nfl2004stats.csv", "nflstats/nfl2005stats.csv", "nflstats/nfl2006stats.csv", "nflstats/nfl2007stats.csv", "nflstats/nfl2008stats.csv", "nflstats/nfl2009stats.csv", "nflstats/nfl2010stats.csv", "nflstats/nfl2011stats.csv", "nflstats/nfl2012stats.csv", "nflstats/nfl2013stats.csv"];
+
+var footballData = [];
+
+// [Part A] Get the contents of each CSV file in the yearFilenames array. Concatenate 
+//  the rows from each year into a single large array in the variable footballData.
+// Once you are done getting all files, run init().
+var q = d3_queue.queue();
+for (file in yearFilenames) {
+	q.defer(d3.csv, yearFilenames[file])
+}
+q.await(makeArray);
+
+function makeArray(error, y2000, y2001, y2002, y2003, y2004, y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013) {
+	footballData = y2000.concat(y2001, y2002, y2003, y2004, y2005, y2006, y2007, y2008, y2009, y2010, y2011, y2012, y2013);
+	init();
+}
+
+function init () {
+	var mean;
+	// [Part B] Calculate the mean number of offensive fumbles ("FumblesOff") for all teams in all games.
+	mean = d3.mean(footballData, function(d) {
+		return d.FumblesOff;
+	});
+	var poisson = poissonProbabilities(mean, 5);
+
+	var teamData = [];
+	
+	// [Part C] You should have a big array containing two rows per game (one for each team).
+	// Use d3.nest() to turn this into an array containing one object per team.
+	// The variable of interest is "TeamName".
+	
+
+	teamData = d3.nest()
+	.key(function(d) { return d.TeamName; })
+	.entries(footballData);
+
+	teamData.forEach(function (team) {
+		var histogram = d3.layout.histogram().range([0,6]).bins(6);
+
+		var sequence = [];
+		var teamMean;
+				
+		// [Part D] Create an array that contains the number of offensive fumbles in each game
+		//  for this team. Calculate the mean of those numbers.
+		for (game in team.values) {
+			sequence.push(Number(team.values[game].FumblesOff));
+		}
+
+		teamMean = d3.mean(sequence);
+
+		var teamPoisson = poissonProbabilities(teamMean, 5);
+		
+		var bins = histogram(sequence);
+		
+		var xScale = d3.scale.ordinal()
+		.domain(d3.range(0,6)).rangeRoundBands([0 + padding, width]);
+
+		var yScale = d3.scale.linear()
+		.domain([0, 130])
+		.range([height - padding, 10]);
+
+		var binWidth = bins[0].dx;
+		var binPixels = xScale(binWidth) - xScale(0) - 1;
+
+		var svg = d3.select("#plot").append("svg")
+		.attr("height", height)
+		.attr("width", width);
+		
+		svg.append("text")
+		.attr("x", width * 0.5)
+		.attr("y", height * 0.1)
+		.style("font-size", "x-small")
+		.text(team.key);
+
+		var bars = svg.selectAll(".bar").data(bins);
+
+		bars.enter().append("g").attr("class", "bar");
+
+		// Display bars
+
+		// Use a transform to position the bar
+		bars.attr("transform", function (bin) {
+			return "translate(" + xScale(bin.x) + "," + yScale(bin.y) + ")";
+		});
+
+		// In each bar's group, add a rect
+		bars.append("rect")
+		.attr("x", 1)
+		.attr("width", binPixels)
+		.attr("height", function(bin) {
+			return height - padding - yScale(bin.y);
+		});
+
+		// ... and a text label
+		bars.append("text")
+		.attr("x", 0.5 * binPixels)
+		.attr("y", -3)
+		.style("font-size", "x-small")
+		.style("text-anchor", "middle")
+		.style("fill", "#777")
+		.text(function (bin) { return bin.y; });
+
+		var numGames = sequence.length;
+
+		// [Part E] Create a series of lines showing the expected number of games with N fumbles
+		//  based on the league-wide average number of fumbles per game. Fix the line below.
+		svg.selectAll(".poisson").data( teamPoisson )
+		.enter().append("line")
+		.style("stroke", "black")
+		.attr("class", "poisson")
+		.attr("x1", function (d, i) { 
+			return xScale(i); })
+		.attr("x2", function (d, i) { return xScale(i) + binPixels; })
+		.attr("y1", function (d) { return yScale(numGames * d); })
+		.attr("y2", function (d) { return yScale(numGames * d); });
+
+		// [Part F] Now create a series of RED lines showing the expected number of games with N fumbles
+		//  based on this team's average number of fumbles.
+
+		svg.selectAll(".poissonIn").data( poisson )
+		.enter().append("line")
+		.style("stroke", "green")
+		.attr("class", "poissonIn")
+		.attr("x1", function (d, i) { 
+			return xScale(i); })
+		.attr("x2", function (d, i) { return xScale(i) + binPixels; })
+		.attr("y1", function (d) { return yScale(numGames * d); })
+		.attr("y2", function (d) { return yScale(numGames * d); });
+		
+
+		var xAxis = d3.svg.axis().scale(xScale);
+		svg.append("g")
+		  .attr("class", "axis")
+		  .attr("transform", "translate(0, " + (height - padding) + ")")
+		  .call(xAxis);
+
+		var yAxis = d3.svg.axis().scale(yScale).orient("left");
+		svg.append("g")
+			.attr("class", "axis")
+			.attr("transform", "translate(" + padding + ", 0)")
+			.call(yAxis);
+	});	
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

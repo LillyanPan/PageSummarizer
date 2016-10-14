@@ -1,0 +1,113 @@
+<html>
+<head>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<!-- Load the d3 library. -->
+<script src="d3.v3.min.js" charset="utf-8"></script>
+<style>
+body { font-family: "Open Sans"; }
+.bar rect { fill: #ccc; }
+.axis path { fill: none; stroke: black;}
+.axis line { stroke: black; }
+.axis text { font-size: x-small; }
+path.timeseries { fill: none; stroke: #aaa; stroke-width: 3; }
+.axisLabel { font-size: 12px; }
+.bold { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div id="plot"></div>
+
+<div id="responses">
+	<p class="bold">What factor do you think might have caused the observed increase in fatalities? What additional information would you collect in order to test that hypothesis?</p>
+	<p>
+		I believe the population increase and increase in the number of cars on the road contributed to the increase in fatalities. To test the increase in the number of cars, I would need data on the number of cars on the road each year to normalize the number of deaths. A similar apporach could be taken for population increase.
+	</p>
+</div>
+
+<script>
+
+var height = 500;
+var width = 800;
+var padding = 30;
+
+var svg = d3.select("#plot").append("svg")
+.attr("height", height)
+.attr("width", width);
+
+// * Collect data from https://en.wikipedia.org/wiki/List_of_motor_vehicle_deaths_in_U.S._by_year 
+// * Add the value for 2015 from http://www.nsc.org/NewsDocuments/2016/mv-fatality-report-1215.pdf
+// * Plot the number of traffic fatalities per year.
+
+d3.csv("traffic.csv", function (error, rows) {
+	// Parse incoming data appropriately: numbers as numbers, dates as Dates.
+	var format = d3.time.format("%Y");
+
+	var fatalities = rows;
+	var points = rows.map(function(i) {
+		return {
+			year: format.parse(i.Year),
+			deaths: Number(i.Deaths)
+		};
+	});
+
+	var x = d3.time.scale().range([padding + 50, width - padding]);
+	var y = d3.scale.linear().range([height - padding, padding]);
+
+	var xAxis = d3.svg.axis().scale(x)
+		.orient("bottom");
+	var yAxis = d3.svg.axis().scale(y)
+		.orient("left");
+
+	x.domain(d3.extent(points, function (d) {
+		return d.year; }));
+	y.domain(d3.extent(points, function (d) {
+		return d.deaths; }));
+
+	var trend = d3.svg.line()
+		.x(function(d) { 
+			return x(d.year); })
+		.y(function(d) { return y(d.deaths) })
+
+	svg.append('path')
+	.attr("d", trend(points))
+	.attr("class", "timeseries");
+
+	// Drawing Axes
+	svg.append("g")
+	.attr("class", "axis")
+	.attr("transform", "translate(0," + (height - padding) + ")")
+	.call(xAxis);
+	svg.append("g")
+	.attr("transform", "translate(" + (padding + 50) + ", 0)")
+	.attr("class", "axis")
+	.call(yAxis);
+
+	// Drawing Labels
+	svg.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", width / 2)
+        .attr("y",  height)
+        .text("Years")
+    svg.append("text")
+    	.attr("class", "lineTitle")
+    	.attr("x", width / 2.3)
+    	.attr("y", padding / 2)
+    	.text("Driving Fatalities Timeseries")
+    	.attr("font-weight", "bold")
+
+    var yaxisLabel = svg.append("g")
+			.attr("transform", "translate(30, 70)");
+       yaxisLabel.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", 0 - height / 2 )
+        .attr("y",  0 - padding + 20)
+        .attr("transform", "rotate(-90)")
+        .text("Number of Deaths")
+
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+[true] if and only if hand [h1] beats hand [h2]
+both hands can contain the same cards; can be dups in a hand
+
+Req:
+Length of hand is 3
+
+Beats
+1. [h1] is *ranked* higher than [h2]
+1.1 Straight flush:  three cards of the same suit whose ranks are in
+consecutive order
+1.2 Three of a kind:  three cards of the same rank, regardless of suit.
+1.3 Straight:  three cards of mixed suits whose ranks are in consecutive order, as defined above ex. Ace-2-3
+1.4 Flush:  three cards of the same suit but whose ranks are not in consecutive order.
+1.5 Pair:  two cards of the same rank and a third card of a different
+ *       rank, and that do not all have the same suit.
+ 1.6 three cards of different ranks, not consecutive, and
+ *       not all of the same suit.
+
+OR IF SAME RANK (TIE)
+
+1.1 straight flushes, three-of-a-kinds, and straights,
+ *      the hand with the highest-ranked cards wins.  For example,
+ *      as straights, 6-5-4 beats 5-4-3
+ 1.2 non-straight flushes and high cards, the highest-ranked
+ *      cards are compared first and whichever is higher wins; then if those
+ *      cards tied, the middle-ranked are compared; and then the lowest.
+ *      For example, Ace-7-5 beats King-Queen-Jack
+ 1.3 When comparing pairs, the rank of the paired cards is compared first,
+ *      and whichever is higher wins; then the rank of the third (unpaired)
+ *      card is compared.  For example, King-King-5 beats Jack-Jack-Ace.
+
+COMPLETE TIE RETURN FALSE ALWAYS
+
+
+ Notes
+ Ace can be considered 14 or 1. In a tie it is the most powerful card
+
+ Approach:
+ 1. Create checks for each type of hand
+  Create variant with data that
+
+CORNER CASES;
+1.could have multiple cases on straight flush in hand- must choose highest card
+2. Ace is 1 or 14
+
+
+========PART2========
+Ending condition is if room not in list, return [] or if exit points back to itself... no quite; loop an no other exits
+

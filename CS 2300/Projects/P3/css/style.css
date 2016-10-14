@@ -1,6 +1,6 @@
 /* Main Stylesheet */
 /*Fonts
-font-family: 'Andale Mono';
+font-family: 'Hiragino Sans GB';
 font-family: 'Courier New';
 font-family: 'Hiragino Sans GB';
 	border: 2px solid black;
@@ -8,13 +8,15 @@ font-family: 'Hiragino Sans GB';
 */
 
 html, body {
-  
+	margin: 0;
+	/*overflow: hidden;*/
+	height: 100%;
 }
 
 body {
 	padding: 10px;
+	font-family: 'Hiragino Sans GB';
 }
-
 
 /****** Heading ******/
 
@@ -23,13 +25,13 @@ body {
 }
 
 #title {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 30px;
 	padding-top: 50px;
 }
 
 #title-description {
-	font-family: 'Courier New';
+	font-family: 'Hiragino Sans GB';
 	font-size: 15px;
 	padding: 20px 3px;
 	padding-bottom: 35px;
@@ -39,7 +41,7 @@ body {
 
 /****** Sidebar ******/
 #sidebar {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 18px;
  	width: 73px;
  	position: fixed; /*Fixed: same place even when scrolled*/
@@ -104,6 +106,7 @@ td {
 	height: 1150px;
 	border: 2px solid black;
 	margin-left: 150px;
+	/*position: fixed;*/
 }
 
 /****** Each Item ******/
@@ -111,6 +114,7 @@ td {
 	width: 250px;
 	height: 1070px;
 }
+
 
 .inner-border {
 	width: 840px;
@@ -146,6 +150,8 @@ td {
 	padding-left: 170px;
 }
 
+}
+
 .line {
 	width: 253px;
 	height: 0px;
@@ -153,6 +159,31 @@ td {
 	margin-top: 20px;
 
 }
+
+.longline {
+	margin-left: auto;
+  	margin-right: auto;
+	width: 850px;
+	height: 0px;
+	border: 1px solid black;
+	margin-top: 20px;
+	margin-bottom: 60px;
+
+}
+
+.splitline {
+	margin-left: auto;
+  	margin-right: auto;
+	width: 850px;
+	height: 0px;
+	border: 1px solid black;
+	margin-top: 20px;
+	margin-bottom: 60px;
+	margin-left: -2em;
+
+}
+
+
 
 .aline {
 	width: 503px;
@@ -162,7 +193,7 @@ td {
 }
 
 .item-title {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 15px;
 /*	font-family: 'Hiragino Sans GB';
 	font-size: 12px;*/
@@ -170,7 +201,7 @@ td {
 }
 
 .album-title {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 20px;
 	padding-top: 20px;
 }
@@ -179,7 +210,7 @@ td {
 /*	overflow-y: hidden; */
 	width: 240px;
 	padding: 5px;
-	font-family: 'Courier New';
+	font-family: 'Hiragino Sans GB';
 	font-size: 10px;
 	background-color: #F5F5F5;
 	position: relative;
@@ -194,10 +225,16 @@ td {
 
 img {
 	width: 100%;
+	height: 100%;
 	-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.searchImg img {
+
 }
 
 #img-2 {
@@ -207,7 +244,7 @@ img {
 /****** Add Form ******/
 form {
 	padding: 2em;
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 
 }
 
@@ -247,13 +284,40 @@ input[type="text"] {
 	font-family: 'Hiragino Sans GB';
 }
 
+form.editPhotos, form.editAlubms {
+	padding: 0;
+}
+form.editPhotos input.pid, form.editAlubms input.aid  {
+	display: none;
+}
+
+.editPhotos input, .editAlubms input {
+    border: none;
+    border-bottom: 2px solid;
+    height: 20px; 
+    width: 250px; 
+    margin: 15px 0px;
+    outline: none;
+    font-size: 12px;
+}
+
+.editPhotos textarea {
+    border: none;
+    border-bottom: 2px solid;
+    height: 20px; 
+    width: 250px; 
+    margin: 15px 0px;
+    outline: none;
+    font-size: 12px;
+}
+
 /****** Button ******/
 
 button {
 	padding: 10px;
 	background: white;
 	border: solid 2px;
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 15px;
 	position: relative;
 	right: 0;
@@ -269,12 +333,16 @@ button:hover {
     transition: background .5s, color .5s;
 }
 
+button.form-button:focus {
+	outline: 0;
+}
+
 /****** Form Validation Messages ******/
 .contentSubmit {
 	text-align: center;
 	position: relative;
 	font-size: 14pt;
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	padding-top: 20px;
 	padding-bottom: 40px;
 
@@ -290,16 +358,16 @@ button:hover {
 
 /****** Footer ******/
 footer {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	font-size: 10px;
-	padding-left: 770px;
-	padding-top: 50px;
+	padding-left: 830px;
+	padding-top: 10px;
 }
 
 
 /****** Album Table ******/
 .aitems {
-	font-family: 'Andale Mono';
+	font-family: 'Hiragino Sans GB';
 	border: none;
     height: 20px; 
     width: 90%; 
@@ -320,26 +388,54 @@ footer {
   color: #3b444c;
 }
 
-h1 {
-  
+.space {
+	height: 40px;
 }
 
-p {
-  
+th {
+	padding-bottom: 10px;
+    text-align: left;
 }
 
-img {
-  
+/****** Single Photo ******/
+.single {
+	padding: 10px;
 }
 
-#page-content {
-  
+.left {
+	width: 400px;
+	height: 390px;
+	border: 2px solid black;
+	overflow: hidden;
+	float: left; 
+	width: 45%;
+	/*position: relative*/
 }
 
-header nav ul {
-  
+.descrip {
+	float: right; 
+	width: 50%;
 }
 
-header nav ul li {
-  
+.head {
+	font-weight: bold;
+	font-size: 20px;
 }
+
+/****** Paper.js ******/
+canvas[resize] {
+    width: 100%;
+    height: 100%;
+}
+
+#canvas {
+	width: 100%;
+    height: 1500px;
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: absolute;
+	z-index: -10000;
+}
+
+

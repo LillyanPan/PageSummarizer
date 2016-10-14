@@ -1,0 +1,584 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<title>Lillyan Pan (ldp54)</title>
+		<!-- TODO
+		Rotate y-axis label
+		Add padding to axes ticks in 2c
+		Check log scale descrip -->
+		<style>
+			body {
+				font-family: "Open Sans";
+				padding: 10px;
+			}
+			svg {
+				padding: 40px;
+			}
+			.axis1, .axis2 path { 
+				fill: none; stroke: black; 
+			}
+			.axis3 path {
+				fill: none; stroke: black; 
+			}
+			.axis1, .axis2 line { 
+				stroke: black; 
+			}
+			.axis3 line {
+				stroke: black; 
+			}
+			.axis1 text { 
+				display: none;
+			}
+			.axis2, .axis3 text {
+				font-size: 8px;
+			}
+
+			text {
+				/*text-anchor: middle;*/
+			}
+			.axisLabel {
+				font-size: 10px;
+			}
+			.axisLabelY {
+				font-size: 10px;
+				transform: rotate(90deg);
+				/*transform: translate(75px, -80px);*/
+			}
+			.title {
+				font-size: 15px;
+			}
+			.title2 {
+				font-size: 12px;
+				font-weight: bold;
+			}
+			.axis1, .axis2 path {
+				fill: none;
+			}
+			.graphText {
+				font-size: 8px;
+			}
+			.tank {
+				fill: black;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>Homework 3</h1>
+		<p>
+			Problem 1: Fig. 2 from the Wickham reading
+		</p>
+		<p>
+			<svg height="200" width="200"></svg>
+			<script>
+				var dataset = [ 
+					{x: 2, y: 4, shape: "circle"},
+					{x: 1, y: 1, shape: "circle"},
+					{x: 4, y: 15, shape: "rect"},
+					{x: 9, y: 80, shape: "rect"}
+
+				];
+				var margin = {top: 20, right: 20, bottom: 20, left: 20};
+				var padding = {top: 60, right: 60, bottom: 60, left: 60};
+				var outerWidth = 200;
+				var outerHeight = 200;
+				var innerWidth = 200 - margin.right - margin.left;
+				var innerHeight = 200 - margin.top - margin.bottom;
+				// var width = innerWidth - padding.left - padding.right;
+    // 			var height = innerHeight - padding.top - padding.bottom;
+
+				var svg = d3.select("svg");
+					// .attr("width", outerWidth)
+					// .attr("height", outerHeight);
+				var height = svg.attr("height");
+				var width = svg.attr("width");
+
+				var padding = 30;
+				var w = 200;
+    			var h = 200;
+    			var xScale = d3.scale.linear()
+					.domain([-.1, .1 + d3.max(dataset, function(d) {return d.x; })])
+    				.range([padding, w - padding]);
+    			var yScale = d3.scale.linear()
+					.domain([.9, .1 + d3.max(dataset, function(d) {
+					return d.y; })])
+    				.range([h - padding, padding]);
+
+				var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+					.ticks(8);
+				var yAxis = d3.svg.axis().scale(yScale).orient("left")
+					.ticks(8);
+					
+				svg.append("g").attr("transform", "translate(0," + (height - padding) + ")")
+					.attr("class", "axis1")
+					.call(xAxis);
+				svg.append("g").attr("transform",  "translate(" + padding + ",0)")
+					.attr("class", "axis1")
+					.call(yAxis);
+
+				// x,y axis labels; title
+				svg.append("text")
+					.attr("class", "axisLabel")
+			        .attr("x", 100)
+			        .attr("y",  200)
+			        .text("A");
+			    svg.append("text")
+			    	.attr("class", "axisLabel")
+			    	.attr("x", 5)
+			    	.attr("y", 100)
+			    	.text("C")
+			    svg.append("text")
+			    	.attr("class", "title")
+			    	.attr("x", 100)
+			    	.attr("y", 15)
+			    	.text("Title")
+			    group1 = svg.append("g")
+			    	.attr("transform", "translate(0,-10)");
+				
+				dataset.forEach( function(d, i) {
+					if (d.shape == "circle") {
+						group1.append("circle")
+							.attr("class", "circle")
+							.attr("cx", xScale(d.x))
+							.attr("cy", yScale(d.y))
+							.attr("r", 4)
+							.on('click', function() {
+								d3.select(this).style("fill", "blue");
+							})
+					}
+					else {
+						group1.append("rect")
+							.attr("class", "square")
+							.attr("x", xScale(d.x) - 10)
+							.attr("y", yScale(d.y) + 10)
+							.attr("width", "8")
+							.attr("height", "8")
+							.on('click', function() {
+								d3.select(this).style("fill", "blue");
+							})
+					}
+				});
+
+
+			</script>
+		</p>
+
+		<p>
+			Problem 2a: Plot data about English word frequencies from Google Books using a linear scale. This visualization is not useful because the scaling makes the graph diffcult to understand. Because rank must range from [1, 65536], it looks like there is no rank difference between words with rank [1-64] when looking at the graph. Also, because count ranges from [144913, 15342397280], any word with a count &#60  746702714 is placed at the bottom of the y-axis, making the graph unreadable.
+		</p>
+		<p>
+			<script>
+				var wordRanks = [{rank: 1, count: 15342397280, word: "of"},
+									{rank: 2, count: 7611765281, word: "in"},
+									{rank: 4, count: 11021132912, word: "and"},
+									{rank: 8, count: 3021925527, word: "for"},
+									{rank: 16, count: 1562321315, word: "at"},
+									{rank: 32, count: 746702714, word: "more"},
+									{rank: 64, count: 652703221, word: "its"},
+									{rank: 128, count: 186584246, word: "different"},
+									{rank: 256, count: 102237666, word: "light"},
+									{rank: 512, count: 44824164, word: "middle"},
+									{rank: 1024, count: 34340679, word: "additional"},
+									{rank: 2048, count: 11864923, word: "abandoned"},
+									{rank: 4096, count: 7506730, word: "motive"},
+									{rank: 8192, count: 10615754, word: "Die"},
+									{rank: 16384, count: 907890, word: "portrays"},
+									{rank: 32768, count: 226851, word: "Fundamentally"},
+									{rank: 65536, count: 144913, word: "dv"}];
+
+				var bodySelection = d3.select("body");
+				var svg = bodySelection.append("svg")
+					.attr("width", 200)
+					.attr("height", 200);
+
+				var height = svg.attr("height");
+				var width = svg.attr("width");
+
+				var group2a = svg.append("g")
+					.attr("transform", "translate(15,0)");
+
+				var padding = 30;
+				var w = 200;
+    			var h = 200;
+    			var xScale = d3.scale.linear()
+					.domain([1, 10000 + d3.max(wordRanks, function(d) {return d.rank; })])
+    				.range([padding, w - padding]);
+    			var yScale = d3.scale.linear()
+					.domain([144913, 2000000000 + d3.max(wordRanks, function(d) {return d.count; })])
+    				.range([h - padding, padding]);
+
+				var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+				// SI-prefix
+					.ticks(8, "s");
+				var yAxis = d3.svg.axis().scale(yScale).orient("left")
+					.ticks(8, "s");
+					
+				group2a.append("g").attr("transform", "translate(0," + (height - padding) + ")")
+					.attr("class", "axis2")
+					.call(xAxis);
+				group2a.append("g").attr("transform",  "translate(" + padding + ",0)")
+					.attr("class", "axis2")
+					.call(yAxis);
+
+				wordRanks.forEach(function (d, i) {
+					group2a.append("text")
+						.attr("class", "graphText")
+						.attr("x", xScale(d.rank))
+						.attr("y", yScale(d.count))
+						.text(d.word)
+				});
+				group2a.append("text")
+			    	.attr("class", "title2")
+			    	.attr("x", 20)
+			    	.attr("y", 15)
+			    	.text("English Word Frequencies")
+
+				group2a.append("text")
+					.attr("class", "axisLabel")
+			        .attr("x", 90)
+			        .attr("y",  200)
+			        .text("rank")
+			    svg.append("text")
+					.attr("class", "axisLabelY")
+			        .attr("x", 75)
+			        .attr("y",  20)
+			        .text("count")
+			        .style("transform", "rotate(180)");
+
+			</script>
+		</p>
+
+		<p>
+			Problem 2b: Use log (use Math.log()) to convert values to a pixel value with a linear scale. Each word's count and rank and now converted logorithmically and then plotted on a linear scale, so we see a linear line of words on the graph.
+		</p>
+		<p>
+			<script>
+				var bodySelection = d3.select("body");
+				var svg = bodySelection.append("svg")
+					.attr("width", 200)
+					.attr("height", 200);
+				var height = svg.attr("height");
+				var width = svg.attr("width");
+
+				var padding = 30;
+				var w = 200;
+    			var h = 200;
+
+    			group2b = svg.append("g")
+			    	.attr("transform", "translate(15,0)");
+
+    			var xScale = d3.scale.linear()
+					.domain([Math.log(1)/Math.log(2), 10 + d3.max(wordRanks, function(d) {return Math.log(d.rank)/Math.log(2); })])
+    				.range([padding, w - padding]);
+    			var yScale = d3.scale.linear()
+					.domain([Math.log(144913)/Math.log(2), d3.max(wordRanks,function(d) {
+					return Math.log(d.count)/Math.log(2); })])
+    				.range([h - padding, padding]);
+
+				var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+				// SI-prefix
+					.ticks(8, "s");
+				var yAxis = d3.svg.axis().scale(yScale).orient("left")
+					.ticks(8, "s");
+					
+				group2b.append("g").attr("transform", "translate(0," + (height - padding) + ")")
+					.attr("class", "axis2")
+					.call(xAxis);
+				group2b.append("g").attr("transform",  "translate(" + padding + ",0)")
+					.attr("class", "axis2")
+					.call(yAxis);
+
+				wordRanks.forEach(function (d, i) {
+					group2b.append("text")
+						.attr("class", "graphText")
+						.attr("x", xScale(Math.log(d.rank)/Math.log(2)))
+						.attr("y", yScale(Math.log(d.count)/Math.log(2)))
+						.text(d.word)
+				});
+
+				group2b.append("text")
+			    	.attr("class", "title2")
+			    	.attr("x", 20)
+			    	.attr("y", 15)
+			    	.text("English Word Frequencies")
+
+				group2b.append("text")
+					.attr("class", "axisLabel")
+			        .attr("x", 90)
+			        .attr("y",  200)
+			        .text("rank")
+
+				svg.append("text")
+					.attr("class", "axisLabelY")
+			        .attr("x", 75)
+			        .attr("y",  20)
+			        .text("count")
+			        .style("transform", "rotate(180)");
+
+			</script>
+		</p>
+
+		<p>
+			Problem 2c: Using d3.scale.log(). Rotating x-axis text from http://bl.ocks.org/mbostock/4403522
+		</p>
+		<p>
+			<script>
+				var bodySelection = d3.select("body");
+				var svg = bodySelection.append("svg")
+					.attr("width", 200)
+					.attr("height", 200);
+				var w = 200;
+    			var h = 200;
+    			var xScale = d3.scale.log()
+    				.base(Math.E)
+					.domain([1, 10000000 + d3.max(wordRanks, function(d) {return (d.rank); })])
+    				.range([padding, w - padding]);
+    			var yScale = d3.scale.log()
+    				.base(Math.E)
+					.domain([(144913), 10000000000 + d3.max(wordRanks,function(d) {
+					return (d.count); })])
+    				.range([h - padding, padding]);
+
+				var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+					// .tickValues([5, 100, 550, 5000, 95536])
+					.ticks(5);
+				var yAxis = d3.svg.axis().scale(yScale).orient("left")
+					.ticks(5);
+
+				var group2c = svg.append("g")
+					.attr("transform", "translate(10,0)");
+				//svg.append("g").attr("transform", "translate(0," + (height - padding) + ")")
+				group2c.append("g").attr("transform", "translate(0," + yScale(144913) + ")")
+					.attr("class", "axis2")
+					.call(xAxis)
+					// Rotating x-axis text from http://bl.ocks.org/mbostock/4403522
+					.selectAll("text")
+					.attr("y", 0)
+    				.attr("x", 8)
+					.attr("dy", ".35em")
+					.attr("transform", "rotate(90)")
+					.style("text-anchor", "start");
+				group2c.append("g").attr("transform",  "translate(" + padding + ",0)")
+					.attr("class", "axis2")
+					.call(yAxis);
+
+				wordRanks.forEach(function (d, i) {
+					group2c.append("text")
+						.attr("class", "graphText")
+						.attr("x", (xScale(d.rank)))
+						.attr("y", (yScale(d.count)))
+						.text(d.word)
+				});
+				group2c.append("text")
+			    	.attr("class", "title2")
+			    	.attr("x", 20)
+			    	.attr("y", 15)
+			    	.text("English Word Frequencies")
+
+				group2c.append("text")
+					.attr("class", "axisLabel")
+			        .attr("x", 90)
+			        .attr("y",  210)
+			        .text("rank")
+
+				svg.append("text")
+					.attr("class", "axisLabelY")
+			        .attr("x", 75)
+			        .attr("y",  20)
+			        .text("count")
+			        .style("transform", "rotate(180)");
+
+			</script>
+		</p>
+	
+		<p>
+			Problem 3: Line plots. Simulate a projectile trajectory. Intitial velocity chosen: 50 m/s, angle: 0.429 radians (24.6 degrees). Note, I call js functions currdy, currdx in order to calculate the x,y current positions (xPos, yPos).
+		</p>
+		<p>
+			<script>
+				var initialV = 50.0;
+				var theta = 0.429;
+				var gravity = 9.8;
+				var initialY = 1.0;
+				var points = [];
+
+				var bodySelection = d3.select("body");
+				var svg = bodySelection.append("svg")
+					.attr("width", 800) //1: 33.55 710, 3.55
+					.attr("height", 400); //1: 363.2 340: 6.8
+    			var w = 800;
+    			var h = 400;
+    			var xScale = d3.scale.linear()
+    				.domain([0, 200])
+    				.range([padding, w - padding * 2]);
+    			var yScale = d3.scale.linear()
+    				.domain([0, 50])
+    				.range([h - padding, padding]);
+
+    			var xAxis = d3.svg.axis()
+							  .scale(xScale)
+							  .orient("bottom")
+							  .ticks(5);
+				var yAxis = d3.svg.axis()
+							  .scale(yScale)
+							  .orient("left")
+							  .ticks(5);
+
+				group3 = svg.append("g")
+			    	.attr("transform", "translate(10,0)");
+				group3.append("g")
+					.attr("class", "axis3")
+					.attr("transform", "translate(0," + (h - padding) + ")")
+					.call(xAxis);
+			
+				// Y axis
+				group3.append("g")
+					.attr("class", "axis3")
+					.attr("transform", "translate(" + padding + ",0)")
+					.call(yAxis);
+				group3.append("rect")
+					.attr("class", "tank")
+					.attr("x", 704.5)
+					.attr("y", 350)
+					.attr("width", 21.3)
+					.attr("height", 20.4);
+
+				function currdy(time) {
+					return (initialV * Math.sin(theta) * time) - (gravity * time);
+				}
+				function currdx(time) {
+					return initialV * Math.cos(theta);
+				}
+				function xPos(time) {
+					return currdx(time) * time;
+				}
+				function yPos(time) {
+					return (initialY + (currdy(time) + (gravity * time)) - (0.5 * gravity * Math.pow(time, 2)));
+				}
+
+				var traj = d3.svg.line()
+					.x(function (d) { return xScale(d.x); })
+					.y(function (d) { return yScale(d.y); })
+				
+				var i = 0.0;
+				var currX = xPos(i);
+				while (currX < 190) {
+					currX = xPos(i);
+					var currY = yPos(i);
+					var dy = currdy(i);
+					var dx = currdx(i);
+					var valueToPush = {};
+					valueToPush["x"] = currX;
+					valueToPush["y"] = currY;
+					valueToPush["dy"] = dy;
+					valueToPush["dx"] = dx;
+					points.push(valueToPush);
+					i += 0.2;
+
+				}
+
+				group3.append("text")
+			    	.attr("class", "title")
+			    	.attr("x", 340)
+			    	.attr("y", 15)
+			    	.text("Projectile Motion")
+			    group3.append("text")
+			    	.attr("class", "axisLabel")
+			        .attr("x", 370)
+			        .attr("y",  400)
+			        .text("meters");
+				group3.append("path").attr("d", traj(points))
+					.attr("class", "plot")
+					.attr("stroke", "red")
+					.attr("fill", "none")
+					.style("opacity", 0.25)
+					.style("stroke-width", "5px");
+			    svg.append("text")
+					.attr("class", "axisLabelY")
+			        .attr("x", 175)
+			        .attr("y",  20)
+			        .text("meters");
+
+			</script>
+		</p>
+		
+		<p>
+			Problem 4: Find the longitude and latitude coordinates of three places you have lived, or want to live.
+		</p>
+		<p>
+			<div id="map"></div>
+			<script>
+				var width = 960,
+    			height = 500;
+
+    			var projection = d3.geo.equirectangular();
+
+    			var path = d3.geo.path().projection(projection);
+	
+				var svg = d3.select("#map").append("svg")
+				    .attr("width", width)
+				    .attr("height", height);
+				var g = svg.append("g");
+
+				var worldObjects;
+				d3.json("world-50m.json", function(error, world) {
+					worldObjects = world;
+					
+					// Check for errors
+					if (error) { console.log(error); }
+					
+
+					var countries = topojson.feature(world, world.objects.countries).features;
+					
+					// convert each country's data into a path element
+					countries.forEach(function (country) {
+						g.append("path").attr("d", path(country))
+						.style("fill", "#ccc")
+						.style("stroke", "#888");
+					});
+					var minnCoords = projection([-93, 44]);
+						g.append("circle").attr("cx", minnCoords[0])
+						.attr("cy", minnCoords[1])
+						.attr("r", 5)
+						.style("fill", "#9999ff")
+						g.append("text")
+						.attr("dx", minnCoords[0])
+						.attr("dy", minnCoords[1] + 15)
+						.text("Minneapolis, MN")
+						.attr("text-anchor","middle")
+    					.attr('font-size','6pt');
+						
+						var shanghai = projection([121.5,31.2]);
+						g.append("circle").attr("cx", shanghai[0])
+						.attr("cy", shanghai[1])
+						.attr("r", 5)
+						.style("fill", "#885EAD")
+						g.append("text")
+						.attr("dx", shanghai[0])
+						.attr("dy", shanghai[1] + 15)
+						.text("Shanghai, China")
+						.attr("text-anchor","middle")
+    					.attr('font-size','6pt');
+
+    					var island = projection([105.6, -10.5]);
+						g.append("circle").attr("cx", island[0])
+						.attr("cy", island[1])
+						.attr("r", 5)
+						.style("fill", "#4c4cff");
+						g.append("text")
+						.attr("dx", island[0])
+						.attr("dy", island[1] + 15)
+						.text("Christmas Island, Australia")
+						.attr("text-anchor","middle")
+    					.attr('font-size','6pt');
+	
+
+				});
+			</script>
+		</p>
+
+
+	</body>
+</html>

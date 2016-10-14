@@ -1,0 +1,73 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 4. Will not compile bc let y = x; -> need IN not \'93\'91;\'93\
+\
+5. Compiles, can put a fail with anywhere in code\
+\
+6. let f g x = x g in f\
+f: \'91a -> _ -> _ ->\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f1\fs22 \cf0 \CocoaLigature0 'a -> ('a -> 'b) -> 'b
+\f0\fs24 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+x must be a function\
+no info on g\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 x: \'92a -> \'91b\
+because f has to take in \'91a and x has to take in \'91a\
+\
+Look at type checking\
+\
+7. let h x y z if x then y else z in h\
+bool -> \'91a -> \'91a -> \'91a\
+\
+8. Will complain about acc::elt\
+fun acc let -> acc::elt\
+would be \'91b -> \'91b -> \'91b list\
+\
+10. No x::x::t complains bc declaring three variables; declaring same var twice (use when clause)\
+\
+11. Yes; \'93zar\'94 when pattern matching the scope of the var is only within match\
+to match 2\
+use when\
+\
+12. Will compile, but doesn\'92t work as expected\
+always catch \'93not equal\'94 first clause\
+\
+13. match x,y on variants\
+OR use booleans match (x<0, y<0)\
+\
+14. social network which contains nodes and edges\
+record of nodes\
+node record with edges\
+\
+OR\
+overall graph is a variant\
+type graph = Node of (contents of graph list) | Edge of _\
+\
+Tuple: and -> record\
+\
+persistent: creates a new stack after functor ** persistent data structures\
+\
+Dot syntax only works on modules (Stack.empty not implemented)\
+\
+ListStack.push 1 [] _> don\'92t know that type is list\
+Fix: model ListStack : Stack with \'91a t = \'91a list = struct\
+18. Can\'92t pass in module into function because modules are not first-class citizen\
+FIX: (fun s: \'91a ListStack.t) ListStack.push 1 s.t\
+\
+19. r: int Ring\
+include Ring: import types t\
+t: int\
+\
+AF: \
+\
+1,2,3\
+}

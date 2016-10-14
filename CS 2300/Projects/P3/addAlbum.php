@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +18,10 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Source: http://paperjs.org/tutorials/ ! -->
+	<script type="text/javascript" src="js/paper-full.js"></script>
+	<script type="text/paperscript" src="js/paperScript.js" canvas="canvas"></script>
 	
     <!-- This is the text that appears on the browser tab -->
 	<title>Album</title>
@@ -32,9 +38,16 @@ Add Page: Users can add images to a specific/their albums or create a new album
  -->
 
 <body>
+	<canvas id="canvas" resize></canvas>
 	<?php 
 	include("includes/phpfile.php"); 
-	echo customHeader("Add Album", "~~Expand the collection~~");
+	if (isset($_SESSION['logged_user']) && $_SESSION['logged_user'] == 'ldp54') {
+		echo customHeaderAdmin("Add Album", "~~Expand the collection~~");
+	}
+	else {
+		echo customHeader("Add Album", "~~Expand the collection~~");
+	}
+
 
 	require_once 'includes/config.php';
 	$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
@@ -43,7 +56,7 @@ Add Page: Users can add images to a specific/their albums or create a new album
 		<div class="inner-border">
 			<div class="form-content">
 				<!-- <form action="functions.php" method="post"> -->
-				<form action="addAlbum.php" method="post" enctype="multipart/form-data">
+				<form class="add" action="addAlbum.php" method="post" enctype="multipart/form-data">
 					Album <br>
 					<input type="text" name="title"> <br>
 					Image Link <br>
@@ -57,14 +70,14 @@ Add Page: Users can add images to a specific/their albums or create a new album
 			/*********** Form Validation ***********/ 
 
 			if (isset($_POST['submit'])) {
-				$title = $_POST['title'];
+				$title = trim(filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING));
 				$imagelink = $_POST['imagelink'];
 
 					// For-loop checking if form is all filled
-				$required = array('title', 'imagelink');
+				$required = array($title, $imagelink);
 					$missing = false; // false if everything's filled
 					foreach ($required as $field) {
-						if (empty($_POST[$field])) {
+						if (empty($field)) {
 							$missing = true;
 						}
 					}
@@ -85,19 +98,28 @@ Add Page: Users can add images to a specific/their albums or create a new album
 					// Regular Expression adapted from http://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
 						// else if (!preg_match("#^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$#",$imagelink)) {
 						
-						else if (filter_var($imagelink, FILTER_VALIDATE_URL) === false) {
+						if (filter_var($imagelink, FILTER_VALIDATE_URL) === false) {
 							echo "<div class='contentSubmit'>";
 							echo "Not a valid image link";
 							echo "</div>";
 						}
 					// Successful submit
 						else {
-							$sql1 = "INSERT INTO Albums (aTitle, aCoverPhoto) 
-							VALUES ('$title', '$imagelink')";
-							$result1 = $mysqli->query($sql1);
-							echo "<div class='contentSubmit'>";
-							echo "Thanks for adding!";
-							echo "</div>";
+							$query = "SELECT * FROM Albums WHERE aTitle = '$title'";
+							$result = $mysqli->query($query);
+							if ( $result->num_rows != 0) {
+								echo "<div class='contentSubmit'>";
+								echo "Duplicate Name.";
+								echo "</div>";
+							}
+							else {
+								$sql1 = "INSERT INTO Albums (aTitle, aCoverPhoto) 
+								VALUES ('$title', '$imagelink')";
+								$result1 = $mysqli->query($sql1);
+								echo "<div class='contentSubmit'>";
+								echo "Thanks for adding!";
+								echo "</div>";
+							}
 						}
 					}
 				}

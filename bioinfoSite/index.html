@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- This is the character encoding of my website -->
+	<meta charset="UTF-8">
+    
+    <!-- This tells search engines what the website is about -->
+	<meta name="description" content="This is Lillyan's website">
+	
+    <!-- This is that tiny icon in the topleft of your browser tab -->
+    <link rel="icon" href="favicon.ico">
+    
+    <!-- This is your external CSS file for making things pretty -->   
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/freelancer.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Optional theme -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> 
+	
+    <!-- This is the text that appears on the browser tab -->
+	<title>BioInfo 4831 Site</title>
+    
+</head>
+
+
+
+<body>
+	<!-- Global Navigation Menu Bar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="http://bscb-teaching.cb.bscb.cornell.edu/~ldp54/index.html">Search</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="http://bscb-teaching.cb.bscb.cornell.edu/~ldp54/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+	</nav>
+
+	<header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="" alt="">
+                    <div class="intro-text">
+                        <span class="name">BioInformatics Final</span>
+                        <hr class="star-light">
+                        <span class="skills">Explore your favorite proteins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</header>
+	<div class="jumbotron">
+	<div class="container">
+	<h2>Welcome</h2>
+        <p>This site is a database of high-quality and non-high-quality protein-protein interactions in S. cerevisiae. This was created through BTRY 4831 as a final project. To search for proteins only fill in one field.</p>
+    </div>
+    </div>
+    <div class="content">
+        <div class="form-content">
+        <h3>Gene Lookup</h3>
+        <span>One fill in on field.</span>
+        <!-- <form action="functions.php" method="post"> -->
+        <!-- /home/local/CORNELL/ldp54/final/cgi-bin/test.cgi -->
+        <form action="cgi-bin/test.cgi" method="post" enctype="multipart/form-data">
+            <fieldset class="form-group">
+                Gene Name <br>
+                <input type="text" class="form-control" name="name" placeholder="Ex. SXM1"> <br>
+                ORF Name <br>
+                <input type="text" class="form-control" name="orf" placeholder="Ex. YDR395W"> <br>
+                Entrez Gene ID <br>
+                <input type="text" class="form-control" name="entrez" placeholder="Ex. 850331"> <br>
+            </fieldset>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+	
+    
+	<footer>
+        <!-- Tell people that this is my oc website do not steal -->
+        <div id="copyright-date">
+            Copyright &copy; 2016 Lillyan Pan. All rights reserved.
+        </div>
+	</footer>
+    
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<html>
+<head>
+<!-- assume that this URL is available -->
+<script src="d3.v3.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+<body>
+
+<div id="broken"></div>
+
+<script>
+// Errors start here
+
+// ERROR needs more padding
+var height = 300;
+var width = 300;
+var padding = 40;
+
+// ERROR; select "#broken"
+var svg = d3.select("#broken").append("svg")
+.attr("height", height) // ERROR incorrectly assigning attribute
+.attr("width", width); // ERROR typo in width; ERROR incorrectly assigning attribute
+
+var points = [];
+
+// ERROR missing parameter in function (??) missing error
+// ERROR using csv rather than json
+// ERROR function needs to encompass all of transformation
+d3.json("broken.txt", function(error, data) {
+	points = data;
+	var circles = svg.selectAll("circle").data(points);
+
+	// ERROR forgot linear() in xScale
+	// ERROR forgot linear() in yScale
+	// ERROR (??) should define padding = 4; not enough?
+	var xScale = d3.scale.linear().domain([0, 1]).range([padding, width-padding]);
+	var yScale = d3.scale.linear().domain([0, 1]).range([height-padding, padding]);
+
+	// ERROR not calling xAxis
+	// ERROR not calling yAxis
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+	var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+	// ERROR not appending xAxis
+	// ERROR not appending yAxis
+	svg.append("g") 
+		 	.attr("class", "xAxis")
+		 	.attr("transform", "translate(0," + (height - padding) + ")")
+		 	.call(xAxis);
+	svg.append("g")
+		.attr("class", "yAxis")
+		.attr("transform", "translate(" + padding + ", 0)")
+		.call(yAxis);
+
+	//ERROR unnecessary ";"
+	// ERROR in enter(), but trying to do circle
+	// ERROR accessing .x instead of .a
+	// ERROR accessing .y instead of .b
+	// ERROR calling xScale on y instead of yScale
+	// ERROR using attr "x" instead of "cx"
+	// ERROR using attr "y" instead of "cy"
+	// ERROR use fill not color??
+	// ERROR incorrect order of function definition (called before defined) for xScale
+	// ERROR incorrect order of function definition (called before defined) for yScale
+	// ERROR missing return in x
+	// ERROR missing return in y
+	circles.enter().append("circle")
+	.attr("r", 4)
+	.attr("cx", function(point) { return xScale(point.a); })
+	.attr("cy", function (point) { return yScale(point.b); })
+	.style("fill", "#ff7777");
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<html>
+<head>
+<!-- Load the d3 library. -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<style>
+body { font-family: "Open Sans"; }
+svg { border: solid black 1px; }
+.axis path { fill: none; stroke: black;}
+.axis line { stroke: black; }
+.axis text { font-size: x-small; }
+.axislabel { font-size: 12px }
+</style>
+</head>
+<body>
+
+<div>
+5c. The permutation test value is very similar to the t-test p-value. It is usually within .1 of each other.
+<br>
+5e. Note, when we decrease the noise in generateLinear, points in the second plot are clustered near (0,0). As we increase noise, points become detributed along the line from (0,0) to (0.5, 0.5). Note, also as we increase the amount of sample points,
+</div>
+
+<div><button id="run">Run</button></div>
+<div id="plot"></div>
+
+<script>
+
+var xScale, yScale, xDomain, yDomain;
+
+var height = 400;
+var width = 400;
+var padding = 30;
+
+var steeperSlopes;
+var numPermutations = 200;
+
+var svg = d3.select("#plot").append("svg")
+.attr("height", height)
+.attr("width", width);
+
+var xScale = d3.scale.linear().domain([-3, 3]).range([0, width]);
+var yScale = d3.scale.linear().domain([-3, 3]).range([height, 0]);
+
+var xAxis = d3.svg.axis().scale(xScale);
+svg.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate(0, " + (height / 2) + ")")
+  .call(xAxis);
+
+var yAxis = d3.svg.axis().scale(yScale).orient("left");
+svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + (width / 2) + ", 0)")
+        .call(yAxis);
+
+var pValueText = svg.append("text").attr("x", xScale(2.7)).attr("y", yScale(2.5)).style("text-anchor", "end");
+var permutationText = svg.append("text").attr("x", xScale(2.7)).attr("y", yScale(2.0)).style("text-anchor", "end");
+
+var circles;
+
+var threeDigits = d3.format(".3f");
+var gaussian = d3.random.normal();
+
+// [Part D] Create a second SVG element with an x-axis for p-values and a y-axis
+//   for permutation test values.
+// Both scales should go from zero to one. Add a diagonal line from (0,0) to (1,1).
+var svg2 = d3.select("#plot").append("svg")
+.attr("height", height)
+.attr("width", width);
+
+var xScale2 = d3.scale.linear().domain([0, 1]).range([padding*2, width - padding]);
+var yScale2 = d3.scale.linear().domain([0, 1]).range([height - padding, padding]);
+
+var xAxis2 = d3.svg.axis().scale(xScale2);
+svg2.append("g")
+  .attr("class", "axis")
+  .attr("transform", "translate( 0," + (height - padding) + ")")
+  .call(xAxis2);
+
+var yAxis2 = d3.svg.axis().scale(yScale2).orient("left");
+svg2.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + (padding*2) + ", 0)")
+        .call(yAxis2);
+svg2.append("line")
+.attr("x1", xScale2(0))
+.attr("y1", yScale2(0))
+.attr("x2", xScale2(0.5))
+.attr("y2", yScale2(0.5))
+.style("stroke", "#b2b2ff");
+
+// Drawing Labels
+svg2.append("text")
+	.attr("class", "axisLabel")
+    .attr("x", width / 2)
+    .attr("y",  height)
+    .text("p-values")
+svg2.append("text")
+	.attr("class", "lineTitle")
+	.attr("x", width / 3)
+	.attr("y", padding / 2)
+	.text("P-values vs. t-values")
+	.attr("font-weight", "bold")
+
+var yaxisLabel = svg2.append("g")
+		.attr("transform", "translate(30, 70)");
+   yaxisLabel.append("text")
+	.attr("class", "axisLabel")
+    .attr("x", 0 - height / 2 )
+    .attr("y",  0 - padding + 20)
+    .attr("transform", "rotate(-90)")
+    .text("Permutation Test Values")
+
+
+
+function run() {
+	var points = generateLinear(10, 0.1, 0, 0.3);
+	
+
+	svg.selectAll("line").remove();
+
+	circles = svg.selectAll("circle").data(points)
+	circles.enter().append("circle");
+
+	circles
+	.attr("cx", function (d) { return xScale(d.x); })
+	.attr("cy", function (d) { return yScale(d.y); })
+	.attr("r", 3).style("fill", "#99d8c9");
+
+	var model = getModel(points);
+
+	pValueText.text("p-value: " + threeDigits(model.p));
+
+	drawLine(model, "#2ca25f", 0.5);
+
+	steeperSlopes = 0;
+	numPermutations = 200;
+
+	// [Part B] Create 200 random permutations of the real data.
+	// For each one, compute a linear model from that permuted data.
+	//  Check whether the absolute value of the permuted-data slope is larger
+	//   than the absolute value of the real-data slope.
+	//  Set "steeperSlopes" equal to the total number of permutations
+	//   for which this condition is true.
+
+	for (var i = 0; i < 200; i++) {
+		var shuffleP = permute(points);
+		var shuffleModel = getModel(shuffleP);
+		drawLine(shuffleModel, "#ffd27f", 0.5);
+		if (Math.abs(shuffleModel.slope) > Math.abs(model.slope)) {
+			steeperSlopes++
+		}
+	}
+
+	permutationText.text("permutation: " + threeDigits(0.5 * steeperSlopes / numPermutations));
+	
+	// [] Add a point on the second plot with x equal to the p-value of
+	//  the real-data model, and y equal to half the proportion of 
+	//  permuted-data models with a steeper slope than the real-data model.
+
+	svg2.append("circle")
+	.attr("cx", xScale2(threeDigits(model.p)))
+	.attr("cy", yScale2(threeDigits(0.5 * steeperSlopes / numPermutations)))
+	.attr("r", 5)
+	.style("fill", "#e5cce5")
+	.style("storke", "none");
+
+}
+d3.select("#run")
+.on("click", run).transition();
+
+function permute(points) {
+	var permutedPoints = [];
+
+	// [Part A] Create a new array of x,y pairs. The x values should be the same as 
+	//  the x values in the input array "points", but the y values should be
+	//  randomly shuffled.
+
+	var yCor = [];
+	var xCor = [];
+	for (point in points) {
+		yCor.push(points[point].y);
+		xCor.push(points[point].x);
+	}
+	d3.shuffle(yCor);
+	for (x in xCor) {
+		permutedPoints.push({ x: xCor[x], y: yCor[x] })
+	}
+	
+	return permutedPoints;
+}
+
+function drawLine(model, color, opacity) {
+	svg.append("line")
+	.attr("x1", xScale(-3))
+	.attr("y1", yScale(model.slope * -3 + model.intercept))
+	.attr("x2", xScale(3))
+	.attr("y2", yScale(model.slope * 3 + model.intercept))
+	.style("opacity", opacity)
+	.style("stroke", color);
+}
+
+// Generate fake data from a Gaussian linear model.
+function generateLinear(n, slope, intercept, noise) {
+	var points = [];
+	
+	for (var i = 0; i < n; i++) {
+	    var x = gaussian();
+	    // Deterministic part
+	    var y = x * slope + intercept;
+		// Random part
+		y += noise * gaussian();
+    
+	    points.push( { x: x, y: y } );		
+	}
+
+	return points;
+}
+
+// Get a regression model from a set of x,y pairs.
+function getModel (activePoints) {	
+	var model = {};
+
+	var meanX = d3.mean(activePoints, function (d) { 
+		return d.x;
+	});
+
+	var meanY = d3.mean(activePoints, function (d) { 
+		return d.y;
+	});
+
+	var sumSquaredX = d3.sum(activePoints, function (d) {
+		return (d.x - meanX) * (d.x - meanX);
+	});
+	
+	// Set model parameters
+	model.slope = d3.sum(activePoints, function (d) {
+		return (d.x - meanX) * (d.y - meanY);
+	});
+	model.slope /= sumSquaredX;
+	model.intercept = meanY - model.slope * meanX;
+		
+	// Add up the squared errors
+	var sumSquaredErrors = d3.sum(activePoints, function (d) {
+		var error = d.y - (model.slope * d.x + model.intercept);
+		return error * error;
+	});
+	
+	// Here's where we compute the statistic that we pass to the pValue function.
+	model.standardError = Math.sqrt(sumSquaredErrors / ( (activePoints.length - 2) * sumSquaredX));
+	model.p = (1.0 - pValue(Math.abs(model.slope) / model.standardError, activePoints.length - 2));
+	
+	return model;
+}
+
+// Here's some ugly statistics code. I don't expect anyone to understand 
+//  what this is doing, but you're welcome to try!
+// Also: it is not 1968. Never write code like this.
+function pValue(t, df) {
+  // JS translated from Java translated from C translated from FORTRAN
+  //  originally published in a Stats Journal when LBJ was president:
+  // ALGORITHM AS 3  APPL. STATIST. (1968) VOL.17, P.189
+  // Computes P(T<t)
+  var a,b,idf,im2,ioe,s,c,ks,fk,k;
+  var g1=0.3183098862;// =1/pi;
+  idf=df;
+  a=t/Math.sqrt(idf);
+  b=idf/(idf+t*t);
+  im2=df-2;
+  ioe=idf%2;
+  s=1;
+  c=1;
+  idf=1;
+  ks=2+ioe;
+  fk=ks;
+  if(im2>=2) {
+    for(k=ks;k<=im2;k+=2) {
+      c=c*b*(fk-1)/fk;
+      s+=c;
+      if(s!=idf) {
+        idf=s;
+        fk+=2;
+      }
+    }
+  }
+  if(ioe!=1)
+    return 0.5+0.5*a*Math.sqrt(b)*s;
+  if(df==1) s=0;
+  return 0.5+(a*b*s+Math.atan(a))*g1;
+}
+
+
+</script>
+</body>
+</html>

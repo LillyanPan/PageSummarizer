@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +18,10 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- Source: http://paperjs.org/tutorials/ ! -->
+	<script type="text/javascript" src="js/paper-full.js"></script>
+	<script type="text/paperscript" src="js/paperScript.js" canvas="canvas"></script>
 	
     <!-- This is the text that appears on the browser tab -->
 	<title>Photos</title>
@@ -32,9 +38,15 @@ Add Page: Users can add images to a specific/their albums or create a new album
  -->
 
 <body>
+	<canvas id="canvas" resize></canvas>
 	<?php 
-	include("includes/phpfile.php"); 
-	echo customHeader("Add Photo", "~~Expand the collection~~");
+	include("includes/phpfile.php");
+	if (isset($_SESSION['logged_user']) && $_SESSION['logged_user'] == 'ldp54') {
+		echo customHeaderAdmin("Add Photo", "~~Expand the collection~~");
+	}
+	else {
+		echo customHeader("Add Photo", "~~Expand the collection~~");
+	}
 
 	require_once 'includes/config.php';
 	$mysqli = new mysqli( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
@@ -54,15 +66,16 @@ Add Page: Users can add images to a specific/their albums or create a new album
 						$result = $mysqli->query($sql);
 						while ( $aRow = $result->fetch_assoc()) {
 							$aid = $aRow["aId"];
-							echo "<option value='$aid'>$aid</option>";
+							$aTitle = $aRow["aTitle"];
+							echo "<option value='$aid'>$aTitle</option>";
 						}
 						?>
 					</select>
 					<br>
 					Caption <br>
 					<textarea name="caption"></textarea><br>
-					<!-- Image Link <br>
-					<input type="text" name="imagelink" placeholder="https://www.image.com"><br> -->
+					Image Link <br>
+					<input type="text" name="imagelink" placeholder="https://www.image.com; Either upload image or provide image link"><br>
 					Single Photo Upload <br>
 					<input type="file" name="newphoto"> <br>
 					<button type="submit" name="submit" class="form-button">Submit</button>
@@ -74,10 +87,14 @@ Add Page: Users can add images to a specific/their albums or create a new album
 			/*********** Form Validation ***********/ 
 
 			if (isset($_POST['submit'])) {
-				$title = $_POST['title'];
+				// $title = $_POST['title'];
+				// $album = $_POST['album'];
+				// $caption = $_POST['caption'];
+				$title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
 				$album = $_POST['album'];
-				$caption = $_POST['caption'];
-				// $imagelink = $_POST['imagelink'];
+				$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_STRING);
+				
+				$imagelink = $_POST['imagelink'];
 				$newFile = $_FILES[ 'newphoto' ];
 				$originalName = $newFile[ 'name' ];
 				$size_in_bytes = $newFile[ 'size' ];
@@ -86,10 +103,11 @@ Add Page: Users can add images to a specific/their albums or create a new album
 				$error = $newFile[ 'error' ];
 
 					// For-loop checking if form is all filled
-				$required = array('title', 'caption');
+				$required = array($title, $caption);
 					$missing = false; // false if everything's filled
 					foreach ($required as $field) {
-						if (empty($_POST[$field])) {
+						// If required fileds are empty and both image link and file upload is empty
+						if (isset($field) && (empty($newFile) && empty($imagelink) )) {
 							$missing = true;
 						}
 					}
@@ -101,6 +119,7 @@ Add Page: Users can add images to a specific/their albums or create a new album
 
 					// Nothing is missing, check is entries are valid
 					else {
+
 						// Validation using regex
 						if ((!preg_match("#[A-Z a-z-']+#",$title)) || (strlen($title) > 50)) {
 							echo "<div class='contentSubmit'>";
@@ -108,38 +127,71 @@ Add Page: Users can add images to a specific/their albums or create a new album
 							echo "</div>";
 						}
 
-						else if ((!preg_match("#[A-Z a-z-'.]+#",$caption)) || (strlen($caption) > 500)) {
+						if ((!preg_match("#[A-Z a-z-'.]+#",$caption)) || (strlen($caption) > 500)) {
 							echo "<div class='contentSubmit'>";
 							echo "Please use letters, apostrophes, and dashes only for the title. 500 character limit";
 							echo "</div>";
 						}
-					// Regular Expression adapted from http://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url
-						// else if (!preg_match("#^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$#",$imagelink)) {
-						
-						else if ($error) {
+
+						// Both image upload and image link are provided
+						if (!isset($newFile) && !isset($imagelink)) {
 							echo "<div class='contentSubmit'>";
-							echo "Not a valid image upload";
+							echo "Only upload an image or provide an image link.";
 							echo "</div>";
 						}
+
+						// File upload
+						if ($size_in_bytes > 0 && $error) {
+							echo "<div class='contentSubmit'>";
+							echo "Not a valid file upload";
+							echo "</div>";
+						}
+
+						// Image Link
+						if (!isset($newFile) && filter_var($imagelink, FILTER_VALIDATE_URL) === false) {
+							echo "<div class='contentSubmit'>";
+							echo "Not a valid image link";
+							echo "</div>";
+						}
+						
 					// Successful submit
 						else {
-							move_uploaded_file($tempName, "assets/$originalName" );
-							$url = "assets/$originalName";
-							$sql1 = "INSERT INTO Photos (pTitle, pCaption, pURL)
-								VALUES ('$title', '$caption', '$url')";
-							$result1 = $mysqli->query($sql1);
-							$pid = $mysqli -> insert_id;
-
-							// If user chooses to add to no items
-							if ($album != 0) {
-								$sql2 = "INSERT INTO PhotosAlbums (pID, aID)
-									VALUES ('$pid','$album')";
-								$result2 = $mysqli->query($sql2);
+							// Duplicates
+							$query = "SELECT * FROM Photos WHERE pTitle = '$title'";
+							$result = $mysqli->query($query);
+							if ( $result->num_rows != 0) {
+								echo "<div class='contentSubmit'>";
+								echo "Duplicate Name.";
+								echo "</div>";
 							}
-						    
-							echo "<div class='contentSubmit'>";
-							echo "Thanks for adding! Check the album to view.";
-							echo "</div>";
+							else {
+								// Image Link
+								if (!empty($imagelink)) {
+									$sql1 = "INSERT INTO Photos (pTitle, pCaption, pURL) 
+								VALUES ('$title', '$caption', '$imagelink')";
+								}
+
+								// File Upload
+								else {
+									move_uploaded_file($tempName, "assets/$originalName" );
+									$url = "assets/$originalName";
+									$sql1 = "INSERT INTO Photos (pTitle, pCaption, pURL)
+										VALUES ('$title', '$caption', '$url')";
+								}
+
+								$result1 = $mysqli->query($sql1);
+								$pid = $mysqli -> insert_id;
+
+								// If user chooses to add to some album
+								if ($album != 0) {
+									$sql2 = "INSERT INTO PhotosAlbums (pID, aID)
+										VALUES ('$pid','$album')";
+									$result2 = $mysqli->query($sql2);
+							    }
+								echo "<div class='contentSubmit'>";
+								echo "Thanks for adding! Check the album to view.";
+								echo "</div>";
+							}
 						}
 					}
 				}
@@ -149,21 +201,6 @@ Add Page: Users can add images to a specific/their albums or create a new album
 
 		</div>
 	</div>
-
-	<!-- Display -->
-<!-- 	<?php 
-	foreach ( $_SESSION[ 'photos' ] as $photo ) {
-		$file = "images/$photo";
-		$imagesize = getimagesize( $file );
-		$size = "Actual size: {$imagesize[3]}";
-		$taken = '';
-		$exif_data = exif_read_data ( $file );
-		if ( ! empty( $exif_data[ 'DateTimeOriginal' ] ) ) {
-			$taken = " Taken: {$exif_data['DateTimeOriginal']}";
-		}
-		print "<img src='$file' alt='$photo' title='$photo $size $taken'><br />\n";
-		}
-	?> -->
     
 	<?php echo customFooter(); ?>
     

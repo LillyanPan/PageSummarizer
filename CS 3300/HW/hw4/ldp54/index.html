@@ -1,0 +1,315 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<title>Lillyan Pan (ldp54)</title>
+
+		<style>
+			body {
+				font-family: "Open Sans";
+				padding: 10px;
+			}
+
+			svg {
+				padding: 40px;
+			}
+			
+			.axis1 path, .tick { 
+				fill: none; 
+				stroke: black; 
+			}
+
+			.axis1 text {
+				font-size: 8px;
+				fill: black;
+				stroke: none;
+			}
+
+			.axisLabel {
+				font-size: 12px;
+			}
+
+			h4 {
+				margin: 5px 0;
+			}
+
+			p {
+				font-size: 14px;
+				margin: 0;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>Homework 4 Distributions and Histograms</h1>
+
+		<h4>Problem 2</h4>
+		<div id="one"></div>
+
+		<h4>Problem 3</h4>
+		<p>Problem 3 has roughly the same shape, but Problem 3 doesn't have as smooth of a bell curve. The x-scale in problem 2 ranges from roughly [-4,4], while problem 3's x-scale ranges from roughly [-0.10, 0.10]. Because we are plotting the mean of 1000 gaussian numbers, the overall variance decreases greatly, as it normalizes for the outliers of the original 1000 gaussian numbers.</p>
+		<div id="three"></div>
+
+		<h4>Problem 4</h4>
+		<p>Lognormal distribution</p>
+		<div id="four"></div>
+
+		<h4>Problem 5</h4>
+		<p>Mean of Lognormal distribution : Roughly the same shape as problem 3, not the same scale. Problem 5 has distribution from about [1.40, 1.90], and centered around 1.65, while problem 3 has distribution from about [0.10, 0.10], and centered around 0.00.</p>
+		<div id="five"></div>
+		
+		<h4>Problem 6</h4>
+		<p>Exponential distribution</p>
+		<div id="six"></div>
+
+		<h4>Problem 7</h4>
+		<p>Mean of Exponential distribution : Very similar shape. Problem 5 has distribution with a rough range of [1.40, 1.90], and centered around 1.65, while problem 7 has distribution with a rough range of [0.90, 1.10], and centered around 1.00.</p>
+		<div id="seven"></div>
+
+		<h4>Problem 8</h4>
+		<p>Gamma distribution</p>
+		<div id="eight"></div>
+
+		<h4>Problem 9</h4>
+		<p>Mean of Gamma distribution : Very similar shape. Problem 7 has distribution with a rough range of [0.90, 1.10], and centered around 1.00, while problem 9 has distribution with a rough range of [9.70, 10.30], and centered around 10.00.</p>
+		<div id="nine"></div>
+
+		<h4>Problem 10</h4>
+		<p>Cauchy distribution</p>
+		<div id="ten"></div>
+
+		<h4>Problem 11</h4>
+		<p>Mean of Cauchy distribution : Slightly similar shape, distribution shifted to left. However, the Cauchy distribution is a distribution that does not have a finite variance, hence the Central Limit Theorem does not apply.</p>
+		<div id="eleven"></div>
+
+
+		<script>
+		var height = 300;
+		var width = 300;
+		var padding = 20;
+
+		/************************
+				Problem 1
+		*************************/ 
+		var numBins = 30;
+
+		// Appends histogram with data points from array data, to element with id "id"
+		function plotHistogram(id, data) {
+			var hist = d3.layout.histogram().bins(numBins);
+			var bins = hist(data);
+
+			var svg = d3.select(id).append("svg")
+				.attr("height", height).attr("width",width);
+
+			// Color Scale
+			var densityScale = d3.scale.linear().domain([d3.min(bins, function(d) {return d.y}), d3.max(bins, function(d) {return d.y})]).range(["#ccccff", "#6666ff", "#0000ff"]);
+
+			var xScale = d3.scale.linear()
+				// .domain(d3.extent(data))
+				.domain([d3.min(bins, function(d) {return d.x}) - d3.deviation(bins, function(d) {return d.x})/2, d3.max(bins, function(d) {return d.x}) +  d3.deviation(bins, function(d) {return d.x})/2])
+				.range([padding, width + padding]);
+
+			var yScale = d3.scale.linear()
+				.domain([0, d3.max(bins, function (d) {
+					return d.y;
+				}) ])
+				.range([height - padding, padding]);
+
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient("bottom");
+			var yAxis = d3.svg.axis()
+				.scale(yScale)
+				.orient("left");
+			svg.append("g").attr("transform", "translate(0," + (height - padding) + ")")
+				.attr("class", "axis1")
+				.call(xAxis);
+			svg.append("g").attr("transform",  "translate(" + padding + ",0)")
+				.attr("class", "axis1")
+				.call(yAxis);
+
+			bins.forEach(function (bin) {
+				svg.append("rect").attr("class", "bar")
+				.attr("fill", function(d) { return densityScale(bin.y); })
+				.attr("x", xScale(bin.x - (bin.dx/2)))
+				.attr("y", yScale(bin.y) - .7)
+				.attr("width", xScale(bin.dx)- xScale(0) - 1)
+				.attr("height", yScale(0) - yScale(bin.y));
+			});
+			svg.append("text")
+				.attr("class", "axisLabel")
+		        .attr("x", width / 2 - 5)
+		        .attr("y",  height + padding)
+		        .text("Density");
+			
+			var yLabel = svg.append("g")
+				.attr("transform", "translate(0,25)");
+
+			yLabel.append("text")
+				.attr("class", "axisLabel")
+		        .attr("x", 0 - height / 2)
+		        .attr("y",  0 - padding)
+		        .attr("transform", "rotate(-90)")
+		        .text("Frequency")
+		};
+
+		/************************
+				Problem 2
+		*************************/ 
+		var gaussian = function() {
+			var x = d3.random.normal()();
+			return x;
+		}
+
+		// Not needed; Can specify length of array
+		var randomGaussians = function(n) {
+			var samples = [];
+			for (var i = 0; i < n; i++) {
+				samples.push(gaussian());
+			}
+			return samples;
+		}
+
+		/************************
+				Problem 2
+		*************************/ 
+
+		var gaussian1000 = function() {
+			var samples = [];
+			for (var i = 0; i < 1000; i++) {
+				samples.push(gaussian());
+			}
+			return samples;
+		}
+
+		// plotHistogram("#one", randomGaussians(1000));
+		plotHistogram("#one", gaussian1000());
+
+		/************************
+				Problem 3
+		*************************/ 
+
+		var meanGaussian = function() {
+			var arr = [];
+			for (var i = 0; i < 100; i++) {
+				arr.push(d3.mean(gaussian1000()));
+			}
+			return arr;
+		};
+
+		plotHistogram("#three", meanGaussian());
+
+		/************************
+				Problem 4 	SPACING ISSUES
+		*************************/ 
+		var lognormal1000 = function() {
+			var samples = [];
+			for (var i = 0; i < 1000; i++) {
+				samples.push(Math.pow(Math.E,gaussian()));
+			}
+			return samples;
+		}
+
+		plotHistogram("#four", lognormal1000());
+
+		/************************
+				Problem 5	CHECK EXPLINATION
+		*************************/ 
+		var meanLognormal = function() {
+			var arr = [];
+			for (var i = 0; i < 100; i++) {
+				arr.push(d3.mean(lognormal1000()));
+			}
+			return arr;
+		};
+
+		plotHistogram("#five", meanLognormal());
+
+
+		/************************
+				Problem 6 
+		*************************/ 
+		var exponential1000 = function() {
+			var samples = [];
+			for (var i = 0; i < 1000; i++) {
+				samples.push(-Math.log(Math.random()));
+			}
+			return samples;
+		}
+
+		plotHistogram("#six", exponential1000());
+
+		/************************
+				Problem 7
+		*************************/ 
+		var meanExponential = function() {
+			var arr = [];
+			for (var i = 0; i < 100; i++) {
+				arr.push(d3.mean(exponential1000()));
+			}
+			return arr;
+		};
+
+		plotHistogram("#seven", meanExponential());
+
+
+		/************************
+				Problem 8
+		*************************/ 
+		var gamma1000 = function(n) {
+			var samples = [];
+			for (var i = 0; i < 1000; i++) {
+				var exp = 0;
+				for (var j = 0; j < n; j++) {
+					exp += (-Math.log(Math.random()));
+				}
+				samples.push(exp);
+			}
+			return samples;
+		}
+
+		plotHistogram("#eight", gamma1000(10));
+
+		/************************
+				Problem 9
+		*************************/ 
+		var meanGamma = function() {
+			var arr = [];
+			for (var i = 0; i < 100; i++) {
+				arr.push(d3.mean(gamma1000(10)));
+			}
+			return arr;
+		};
+
+		plotHistogram("#nine", meanGamma());
+
+		/************************
+				Problem 10
+		*************************/ 
+		var cauchy1000 = function() {
+			var samples = [];
+			for (var i = 0; i < 1000; i++) {
+				samples.push(gaussian() / gaussian());
+			}
+			return samples;
+		}
+
+		plotHistogram("#ten", cauchy1000());
+
+		/************************
+				Problem 11
+		*************************/ 
+		var meanCauchy = function() {
+			var arr = [];
+			for (var i = 0; i < 100; i++) {
+				arr.push(d3.mean(cauchy1000()));
+			}
+			return arr;
+		};
+
+		plotHistogram("#eleven", meanCauchy());
+
+		</script>
+	</body>
+</html>

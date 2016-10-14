@@ -1,0 +1,275 @@
+<html>
+<head>
+<!-- Load the d3 library. -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<script src="d3.v3.min.js" charset="utf-8"></script>
+<style>
+body {
+	font-family: "Open Sans";
+}
+.bar rect { fill: #ccc; }
+.axis path { fill: none; stroke: black;}
+.axis line { stroke: black; }
+.axis text , .label { font-size: x-small; }
+path.timeseries { fill: none; stroke: #aaa; stroke-width: 3; }
+path.highlight { fill: none; stroke: #ffff7f; stroke-width: 3; }
+text.highlight { fill: #cccc00; }
+.axisLabel { font-size: 12px; }
+.bold { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<div id="rawPlot"></div>
+
+<div id="normalizedPlot"></div>
+
+<div id="responses">
+	<p class="bold">How has NY manufacturing done relative to OH? Was there a difference between how these states fared in the 2000s and the 1990s?</p>
+	<p>
+		In comparison, NY manufacuring has had much gerater growth than OH. Note, that from 1990 to 2016, NY has overall positive manufacturing job growth, while OH has had overall negative job growth. In the raw data graph, OH has a larger quanityity of manufacturing jobs than NY. From 1990 - 2000, NY saw rapid relative gains in manufacturing jobs while OH saw consistent relative loses in jobs.
+	</p>
+	<p class="bold">What question can you answer from the raw plot that would be difficult, or impossible, to answer from the normalized plot?</p>
+	<p>
+		From the raw plot we can easily compare the actual number of manufacturing jobs in each state. Hence, we can answer questions like, "Does OH have more manufacturing jobs than NY in 2005?"
+	</p>
+	<p class="bold">Going the other way, what question can you answer from the normalized plot that would be difficult, or impossible, to answer from the raw plot?</p>
+	<p>
+		In normalizing the data we are able to see the relative growth or decline in manufacturing jobs in each state since 1990. We can easily answer questions about growth trends in manufacturing jobs from the normalized plot. For example, a question that is best answered using the normalized plot would be, "Has the relative growth in manufacturing jobs since 1990 been greater in NY or TX."
+	</p>
+	<p class="bold">Many state boundaries are based on long-forgotten disputes between English settlers in the 1600s. Does it make sense to report statistics for RI and CA as comparable? What other way could the BLS report this data, and how would your method affect the appearance of the plots?</p>
+	<p>
+		Manufacturing jobs are usually not distributed evenly (geographically) accross a state, but rather in "hubs" that can span state borders. Also, these numbers are not normalized for population. Instead, the BLS could use GPS coordinates of longitude/latitude locations. We could then visualize the data on a map to see where the "hubs" of manufacturing are. It is difficult to report for states that range extremely in size (in terms of popualtion and geography ex. CA and RI); hence, the data doesn't hold much weight.
+	</p>
+</div>
+
+<script>
+var normData;
+var height = 500;
+var width = 800;
+var padding = 50;
+
+
+// A useful variable reference outside the scope of the tsv callback.
+var stateTimeseries;
+
+// Plot the raw employment timeseries for each state from 1990 to 2016
+function plotRawData(stateTimeseries) {
+	// Define scales, axes.
+	// Add <path> elements for each state. Highlight NY, TN, NV, OH
+	// Add <text> labels for all states at the right margin.
+
+	// Defining Axis
+	var x = d3.time.scale().range([padding, width - padding]);
+	var y = d3.scale.linear().range([height - padding, padding]);
+
+	var xAxis = d3.svg.axis().scale(x)
+		.orient("bottom");
+	var yAxis = d3.svg.axis().scale(y)
+		.orient("left");
+
+
+	y.domain(d3.extent(points, function (d) {
+		return d.job; }));
+	x.domain(d3.extent(points, function (d) {
+		return d.date; }));
+
+	var trend = d3.svg.line()
+		.x(function(d) { return x(d.date); })
+		.y(function(d) { return y(d.job) })
+
+	var svg = d3.select("#rawPlot").append("svg")
+		.attr("width", width)
+		.attr('height', height)
+
+	stateTimeseries.forEach(function(d) {
+		svg.append("path")
+		.attr("class", function() {
+			if ((d.key == "NY") || (d.key == "TN") || (d.key == "NV") || (d.key == "OH")) { return "highlight timeseries" }
+			else { return "timeseries" }
+		})
+		.attr("d", trend(d.values));
+
+		// Text for each line
+		svg.append("text")
+		.attr("class", function() {
+			if ((d.key == "NY") || (d.key == "TN") || (d.key == "NV") || (d.key == "OH")) { return "highlight label" }
+			else { return "label" }
+		})
+		.attr("text-anchor", "start")
+		.attr("transform", "translate(" + (width - padding) + ',' + y(d.values[d.values.length - 1].job) + ")")
+		.text(d.key);
+	});
+
+	// Drawing Axes
+	svg.append("g")
+	.attr("class", "axis")
+	.attr("transform", "translate(0," + (height - padding) + ")")
+	.call(xAxis);
+	svg.append("g")
+	.attr("transform", "translate(" + padding + ", 0)")
+	.attr("class", "axis")
+	.call(yAxis);
+
+	// Drawing Labels
+	svg.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", width / 2)
+        .attr("y",  height - 10)
+        .text("Years")
+    svg.append("text")
+    	.attr("class", "lineTitle")
+    	.attr("x", width / 3)
+    	.attr("y", padding / 2)
+    	.text("Raw Employment Timeseries in Manufacturing")
+    	.attr("font-weight", "bold")
+
+    var yaxisLabel = svg.append("g")
+			.attr("transform", "translate(50, 70)");
+       yaxisLabel.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", 0 - height / 2 )
+        .attr("y",  0 - padding + 10)
+        .attr("transform", "rotate(-90)")
+        .text("Employment Jobs")
+
+}
+
+// Plot the *normalized* employment timeseries for each state from 1990 to 2016.
+// Each timeseries should start at Jan 1990 = 1.0.
+function plotNormalizedData(stateTimeseries) {
+	// Define scales, axes.
+	// Add <path> elements for each state. Highlight NY, TN, NV, OH
+	// Add <text> labels for all states at the right margin.
+
+	// Defining Axis
+	var x = d3.time.scale().range([padding, width - padding]);
+	var y = d3.scale.linear().range([height - padding, padding]);
+
+	var xAxis = d3.svg.axis().scale(x)
+		.orient("bottom");
+	var yAxis = d3.svg.axis().scale(y)
+		.orient("left");
+
+
+	y.domain(d3.extent(points2, function (d) {
+		return d.job; }));
+	x.domain(d3.extent(points2, function (d) {
+		return d.date; }));
+
+	var trend = d3.svg.line()
+		.x(function(d) { return x(d.date); })
+		.y(function(d) { return y(d.job) })
+
+	var svg = d3.select("#normalizedPlot").append("svg")
+		.attr("width", width)
+		.attr('height', height)
+
+	function norm(d, first) {
+		d3.svg.line()
+			.x(function(d) { return x(d.date); })
+			.y(function(d) { return y(d.job) })
+	}
+
+	stateTimeseries.forEach(function(d) {
+		svg.append("path")
+		.attr("class", function() {
+			if ((d.key == "NY") || (d.key == "TN") || (d.key == "NV") || (d.key == "OH")) { return "highlight timeseries" }
+			else { return "timeseries" }
+		})
+		.attr("d", trend(d.values));
+
+		// Text for each line
+		svg.append("text")
+		.attr("class", function() {
+			if ((d.key == "NY") || (d.key == "TN") || (d.key == "NV") || (d.key == "OH")) { return "highlight label" }
+			else { return "label" }
+		})
+		.attr("text-anchor", "start")
+		.attr("transform", "translate(" + (width - padding) + ',' + y(d.values[d.values.length - 1].job) + ")")
+		.text(d.key);
+
+	})
+
+	// Drawing Axes
+	svg.append("g")
+	.attr("class", "axis")
+	.attr("transform", "translate(0," + (height - padding) + ")")
+	.call(xAxis);
+	svg.append("g")
+	.attr("transform", "translate(" + padding + ", 0)")
+	.attr("class", "axis")
+	.call(yAxis);
+
+	// Drawing Labels
+	svg.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", width / 2)
+        .attr("y",  height - 10)
+        .text("Years")
+    svg.append("text")
+    	.attr("class", "lineTitle")
+    	.attr("x", width / 4)
+    	.attr("y", padding / 2)
+    	.text("Normalized Employment Timeseries in Manufacturing")
+    	.attr("font-weight", "bold")
+
+    var yaxisLabel = svg.append("g")
+			.attr("transform", "translate(50, 70)");
+       yaxisLabel.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", 0 - height / 2 )
+        .attr("y",  0 - padding + 20)
+        .attr("transform", "rotate(-90)")
+        .text("Normalized Employment")
+
+
+}
+
+// Convert Data
+d3.tsv("manufacturing.txt", function (error, data) {
+	
+	// Parse incoming data appropriately: numbers as numbers, dates as Dates.
+	var format = d3.time.format("%Y-%m-%d");
+
+	points = data.map(function(state) {
+		return {
+			state: state.State,
+			job: Number(state.Jobs),
+			date: format.parse(state.Date)
+		};
+	})
+
+	stateTimeseries = d3.nest()
+	.key(function(d) { return d.state; })
+	.entries(points);
+
+	normData = {};
+	stateTimeseries.forEach(function(d) {
+		normData[d.key] = d.values[0].job;
+	})
+
+
+	points2 = data.map(function(state) {
+		return {
+			state: state.State,
+			job: Number(state.Jobs) / Number(normData[state.State]),
+			date: format.parse(state.Date)
+		};
+	})
+
+	var stateTimeseries2 = d3.nest()
+	.key(function(d) { return d.state; })
+	.entries(points2);
+
+
+	
+	// Create two plots.
+	plotRawData(stateTimeseries);
+	plotNormalizedData(stateTimeseries2);
+});
+
+</script>
+</body>
+</html>

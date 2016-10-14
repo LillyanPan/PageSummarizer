@@ -1,0 +1,451 @@
+<html>
+<head>
+<!-- Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+<!-- Scripts -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+
+<title>Lillyan Pan (ldp54)</title>
+
+<style>
+.q0-9 { fill:rgb(247,251,255); }
+.q1-9 { fill:rgb(222,235,247); }
+.q2-9 { fill:rgb(198,219,239); }
+.q3-9 { fill:rgb(158,202,225); }
+.q4-9 { fill:rgb(107,174,214); }
+.q5-9 { fill:rgb(66,146,198); }
+.q6-9 { fill:rgb(33,113,181); }
+.q7-9 { fill:rgb(8,81,156); }
+.q8-9 { fill:rgb(8,48,107); }
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+body {
+	font-family: "Open Sans";
+	padding: 10px;
+}
+
+.scxAxis path, .scyAxis path {
+	fill: none;
+	stroke: black;
+}
+
+line {
+	stroke: black;
+}
+svg {
+	padding: 40px;
+}
+.keyBox {
+	rx: 15;
+	ry: 15;
+}
+
+</style>
+</head>
+<body>
+<h1>Homework 7</h1>
+<div>
+<p>
+	1a. This map is not very useful as there is a larger range in data, however most states are well below the max value. As quantize scales must have even intervals, almost all states end up in one interval (which correlates to one color). Thus, not much can be interpreted from this map.
+</p>
+<p>
+	1b. Because we take the log of each value, we now account for the large differences in range. Hence, the data is much more evenly distributed between the 9 ranges of color, which makes the graph more useful to see trends.
+</p>
+<p>
+	1c. The two maps look opposite in terms of color. The population density has darker regions in the Northwest, and some of the lightest regions are generally in the Northeast for gun ownership. However, the differ as the gun ownership map has lighter regions in the Southeast, while the density map has darker regions, however, there is less of difference in color in this region.
+</p>
+<p>
+	2c. Overall, the higher the population density, the lower the gun ownership rates. States for which log density is less accurate as a predictor of gun ownership are Arizona, Alabama, Alaska, and Hawaii, as the color differences between the two maps are not are great in comparison to other states. Note, for Southeast states, the difference in color of between the density map and the gun ownership map is not too great.
+</p>
+<p>
+	2d. These lines are not the same, and the lines will be equal when the x-coordinates deviation from the mean of X is equal to the y-coordiante deviation from the mean of Y. Further, the first regression line seeks to minimize the squared error in terms of the vertical difference in the y-coordintes to the line, while the second regression line seeks to minimize the squared error in terms of the horizontal difference in the x-coordinates to the line. The lines will be the same when the standard deviation of the x values is equal to the standard deviation of the y values.
+</p>
+<p>
+	2e. Note the correlation coefficient is the same for both lines as the coefficient only relies on the distribution of the points. Because the slope was negative, the relationship between the variables was negatively correlated, hence the correlation value was negative as well. Because there was a steep slope (stronger correlation), the coefficient was more near -1.
+</p>
+</div>
+
+<h2>Map of Gun Ownership in the US</h2>
+<div id="gunmap"></div>
+<h2>Map of (log) Population Density in the US</h2>
+<div id="densitymap"></div>
+<div id="plot"></div>
+
+<script>
+
+/* Sources:
+  http://www.washingtonpost.com/wp-srv/health/interactives/guns/ownership.html
+  http://en.wikipedia.org/wiki/List_of_U.S._states_by_population_density
+
+  The properties of this object are FIPS codes for states and territories.
+*/
+
+var stateGuns = {
+33 : {state: "New Hampshire", ownership: 30.0, area: 8953, population: 1323459, density: 147.8 },
+32 : {state: "Nevada", ownership: 33.8, area: 109781, population: 2790136, density: 25.4 },
+21 : {state: "Kentucky", ownership: 47.7, area: 39486, population: 4395295, density: 111.3 },
+26 : {state: "Michigan", ownership: 38.4, area: 56539, population: 9895622, density: 175.0 },
+17 : {state: "Illinois", ownership: 20.2, area: 55519, population: 12882135, density: 232.0 },
+2 : {state: "Alaska", ownership: 57.8, area: 570641, population: 735132, density: 1.3 },
+1 : {state: "Alabama", ownership: 51.7, area: 50645, population: 4833722, density: 95.4 },
+18 : {state: "Indiana", ownership: 39.1, area: 35826, population: 6570902, density: 183.4 },
+72 : {state: "Puerto Rico", ownership: 6.7, area: 3424, population: 3615086, density: 1055.9 },
+30 : {state: "Montana", ownership: 57.7, area: 145546, population: 1015165, density: 7.0 },
+16 : {state: "Idaho", ownership: 55.3, area: 82643, population: 1612136, density: 19.5 },
+44 : {state: "Rhode Island", ownership: 12.8, area: 1034, population: 1051511, density: 1017.1 },
+55 : {state: "Wisconsin", ownership: 44.4, area: 54158, population: 5742713, density: 106.0 },
+27 : {state: "Minnesota", ownership: 41.7, area: 79627, population: 5420380, density: 68.1 },
+25 : {state: "Massachusetts", ownership: 12.6, area: 7800, population: 6692824, density: 858.0 },
+28 : {state: "Mississippi", ownership: 55.3, area: 46923, population: 2991207, density: 63.7 },
+40 : {state: "Oklahoma", ownership: 42.9, area: 68595, population: 3850568, density: 56.1 },
+20 : {state: "Kansas", ownership: 42.1, area: 81759, population: 2893957, density: 35.4 },
+49 : {state: "Utah", ownership: 43.9, area: 82170, population: 2900872, density: 35.3 },
+24 : {state: "Maryland", ownership: 21.3, area: 9707, population: 5928814, density: 610.8 },
+10 : {state: "Delaware", ownership: 25.5, area: 1949, population: 925749, density: 475.1 },
+31 : {state: "Nebraska", ownership: 38.6, area: 76824, population: 1868516, density: 24.3 },
+35 : {state: "New Mexico", ownership: 34.8, area: 121298, population: 2085287, density: 17.2 },
+11 : {state: "District of Columbia", ownership: 3.8, area: 61, population: 646449, density: 10588.8 },
+53 : {state: "Washington", ownership: 33.1, area: 66456, population: 6971406, density: 104.9 },
+78 : {state: "Virgin Islands", ownership: 8.3, area: 134, population: 106405, density: 792.2 },
+48 : {state: "Texas", ownership: 35.9, area: 261232, population: 26448193, density: 101.2 },
+42 : {state: "Pennsylvania", ownership: 34.7, area: 44743, population: 12773801, density: 285.5 },
+22 : {state: "Louisiana", ownership: 44.1, area: 43204, population: 4625470, density: 107.1 },
+46 : {state: "South Dakota", ownership: 56.6, area: 75811, population: 844877, density: 11.1 },
+13 : {state: "Georgia", ownership: 40.3, area: 57513, population: 9992167, density: 173.7 },
+23 : {state: "Maine", ownership: 40.5, area: 30843, population: 1328302, density: 43.1 },
+29 : {state: "Missouri", ownership: 41.7, area: 68742, population: 6044171, density: 87.9 },
+6 : {state: "California", ownership: 21.3, area: 155779, population: 38332521, density: 246.1 },
+50 : {state: "Vermont", ownership: 42.0, area: 9217, population: 626630, density: 68.0 },
+39 : {state: "Ohio", ownership: 32.4, area: 40861, population: 11570808, density: 283.2 },
+36 : {state: "New York", ownership: 18.0, area: 47126, population: 19651127, density: 417.0 },
+51 : {state: "Virginia", ownership: 35.1, area: 39490, population: 8260405, density: 209.2 },
+9 : {state: "Connecticut", ownership: 16.7, area: 4842, population: 3596080, density: 742.6 },
+41 : {state: "Oregon", ownership: 39.8, area: 95988, population: 3930065, density: 40.9 },
+12 : {state: "Florida", ownership: 24.5, area: 53625, population: 19552860, density: 364.6 },
+47 : {state: "Tennessee", ownership: 43.9, area: 41235, population: 6495978, density: 157.5 },
+15 : {state: "Hawaii", ownership: 8.7, area: 6423, population: 1404054, density: 218.6 },
+38 : {state: "North Dakota", ownership: 50.7, area: 69001, population: 723393, density: 10.5 },
+8 : {state: "Colorado", ownership: 34.7, area: 103642, population: 5268367, density: 50.8 },
+4 : {state: "Arizona", ownership: 31.1, area: 113594, population: 6626624, density: 58.3 },
+34 : {state: "New Jersey", ownership: 12.3, area: 7354, population: 8899339, density: 1210.1 },
+56 : {state: "Wyoming", ownership: 59.7, area: 97093, population: 582658, density: 6.0 },
+66 : {state: "Guam", ownership: 14.3, area: 210, population: 159358, density: 759.6 },
+45 : {state: "South Carolina", ownership: 42.3, area: 30061, population: 4774839, density: 158.8 },
+37 : {state: "North Carolina", ownership: 41.3, area: 48618, population: 9848060, density: 202.6 },
+19 : {state: "Iowa", ownership: 42.8, area: 55857, population: 3090416, density: 55.3 },
+54 : {state: "West Virginia", ownership: 55.4, area: 24038, population: 1854304, density: 77.1 },
+5 : {state: "Arkansas", ownership: 55.3, area: 52035, population: 2959373, density: 56.9 }};
+
+
+d3.json("us.json", function(us) {
+	var width = 960,
+	    height = 600;
+
+	var stateFeatures = topojson.feature(us, us.objects.states).features;
+
+	var quantize;
+
+	/* Choropleth example borrowed from http://bl.ocks.org/mbostock/4060606 */
+	
+	var projection = d3.geo.albersUsa()
+	    .scale(1280)
+	    .translate([width / 2, height / 2]);
+
+	var path = d3.geo.path()
+	    .projection(projection);
+
+	var svg = d3.select("#gunmap").append("svg")
+	    .attr("width", width)
+	    .attr("height", height)
+	    .attr("class", "instructor");
+
+	quantize = d3.scale.quantize()
+	    .domain([0, d3.max(stateFeatures, function (d) { return stateGuns[d.id].ownership; })])
+	    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+			
+    svg.append("g")
+        .attr("class", "states")
+      .selectAll("path")
+        .data(stateFeatures)
+      .enter().append("path")
+        .attr("class", function(d) { return quantize(stateGuns[d.id].ownership); })
+        .attr("d", path);	
+
+
+	/* [Problem 1] Create a second map showing population density (or some function of density) here. */
+ 
+	// svg = d3.select("#densitymap").append("svg")
+ //    .attr("width", width)
+ //    .attr("height", height);
+
+    /* PROBLEM 1A */
+    quantize = d3.scale.quantize()
+	    .domain([0, d3.max(stateFeatures, function (d) { 
+	    	return stateGuns[d.id].density; })])
+	    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+
+    svg.append("g")
+        .attr("class", "states")
+      .selectAll("path")
+        .data(stateFeatures)
+      .enter().append("path")
+        .attr("class", function(d) { return quantize(stateGuns[d.id].density); })
+        .attr("d", path);
+
+
+    /* PROBLEM 1B */
+    // svg = d3.select("#densitymap").append("svg")
+    // .attr("width", width)
+    // .attr("height", height);
+
+    quantize = d3.scale.quantize()
+	    .domain([0, d3.max(stateFeatures, function (d) { return Math.log(stateGuns[d.id].density); })])
+	    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+
+    svg.append("g")
+        .attr("class", "states")
+      .selectAll("path")
+        .data(stateFeatures)
+      .enter().append("path")
+        .attr("class", function(d) { return quantize(Math.log(stateGuns[d.id].density)); })
+        .attr("d", path);
+
+
+    /* PROBLEM 1C */
+    var svg = d3.select("#densitymap").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("class", "finalDensity");
+
+    quantize = d3.scale.quantize()
+	    .domain([0, d3.max(stateFeatures, function (d) { return Math.log(stateGuns[d.id].density); })])
+	    .range(d3.range(9).map(function(i) { return "q" + (8 - i) + "-9"; }));
+
+    svg.append("g")
+        .attr("class", "states")
+      .selectAll("path")
+        .data(stateFeatures)
+      .enter().append("path")
+        .attr("class", function(d) { return quantize(Math.log(stateGuns[d.id].density)); })
+        .attr("d", path);	
+
+
+	/* [Problem 2] Create your scatterplot here. */
+
+
+	/* PROBLEM 2A */
+    var scMargin = {top: 20, right: 40, bottom: 30, left: 50}
+	var scatterWidth = width - scMargin.left - scMargin.right
+	var scatterHeight = height - scMargin.top - scMargin.bottom
+
+	svg = d3.select("#plot").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+    // Array of json objects for each state
+    var arrayValues = d3.values(stateGuns);
+
+	var xScale = d3.scale.linear().domain([0, d3.max(stateFeatures, function(d) { 
+		return Math.log(stateGuns[d.id].density); }) ]).range([scMargin.left, scatterWidth]),
+	yScale = d3.scale.linear().domain([0, 5 + d3.max(stateFeatures, function(d) { return stateGuns[d.id].ownership; }) ]).range([scatterHeight,0]);
+
+
+	var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+	var yAxis = d3.svg.axis().scale(yScale).orient("left");
+
+	svg.append("g") 
+	 	.attr("class", "scxAxis")
+	 	.attr("transform", "translate(0," + scatterHeight + ")")
+	 	.call(xAxis);
+	svg.append("g")
+		.attr("class", "scyAxis")
+		.attr("transform", "translate(" + scMargin.left + ", 0)")
+		.call(yAxis);
+
+	var circles = svg.selectAll("circle")
+		.data(arrayValues)
+		.enter()
+		.append("circle");
+	var circleAttr = circles
+		.attr("class", function(d) { return quantize(Math.log(d.density)); })
+		.attr("cx", function(d) {
+			return xScale(Math.log(d.density));
+		})
+		.attr("cy", function(d) { return yScale(d.ownership); })
+		.attr('r', 3);
+	svg.append("g")
+		.selectAll('text')
+		.data(arrayValues)
+		.enter()
+		.append("text")
+		.text( function(d) { return d.state; })
+		.attr("x", function(d) { return xScale(Math.log(d.density)) - 10; })
+		.attr("y", function(d) { return yScale(d.ownership) + 10; })
+		.attr("font-size", "8px");
+
+	svg.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", scatterWidth / 2 - 60)
+        .attr("y",  scatterHeight + scMargin.bottom + 20)
+        .text("Log Population Density")
+    svg.append("text")
+    	.attr("class", "scatterTitle")
+    	.attr("x", scatterWidth / 6)
+    	.attr("y", 0)
+    	.text("Comparison between Log Population Density and Reported Gun Ownership in the US")
+    	.attr("font-weight", "bold")
+
+    var yaxisLabel = svg.append("g")
+			.attr("transform", "translate(50, 70)");
+       yaxisLabel.append("text")
+		.attr("class", "axisLabel")
+        .attr("x", 0 - scatterHeight / 2 )
+        .attr("y",  0 - scMargin.left)
+        .attr("transform", "rotate(-90)")
+        .text("Reported Gun Ownership")
+
+
+	/* PROBLEM 2B */
+	// Calculate the optimal slope and intercept. Taken from Prof. Mimno 041116
+	function leastSquares(points, option) {
+		var model = { intercept: 0, slope: 0 };
+		
+		if (points.length == 0) { return model; }
+		var meanX = d3.mean(points, function (d) { 
+			return d.x;
+		});
+		var meanY = d3.mean(points, function (d) { 
+			return d.y;
+		});
+		model.slope = d3.sum(points, function (d) {
+			return (d.x - meanX) * (d.y - meanY);
+		});
+		if (option == 1) {
+			model.slope /= d3.sum(points, function (d) {
+				return (d.x - meanX) * (d.x - meanX);
+			});
+			model.intercept = meanY - model.slope * meanX;
+		}
+		if (option == 2) {
+			model.slope /= d3.sum(points, function (d) {
+				return (meanY - d.y) * (meanY - d.y);
+			});
+			model.intercept = meanX - model.slope * meanY;
+		}
+
+		
+		return model;
+	}
+
+	/* Calculates Pearson correlation coefficient given a set of points
+	formated as { x: x1, y: y1 } */
+	function pearson(points) {
+		var meanX = d3.mean(points, function(d) { return d.x; });
+		var meanY = d3.mean(points, function(d) { return d.y; });
+		var meanXY = d3.mean(points, function(d) { return d.x * d.y; });
+		var varX = d3.variance(points, function(d) { return d.x; });
+		var varY = d3.variance(points, function(d) { return d.y; });
+
+		return parseFloat(meanXY - meanX * meanY) / (Math.sqrt(varX) * Math.sqrt(varY));
+	}
+
+
+	var points = arrayValues.map(function (d) {
+		return {x: (Math.log(d.density)), y: (d.ownership) };
+	})
+
+	var model = leastSquares(points, 1);
+
+	var regressionLine = svg.append("line")
+	.attr("class", "estimated")
+	.attr("x1", xScale(1.5))
+	.attr("y1", yScale(model.slope * 1.5 + model.intercept))
+	.attr("x2", xScale(9))
+	.attr("y2", yScale(model.slope * 9 + model.intercept))
+	.style("stroke", "#e8bb23");
+
+	var info = d3.select("#plot svg").append("g")
+	.attr("transform", "translate(120, 0)")
+
+	info.append('rect')
+	.attr("class", "keyBox")
+	.attr("x", 485)
+	.attr("y", 25)
+	.attr("width", 284.25)
+	.attr("height", 80)
+	.attr("fill", "#d3d3d3")
+	.attr("opacity", .5);
+
+	var modelText = info.append("text")
+	.attr("id", "status")
+	.attr("x", 515).attr("y", 50)
+	.text("Slope: " + (d3.round(model.slope, 3)))
+	.attr("font-size", "12px");
+
+	info.append("text")
+	.attr("id", "status")
+	.attr("x", 650).attr("y", 50)
+	.text("Y Intercept: " + (d3.round(model.intercept,3)))
+	.attr("font-size", "12px");
+
+
+	/* PROBLEM 2D */
+
+	model = leastSquares(points, 2);
+
+	var regressionLine2 = svg.append("line")
+	.attr("class", "estimated")
+	.attr("x1", xScale(model.slope * 0 + model.intercept))
+	.attr("y1", yScale(0))
+	.attr("x2", xScale(model.slope * 60 + model.intercept))
+	.attr("y2", yScale(60))
+	.style("stroke", "#e3c083");
+
+	info.append("circle")
+	.attr("class", "indicator")
+	.attr("cx", 502.5).attr("cy", 46)
+	.attr("r", 5)
+	.attr("stroke", "none")
+	.attr("fill", "#e8bb23")
+
+	info.append("circle")
+	.attr("class", "indicator")
+	.attr("cx", 502.5).attr("cy", 66)
+	.attr("r", 5)
+	.attr("stroke", "none")
+	.attr("fill", "#e3c083")
+
+	var modelText = info.append("text")
+	.attr("id", "status")
+	.attr("x", 515).attr("y", 70)
+	.text("Slope: " + (d3.round(1 / model.slope,3)))
+	.attr("font-size", "12px");
+
+	info.append("text")
+	.attr("id", "status")
+	.attr("x", 650).attr("y", 70)
+	// .text("X Intercept: " + (d3.round(model.intercept,3)))
+	.text("Y Intercept: " + 90.317)
+	.attr("font-size", "12px");
+
+
+	/* PROBLEM 2E */
+
+	var pearText = info.append("text")
+	.attr("class", "pearson")
+	.attr("x", 515).attr("y", 90)
+	.text("Pearson: " + (d3.round(pearson(points),3)))
+	.attr("font-size", "12px");
+
+
+});
+
+</script>
+
+</body>
+</html>
