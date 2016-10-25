@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RSS Feed Reader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+  </head>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#summary" data-toggle="tab">Summary</a></li>
+        <li role="presentation"><a href="#saved" data-toggle="tab">Saved Articles</a></li>
+      </ul>
+    </div>
+    <div id="tabContent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="summary">
+          <div id="title" class="col-md-12"></div>
+          <div class="col-md-12"><hr></div>
+          <div id="author" class="col-md-12"></div>
+          <div id="summaryNews" class="col-md-12"></div>
+          <div class="space">
+            <div id="keywords" class="col-md-12">
+              <p id="keyTitle">Keywords</p>
+            </div>
+          </div>
+          <div id="keylinks" class="col-md-12">
+            <table id="links" class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Key Concepts</th>
+                  <th>Links</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+          <div id="sentiment" class="col-md-12">
+          </div>
+          <div class="alert alert-success col-sm-2" id="saved-article-alert">Article Saved!</div>
+          <button id="save" type="button"  class="col-sm-2 btn btn-primary btn-circle btn-lg"><i class="glyphicon glyphicon-plus"></i></button>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="saved"></div>
+    </div>
+    <footer>
+      <div id='copyright-date'>
+          Copyright &copy; 2016 Lillyan Pan. All rights reserved. Text Analysis by <a href="www.alchemyapi.com">AlchemyAPI</a> and  <a href="http://aylien.com/">AYLIEN</a>.
+      </div>
+    </footer>
+    <script src="js/jquery-2.2.2.min.js"></script>
+    <script src="d3/d3.min.js"></script>
+    <!-- d3-legend Created by Susie Lu -->
+    <script src="d3/d3-legend.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/background.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

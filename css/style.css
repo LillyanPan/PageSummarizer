@@ -1,0 +1,184 @@
+body {
+  min-width: 800px;
+  padding: 20px;
+  overflow-y: scroll;
+  font-family: "Avenir";
+  color: #2a2a2a;
+}
+
+/***************** 
+   	MAIN TAB
+******************/ 
+
+#author {
+	font-style: italic;
+}
+#title a {
+	font-size: 25px;
+	color: black;
+	font-weight: bold;
+}
+#title a:hover {
+	text-decoration: none;
+}
+#title p {
+	padding-top: 10px;
+}
+#keyTitle {
+	font-weight: bold;
+	font-size: 16px;
+}
+#summaryNews {
+	line-height: 150%;
+}
+.space {
+	padding: 20px 0px;
+}
+
+/***************** 
+   	D3 ANALYSIS
+******************/ 
+
+svg {
+	padding: 40px;
+}
+.tick text {
+	font-size: 10px;
+}
+.axis path { 
+	fill: none; 
+	stroke: black; 
+}
+.axis line { 
+	stroke: black; 
+}
+.axisLabel {
+	font-size: 15px;
+}
+.title {
+	font-size: 16px;
+	padding-top: 5px;
+}
+.graphText:hover { 
+	fill: #7e7e7e;
+	border: 1px solid black;
+	opacity: 1.0; 
+	font-weight: bold; 
+	font-size: x-large; 
+	z-index: 10000;
+}
+.label {
+	font-weight: 400;
+}
+.graphTitle {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/***************** 
+ KEY CONCEPT TABLE
+******************/ 
+
+table a:hover{
+	font-weight: 500;
+	text-decoration: none;
+}
+
+table a {
+	text-decoration: none;
+	color: #428bca;
+}
+td {
+	padding-left: 2px;
+
+}
+th {
+	font-size: 16px;
+	font-weight: bold;
+	background-color: none;
+}
+.table>thead>tr>th {
+    vertical-align: bottom;
+    border-bottom: none;
+}
+
+/***************** 
+ 	SAVE ALERT
+******************/ 
+
+#saved-article-alert {
+	position: fixed;
+    bottom: 0px;
+    right: 80px;
+}
+
+/***************** 
+ 	SAVE BUTTON
+******************/ 
+
+#save {
+    position: fixed;
+    bottom: 10px;
+    right: 10px; 
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+
+
+/***************** 
+   DELETE BUTTON
+******************/ 
+
+.btn-circle.btn-xs {
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+}
+
+/***************** 
+  SAVED ARTICLES
+******************/ 
+
+#savedArticles {
+	padding-top: 25px;
+}
+.articleTitle a {
+	font-size: 16px;
+	color: black;
+	font-weight: bold;
+}
+.articleTitle a:hover {
+	text-decoration: none;
+	text-decoration: underline;
+}
+.articleAuthor {
+	font-style: italic;
+	font-size: 12px;
+	padding: 5px 0px;
+}
+.articleSummary {
+	font-size: 12px;
+	line-height: 150%;
+	/*font-family: "Times New Roman";*/
+	font-family: "Avenir";
+}
+
+/***************** 
+  	   MISC
+******************/ 
+.nav a:active, .nav a:focus {
+	outline: none;
+}
+#save:active, .delete:active {
+	outline: none;
+	border: none;
+}
+#save:focus, .delete:focus {
+	outline:0;
+}
