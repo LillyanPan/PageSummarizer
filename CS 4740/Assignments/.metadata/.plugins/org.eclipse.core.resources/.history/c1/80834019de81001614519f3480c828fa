@@ -1,0 +1,687 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Random;
+import java.awt.List;
+import java.io.*;
+import java.math.*;
+import java.lang.*;
+
+public class proj2 {
+
+	public static void main(String[] args) {
+		spellCheck();
+
+	}
+	   /* Building Bigrams Map
+	    * Runtime O(n^2)
+	    * n = length of bigram list
+	    */
+	public static HashMap<String, HashMap<String, Double>> bigrammapmaker (ArrayList<ArrayList <String>> bigrams){
+		   HashMap<String, HashMap<String, Double>> bigramsMap = new HashMap<String, HashMap<String, Double>>();
+		   for (ArrayList<String> pair : bigrams) {
+			   String firstWord = pair.get(0);
+			   HashMap<String, Double> inner = new HashMap<String, Double>();
+			   // Build Inner HashMap
+			   for (ArrayList<String> pair1 : bigrams) {
+				   String firstWord1 = pair1.get(0);
+				   String secondWord1 = pair1.get(1);
+				   // Bigram begins with same word; note want to consider
+				   //	'pair' as well
+				   if (firstWord.equals(firstWord1)) {
+					   if (inner.containsKey(secondWord1)) {
+						   double count = inner.get(secondWord1);
+						   inner.put(secondWord1, ++count);
+					   }
+					   else {
+						   inner.put(secondWord1, 1.0);
+					   }
+				   }
+			   }
+
+			   // Only add if map does not contain firstWord; repeats will appear in 'inner' HashMap
+			   if (!bigramsMap.containsKey(firstWord)) {
+				   bigramsMap.put(firstWord, inner);
+			   }
+		   }
+		return bigramsMap;
+	}
+
+	/*smoothed bigram map
+	 * bigrammap= map from bigrammap maker function
+	 * returns hashmap of hashmaps with smoothed counts
+	 * */
+	public static HashMap<String, HashMap<String, Double>> smoothBigram (HashMap<String, HashMap<String, Double>> bigrammap){
+		HashMap <String[], Double> pairstosmooth = new HashMap <String[], Double>(); //store the pairs to smooth and the number of times the pair occurs
+		HashMap<String, HashMap<String, Double>> smoothedbigrams = new HashMap<String, HashMap<String, Double>>();
+		smoothedbigrams = bigrammap;
+		int numofones=0;
+		int numoftwos= 0;
+		int numofthrees= 0;
+		int numoffours= 0;
+		int numoffives= 0;
+		for (String wone: bigrammap.keySet()){
+			for (String wtwo: bigrammap.get(wone).keySet()){
+				if(bigrammap.get(wone).get(wtwo)<5){
+					Double count= bigrammap.get(wone).get(wtwo);//store number of times pair occurs (c value in good turing formula)
+					if (count==1){ numofones++;}
+					if (count==2){ numoftwos++;}
+					if (count==3){ numofthrees++;}
+					if (count==4){ numoffours++;}
+					if (count==5){ numoffives++;}
+					String [] pair = {wone, wtwo};
+					pairstosmooth.put(pair, count);
+				}
+			}
+		}
+
+		for (String [] changepair: pairstosmooth.keySet()){
+			HashMap<String, Double> temp = new HashMap <String, Double>();
+			temp = bigrammap.get(changepair[0]);// inner hashmap
+			double countchange = pairstosmooth.get(changepair);
+			double newcount= 0;
+			if (countchange==1){
+				newcount = (countchange +1)*((double)numoftwos/numofones);
+			}
+			if (countchange==2){
+				newcount = (countchange +1)*((double)numofthrees/numoftwos);
+			}
+			if (countchange==3){
+				newcount = (countchange +1)*((double)numoffours/numofthrees);
+			}
+			if (countchange==4){
+				newcount = (countchange +1)*((double)numoffives/numoffours);
+			}
+			if (newcount != 0) {temp.put(changepair[1], newcount);} //update inner hashmap }
+			else{ temp.put(changepair[1], countchange);}; //if smoothed value = 0, use old value
+			smoothedbigrams.put(changepair[0], temp); //update outer smoothed hashmap
+
+		}
+
+		return smoothedbigrams;
+	}
+	/*Perplexity of sentence for bigrams;
+	    *creates array list with perplexities of each sentence in corpus
+	    */
+	public static double bigramperplexities (ArrayList <String[]> testtext, HashMap<String, Double> unigrams, HashMap<String, HashMap<String, Double>> bigramsMap ){
+		ArrayList <Double> sentenceperplexities = new ArrayList <Double>();
+		int netlength= testtext.size();
+		for (String[] c: testtext){
+			int p = 0;
+			while (p<(c.length-1)){
+					double prob = 0;
+					ArrayList <String> pair = new ArrayList <String>();
+					pair.add((c[p]));
+					pair.add((c[p+1]));
+					prob = prob+ Math.log(calcBigramProb(pair,unigrams, bigramsMap ));
+					p++;
+					sentenceperplexities.add(prob);
+
+		}}
+
+		//perplexity for entire text
+		double netperplex = 0;
+		for (double c: sentenceperplexities){
+			netperplex+= c;
+
+		}
+		netperplex= Math.exp((netperplex*-1)*((float)1/(netlength)));
+
+		return netperplex;
+	}
+
+	   /* Calculate bigram probability
+	    * Runtime O(1)
+	    */
+	public static double calcBigramProb(ArrayList<String> pair, HashMap<String, Double> unigrams, HashMap<String, HashMap<String, Double>> bigramsMap) {
+		   double probability = 0.0;
+		   double bigramCount = 0.0;
+		   double unigramCount = 0.0;
+
+		   double totalwordsunigram = 0;
+		   unigrams.put("UNK", 0.0);
+		   for (double f : unigrams.values()) {
+			   totalwordsunigram += f;
+		   }
+		   String firstWord = pair.get(0);
+		   String secondWord = pair.get(1);
+		   boolean containsPair = bigramsMap.containsKey(firstWord) && bigramsMap.get(firstWord).containsKey(secondWord);
+		   if (containsPair) {
+			   bigramCount += bigramsMap.get(firstWord).get(secondWord);
+			   unigramCount += unigrams.get(firstWord);
+
+			   probability = bigramCount/unigramCount;
+		   }
+		   else{ //unknown word handling
+			   if (bigramsMap.containsKey(firstWord) && !bigramsMap.get(firstWord).containsKey(secondWord)){
+				   unigrams.put("UNK", unigrams.get("UNK")+1);
+				   unigramCount += unigrams.get(firstWord);
+				   probability= (unigrams.get("UNK"))/unigramCount;
+
+			   }
+			   else{
+				   unigrams.put("UNK", unigrams.get("UNK")+1);
+				   probability = unigrams.get("UNK")/totalwordsunigram;
+
+			   }
+
+		   }
+		   return probability;
+	   }
+
+
+	public static ArrayList<ArrayList <String>> bigramarray (ArrayList <String[]> allwords){
+
+	   //for each set of words (each sentence) put bigrams in array list bigram, then put all bigrams in larger array list bigrams
+	   ArrayList<ArrayList<String>> bigrams = new ArrayList <ArrayList <String>>();
+	   for ( String [] onesen: allwords){
+		   int wordnum = onesen.length;
+		   int r=0;
+		   while (r<(wordnum-1)) {
+			   ArrayList<String> bigram = new ArrayList<String>();
+			   bigram.add(onesen [r]);
+			   bigram.add(onesen[r+1]);
+			   bigrams.add(bigram);
+			   r++;
+		   		}
+	   		}
+	   return bigrams;
+	   }
+
+
+	/* position of max val in arraylist */	//(changed to find min but haven't renamed)
+	public static int findmaximum (ArrayList <Double> values){
+			int limit = values.size();
+			double min = Double.MAX_VALUE;
+			int minIndex = -1;
+			for (int i = 0; i < limit; i++) {
+				if (values.get(i).isInfinite()){minIndex = 0;}
+				else{
+					double value = values.get(i);
+				    if (value <= min) {
+				        min = value;
+				        minIndex = i;
+			    }
+				}
+			}
+			return minIndex;
+	}
+
+	/* unigrams smoothing
+	 * Good Turing smoothing implemented for all unigrams which occur fewer than four times*/
+	public static HashMap <String, Double> unismooth(HashMap<String, Integer> unigrams){
+	HashMap <String, Double> unigramcountsmooth = new HashMap <String, Double>();
+	   for (String keystring: unigrams.keySet()){
+		   int num = unigrams.get(keystring);
+		   int numeq= 1;
+		   int numplusone = 0;
+		   for (String keystringsub: unigrams.keySet()){
+			   if (unigrams.get(keystringsub)<4){
+			   if (keystringsub != keystring){
+				   if (unigrams.get(keystringsub)==num){
+					   numeq++;
+				   }
+				   if (unigrams.get(keystringsub)==(num +1)){
+					   numplusone++;
+				   }
+			   }
+			if (numplusone != 0) {//if Nc+1 != 0
+				double newcount = (num +1)*((double)numplusone/numeq);
+				unigramcountsmooth.put(keystring, newcount);
+			}
+			else{
+				unigramcountsmooth.put(keystring, (double)num);
+			}
+		  }
+
+		   else{unigramcountsmooth.put((keystring), (double)unigrams.get(keystring));}
+			  	   }
+	   }
+	   return unigramcountsmooth;
+	}
+
+	/*file read function */
+	public static String fileRead(String fileurl){
+
+			File file = new File(fileurl);
+		  	BufferedReader textin;
+
+		  	StringBuilder stringconstruct = new StringBuilder();
+		    String line = null;
+		    try {
+				textin = new BufferedReader(new FileReader (file));
+				while ((line = textin.readLine()) != null) {
+					stringconstruct.append(line);
+				}
+			} catch (IOException e) {
+				//  Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		   String stringout = stringconstruct.toString();
+		   stringout = stringout.toLowerCase();
+		   return stringout;
+	}
+
+	 /*Preprocessing function
+	 * returns array list of all words in corpus
+	 */
+	public static ArrayList <String []> preprocess(String stringout){
+	//split into sentences
+	   String [] sentences = stringout.split("[.!?]");
+	   int n = sentences.length;
+	   int i=0;
+	   ArrayList <String> senten= new ArrayList <String>();
+
+	   while (i < n) {
+
+		   //remove extraneous parts of corpus
+		   if (sentences[i].contains( "edu" ) ||
+				sentences[i].contains("@" ) ||
+				sentences[i].contains("from : " ) ||
+				sentences[i].contains("com " ) ||
+				sentences[i].contains("/ " ) ||
+				sentences[i].contains("re : " )) {
+			    sentences[i] = "";
+		   }
+
+		   //remove strings with fewer than two words
+		   int spaces = 0;
+
+		   for (char c: sentences[i].toCharArray()){
+			   if (c== ' ') {spaces ++;}
+
+		   }
+		   if (spaces < 2) {
+			   sentences[i]="";
+		   }
+
+
+		   //build arraylist without empty elements
+		   if (sentences[i] != ""){
+			   senten.add(sentences[i]);
+		   }
+
+		   i++;
+	   }
+
+	   int len= senten.size();
+	   int s = 0;
+	   while (s<len) {
+
+		   //add beginning and end of sentence markers
+		   senten.set(s, "s!" + " " + senten.get(s) + " " + "e!");
+		   s++;
+	   }
+
+
+	   //Split each sentence into words, store each set of word arrays in ArrayList allwords
+	   ArrayList <String []> allwords = new ArrayList <String []> ();
+	   for (String c: senten) {
+
+		   //replace special characters
+		   c= c.replaceAll("[^'!a-zA-Z]+"," ");
+		   c= c.replaceAll("  ", " ");
+		   String [] words = c.split("\\s");
+		   allwords.add(words);
+
+	   }
+	return allwords;}
+
+
+	   /*Perplexity of sentence for unigram;
+	    * creates array list with perplexities of each sentence in corpus
+	    */
+	public static double unigramperplexity(HashMap<String, Double> probabilities, ArrayList<String[]> testtext, Double size){
+		//preprocess test text
+		//ArrayList <String []> processedtext = preprocess(testtext);
+		ArrayList <Double> sentenceperplexities = new ArrayList <Double>();
+		ArrayList <Double> onesentenceperplexities = new ArrayList <Double>();
+
+		int netlength= 0;
+		for (String [] c : testtext){
+			int length= c.length;
+			netlength= netlength +length;
+			if (netlength != 0){
+			int p=0;
+			while(p<(length)){
+				if (probabilities.keySet().contains(c[p])){
+					double temp = probabilities.get(c[p]);
+					onesentenceperplexities.add(temp);
+				}
+
+				//unknown word handling
+				else {
+					if (probabilities.keySet().contains("UNK")== false){probabilities.put("UNK", (double)1.0/size);}
+					else {probabilities.put("UNK", (double)((probabilities.get("UNK")+1)/size));}
+					double temp = probabilities.get("UNK");
+					onesentenceperplexities.add(temp);
+
+				}
+			p++;
+			}
+			Double perplex = 0.0;
+			int k=0;
+			while ( k < (onesentenceperplexities.size())){
+				perplex= perplex+Math.log(onesentenceperplexities.get(k));
+				k++;
+			}
+			sentenceperplexities.add(perplex);
+		}}
+		Double netperplex = 0.0;
+		for (double c1: sentenceperplexities){
+			netperplex= netperplex +c1;
+		}
+
+		if(netlength==0) {System.out.println("caught");}
+		netperplex= Math.exp(netperplex*-1*((float)1/netlength));
+
+		return netperplex;
+	 }
+
+
+
+	  /* Create unigrams + count */
+	public static HashMap<String, Integer> unigrammaker (ArrayList <String []> allwords){
+	HashMap<String, Integer> unigrams = new HashMap <String, Integer>();
+
+	   for (String[] c: allwords){
+
+		   int sentenlen = c.length;
+		   int p =0;
+		   while ( p <sentenlen){
+			   if (unigrams.containsKey(c[p])){
+				  int num=  unigrams.get(c[p]) +1;
+				  unigrams.put(c[p], num);
+			   }
+			   else {
+				   unigrams.put(c[p], 1);
+			   }
+			   p++;
+		   }
+	   }
+	   return unigrams;
+	}
+
+
+
+
+
+	   /* Calculate unigram probability
+	    * Runtime O(1)
+	    * Parameters:
+	    * - word: word to calculate probability
+	    * - unigrams: HashMap of unigrams and counts
+	    * - numWords: number of words in entire corpus
+	    */
+	 public static double calcUnigramProb(String word, HashMap<String, Integer> unigrams, int numWords) {
+		   double probability = 0.0;
+		   double unigramCount = 0.0;
+		   if (unigrams.containsKey(word)) {
+			   unigramCount += unigrams.get(word);
+			   probability = unigramCount/numWords;
+		   }
+		   return probability;
+	   }
+
+	  	/* Funtion to print nested hashmap */
+	 public static void printMapofMap(HashMap<String, HashMap<String, Integer>> map) {
+	  		for (Map.Entry<String, HashMap<String, Integer>> entry : map.entrySet()) {
+	  			String key = entry.getKey().toString();
+	  			HashMap<String, Integer> value = entry.getValue();
+	  			//System.out.println("Key: " + key);
+	  			//System.out.println("VALUES");
+	  			printMap(value);
+	  		}
+	  	}
+
+	  	/* Funtion to print hashmap */
+	  public static void printMap(HashMap<String, Integer> map) {
+	  		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+	  			String key = entry.getKey().toString();
+	  			Integer value = entry.getValue();
+	  			//System.out.println("Inner key: " + key + " -> Inner value: " + value);
+	  		}
+	  	}
+	  
+	  public static void printListArray(ArrayList<String[]> lst) {
+		  for (String[] s : lst) {
+			  System.out.println(Arrays.toString(s));
+		  }
+	  }
+/* Generates a random unigram sentence from the language model
+ * Transfers HashMap keys to ArrayList w/ duplicates to easily model random variable
+ * later in newWord(lst)
+ * Runtime O(n)
+ * unigram: HashMap of unigrams to serve as language model
+ */
+public static void generateUnigramSentence(HashMap<String, Integer> unigrams) {
+  // If you're only generating unigrams, comment out the declaration of the bigram map
+  // in main - it takes a very long time to run, and isn't required here.
+  ArrayList<String> lst = new ArrayList<String>();
+  for (Map.Entry<String, Integer> entry : unigrams.entrySet()) {
+    String key = entry.getKey().toString();
+    Integer value = entry.getValue();
+    while (value > 0) {
+      lst.add(key);
+      value--;
+    }
+  }
+  boolean sema = true;
+  while(sema) {
+    String word = newWord(lst);
+    if (word.equals("e!")) {
+      //System.out.println("");
+      sema = false;
+    }
+    else if (!word.equals("s!")) {
+      //System.out.print(word + " ");
+    }
+    else {
+      continue;
+    }
+  }
+}
+
+/* Generates a random bigram sentence from the language model
+ * Runtime O(n)
+ * - init: word to start sentence generation - "s!" recommended
+ * - bigrams: HashMap of bigrams to serve as language model
+ */
+public static void generateBigramSentence(String init, HashMap<String, HashMap<String, Integer>> bigrams) {
+  boolean sema;
+  // Due to large runtime associated with bigram sentence generation, this for loop
+  // by default generates 20 sentences.
+  for(int ii = 0; ii < 20; ii++) {
+    sema = true;
+    //System.out.println("New sentence:");
+    ArrayList<String> lst = new ArrayList<String>();
+    HashMap<String, Integer> inner = bigrams.get(init);
+    for(Map.Entry<String, Integer> entry : inner.entrySet()) {
+      String key = entry.getKey().toString();
+      Integer value = entry.getValue();
+      while (value > 0) {
+        lst.add(key);
+        value--;
+      }
+    }
+    while(sema) {
+      String word = newWord(lst);
+      if (word.equals("e!")) {
+        //System.out.println("");
+        sema = false;
+      }
+      else if (!word.contentEquals("s!")) {
+        //System.out.print(word + " ");
+      }
+      else {
+        continue;
+      }
+      lst = new ArrayList<String>();
+      try {
+        HashMap<String, Integer> inner2 = bigrams.get(word);
+        for(Map.Entry<String, Integer> entry2 : inner2.entrySet()) {
+          String key2 = entry2.getKey().toString();
+          Integer value2 = entry2.getValue();
+          while (value2 > 0) {
+            lst.add(key2);
+            value2 --;
+          }
+        }
+      }
+      catch (Exception e) {
+        continue;
+      }
+    }
+  }
+}
+/* Generates the next word of a sentence when given an ArrayList (with duplicates)
+ * Works both for bigram and unigram cases.
+ * NOTE : words are randomly chosen usinng weighted probability (based on count)
+ * Runtime O(1)
+ * lst: ArrayList of possible next words, weighted by their probabilities
+ */
+public static String newWord(ArrayList<String> lst) {
+  Random random = new Random();
+  if(lst.size() < 1) {
+    return("e!");
+  }
+  int randomInt = random.nextInt(lst.size());
+  return lst.get(randomInt);
+}
+
+// Spell Check
+		public static String spellCheck() {
+			String athStr = fileRead("spell_checking_task/atheism/train_docs/atheism_file1.txt");
+//			String athStr = fileRead("atheism_file1.txt");
+			ArrayList<String[]> allAthWords = new ArrayList<String[]>();
+			String athModStr = fileRead("spell_checking_task/atheism/train_modified_docs/atheism_file1_modified.txt");
+//			String athModStr = fileRead("atheism_file1.txt");
+//			String athModStr = "a there making of qualitative a quantitative predictions concerning > dozens perceptions . Science is there process of modeling there real world based on commonly agreed interpretations of our observations ( perceptions )";
+			ArrayList<String[]> allModAthWords = new ArrayList<String[]>();
+			allAthWords = preprocess(athStr);
+			allModAthWords = preprocess(athModStr);
+			StringBuilder modifiedText = new StringBuilder();
+			System.out.println("MOD WORDS: ");
+			printListArray(allModAthWords);
+			System.out.println("NOT MOD WORDS: ");
+			printListArray(allAthWords);
+
+			HashMap<String, Integer> uniMapAth = unigrammaker(allAthWords);
+			HashMap<String, Double> uniMapAthSmooth = unismooth(uniMapAth);
+			ArrayList<ArrayList<String>> atheismbigramarray = bigramarray(allAthWords);
+			HashMap<String, HashMap<String,Double>> atheismbigrammap = bigrammapmaker(atheismbigramarray);
+			HashMap<String, HashMap<String,Double>> atheismbigrammapsmooth = smoothBigram(atheismbigrammap);
+
+			ArrayList<ArrayList<String>> confusionArr = new ArrayList<ArrayList<String>>();
+			ArrayList<ArrayList<String>> confusionArrRev = new ArrayList<ArrayList<String>>();
+
+			try {
+				File confusionFile = new File("confusion_set.txt");
+				BufferedReader br = new BufferedReader(new FileReader(confusionFile));
+			    String line;
+			    while ((line = br.readLine()) != null) {
+			    	String[] lineSplit = line.split(" ");
+			    	ArrayList<String> pair = new ArrayList<String>(Arrays.asList(lineSplit));
+			    	confusionArr.add(pair);
+			    	Collections.reverse(pair);
+			    	confusionArrRev.add(pair);
+			    }
+			    br.close();
+		  }
+		  catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			HashMap<String, ArrayList<String>> confusionMap = createConfMap(confusionArr);
+			HashMap<String, ArrayList<String>> confusionMapRev = createConfMap(confusionArrRev);
+
+			// Iterate through text and look if word exists I am here -> i am; am here 
+			// Looping through 
+			for (int j = 0; j < allModAthWords.size(); j++) {
+				String[] strArr = allModAthWords.get(j);
+				for (int i = 0; i < strArr.length - 1; i++) {
+					String fstWord = strArr[i];
+					String sndWord = strArr[i+1];
+//					ArrayList<String> pair = new ArrayList<String>(Arrays.asList(strArr));
+					// Misspelled word hit
+					if ((confusionMap.containsKey(fstWord) || confusionMapRev.containsKey(fstWord)) &&
+							(atheismbigrammapsmooth.containsKey(fstWord) && (atheismbigrammapsmooth.get(fstWord) != null))) {
+						System.out.println("HS FIRST WOOOOOOOORD: " + atheismbigrammapsmooth.get(fstWord));
+						HashMap<String,Double> sndWordOptions = atheismbigrammapsmooth.get(fstWord);
+						ArrayList<String> sndConfWordOptions = new ArrayList<String>();
+						System.out.println("MATCH FIRST WORD: " + fstWord);
+						if (confusionMap.containsKey(fstWord)) {
+							sndConfWordOptions = confusionMap.get(fstWord);
+						}
+						else {
+							sndConfWordOptions = confusionMapRev.get(fstWord);
+						}
+						double maxProb = -1;
+						String maxWord = "";
+						System.out.println("CONFUS " + sndConfWordOptions);
+						for (Map.Entry<String, Double> entry : sndWordOptions.entrySet()) {
+							System.out.println("Entry String: " + entry.getKey());
+							// if atheism snd word is in confusion set of words
+							if (sndConfWordOptions.contains(entry.getKey())) {
+								ArrayList<String> newPair = new ArrayList<String>();
+								newPair.add(fstWord);
+								newPair.add(entry.getKey());
+								double biProb = calcBigramProb(newPair, uniMapAthSmooth, atheismbigrammapsmooth);
+								if (biProb > maxProb) {
+									System.out.println("MaxWord: " + maxWord);
+									maxProb = biProb;
+									maxWord = entry.getKey();
+								}
+								// Update bigram pairs for the next word
+								strArr[i+1] = maxWord;
+								if (i == 0) {
+									modifiedText.append(strArr[i] + " ");
+								}
+								modifiedText.append(maxWord + " ");
+							}
+							modifiedText.append(strArr[i] + " ");
+//							else {
+//								modifiedText.append(sndWord + " ");
+//							}
+						}
+					}
+					else {
+						modifiedText.append(fstWord + " ");
+//						modifiedText.append(sndWord + " ");
+					}
+				}
+				modifiedText.append(strArr[strArr.length - 1]);
+			}
+			String s = modifiedText.toString();
+			System.out.println(s);
+			System.out.println(s.length());
+			return s;
+		}
+
+		static HashMap<String, ArrayList<String>> createConfMap(ArrayList<ArrayList<String>> arrLst) {
+			HashMap<String, ArrayList<String>> res = new HashMap<String, ArrayList<String>>();
+			for (ArrayList<String> arr : arrLst) {
+				if (!res.containsKey(arr.get(0))) {
+					ArrayList<String> vals = new ArrayList<String>();
+					vals.add(arr.get(1));
+//					System.out.println(arr.get(1));
+					res.put(arr.get(0), vals);
+				}
+				else {
+					ArrayList<String> vals = res.get(arr.get(0));
+					vals.add(arr.get(1));
+					res.put(arr.get(0), vals);
+				}
+			}
+			return res;
+		}
+
+}
+
+
